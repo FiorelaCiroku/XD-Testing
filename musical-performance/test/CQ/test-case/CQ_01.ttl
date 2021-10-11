@@ -10,3 +10,5 @@ tc:CQ1.ttl a owlunit:CompetencyQuestionVerification ;
 	owlunit:hasInputTestDataCategory owlunit:ToyDataset ;
 	owlunit:hasExpectedResult "{  \"head\": {  \"vars\": [  \"place\" ] } ,  \"results\": {  \"bindings\": [ {  \"place\": {  \"type\":  \"uri\" ,  \"value\":  \"https://raw.githubusercontent.com/polifonia-project/musical-performance/main/test/competency-question/toy-dataset/Florence\" } } ] } }";
 	owlunit:testsOntology mp: .
+
+
