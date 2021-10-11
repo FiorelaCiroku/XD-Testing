@@ -12,7 +12,6 @@ jobs:
     steps: 
     - uses: actions/upload-artifact@v2.2.4
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.4
       with:
         name: OWLUnit
         path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
