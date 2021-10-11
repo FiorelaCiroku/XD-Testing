@@ -2,11 +2,17 @@ name: 'Upload OWLUnit'
 on: 
   workflow_dispatch:
 jobs:    
-  steps:
-    uses: actions/upload-artifact@v2.2.4
-    with:
-      # Artifact name
-      name: OWLUnit
-      # A file, directory or wildcard pattern that describes what to upload
-      path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
-      required: true
+  name: Upload a Build Artifact
+  uses: actions/upload-artifact@v2.2.4
+  with:
+    # Artifact name
+    name: OWLUnit
+    # A file, directory or wildcard pattern that describes what to upload
+    path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
+    # The desired behavior if no files are found using the provided path
+
+    if-no-files-found: error
+    # Duration after which artifact will expire in days. 0 means using default retention.
+Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
+
+    retention-days: 90
