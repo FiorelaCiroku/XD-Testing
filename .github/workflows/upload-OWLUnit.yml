@@ -1,25 +1,23 @@
 name: 'Upload OWLUnit'
 on: 
   push:
-    branches:
-      -musical-performance/test/CQ/
+    branches: [ musical-performance/test/CQ/ ]
   pull_request: 
-    branches:
-      -musical-performance/test/CQ/
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [ musical-performance/test/CQ/ ]
   workflow_dispatch:
+  
 jobs:    
-  name: Upload a Build Artifact
-  uses: actions/upload-artifact@v2.2.4
-  with:
-    # Artifact name
-    name: OWLUnit
-    # A file, directory or wildcard pattern that describes what to upload
-    path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
-    # The desired behavior if no files are found using the provided path
-
-    if-no-files-found: error
-    # Duration after which artifact will expire in days. 0 means using default retention.
-Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
-
-    retention-days: '90'
+  upload-OWLUnit: 
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/upload-artifact@v2.2.4
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: OWLUnit
+        path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
+        if-no-files-found: error
+        retention-days: '90'
+    
+    
+    
