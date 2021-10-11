@@ -8,9 +8,9 @@ on:
   
 jobs:    
   upload-OWLUnit: 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps: 
-    - name: Upload a Build Artifact
+    - name: Upload OWLUnit jar
       uses: actions/upload-artifact@v2.2.4
       with:
         name: OWLUnit
