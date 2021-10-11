@@ -26,5 +26,9 @@ jobs:
            java-version: '11'
       - run: java -jar OWLUnit-0.3.2.jar -c <URI>       
 
-
+  test-build:
+    runs-on: self-hosted
+    steps:
+      - name: Nothing
+      
       
