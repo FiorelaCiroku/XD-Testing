@@ -1,13 +1,13 @@
 name: Run OWLUnit Tests on Self-Hosted Runner
 
 on:
-  # Trigger the workflow on push or pull request, but only for the test branch
   push:
     branches: [ musical-performance/test/CQ/ ]
   pull_request: 
     branches: [ musical-performance/test/CQ/ ]
     
   # Allows you to run this workflow manually from the Actions tab
+  
   workflow_dispatch:
  
 
