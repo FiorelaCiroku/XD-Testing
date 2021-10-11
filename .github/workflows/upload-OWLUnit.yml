@@ -17,7 +17,6 @@ jobs:
         name: OWLUnit
         path: https://github.com/luigi-asprino/owl-unit/releases/download/0.3.2/OWLUnit-0.3.2.jar
         if-no-files-found: error
-        retention-days: 90
     
     
     
