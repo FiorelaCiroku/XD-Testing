@@ -1,0 +1,17 @@
+name: 'Download OWLUnit'
+on: 
+  workflow_dispatch:
+  
+jobs:    
+  download-OWLUnit: 
+    runs-on: self-hosted
+    steps: 
+    - name: Clone OWLUnit github repository
+      run: git clone https://github.com/luigi-asprino/owl-unit.git
+    
+    
+    
+      
+    
+    
+    
