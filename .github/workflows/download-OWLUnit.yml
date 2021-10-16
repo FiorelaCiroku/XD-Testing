@@ -4,7 +4,7 @@ on:
   
 jobs:    
   download-OWLUnit: 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps: 
     - name: Clone OWLUnit github repository
       run: git clone https://github.com/luigi-asprino/owl-unit.git
