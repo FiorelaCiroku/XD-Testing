@@ -24,6 +24,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: | 
-              mkdir https://github.com/FiorelaCiroku/testmanagement/CC1
+              mkdir testmanagement/CC1
               echo " " > CC1/README.txt
                    
