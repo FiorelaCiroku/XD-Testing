@@ -21,11 +21,20 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Runs multiple commands using the runners shell
       - name: Create directory
         run: | 
               mkdir CC1
               echo " This is a new test file! " > CC1/README.txt
-              cd CC1
-              ls CC1
+      
+      # Creates a file
+      - uses: "finnp/create-file-action@master"
+      env:
+        FILE_NAME: "CC2/testCase_CC2.txt"
+        FILE_DATA: "I am fiorela ciroku"
+        
+      # Display file  
+      - name: Display file
+        run: cat testCase_CC2.txt
+              
                    
