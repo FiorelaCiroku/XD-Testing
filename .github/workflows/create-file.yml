@@ -15,7 +15,3 @@ jobs:
           content: |
             Hello
             World
-        
-      - name: Create directory  
-        run: | 
-              nano src/foo.text
