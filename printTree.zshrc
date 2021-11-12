@@ -1,1 +1,0 @@
- alias tree=find . -print
