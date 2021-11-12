@@ -2,14 +2,9 @@
 
 name: Create directory
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the $default-branch branch
-
 on: 
   push
 
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -26,15 +21,5 @@ jobs:
         run: | 
               mkdir CC1
               echo " This is a new test file! " > CC1/README.txt
-      
-      # Creates a file
-      - uses: "finnp/create-file-action@master"
-      env:
-        FILE_NAME: "CC2/testCase_CC2.txt"
-        FILE_DATA: "I am fiorela ciroku"
         
-      # Display file  
-      - name: Display file
-        run: cat testCase_CC2.txt
-              
-                   
+
