@@ -1,4 +1,4 @@
-# This is a workflow that is able to create directories in Github servers
+# This is a workflow that is able to create a directory structure, diplay the structure and create a pull request
 
 name: Create directory
 
