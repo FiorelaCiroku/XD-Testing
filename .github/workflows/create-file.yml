@@ -18,4 +18,4 @@ jobs:
         
       - name: Create directory  
         run: | 
-              echo foo.md
+              cat foo.md
