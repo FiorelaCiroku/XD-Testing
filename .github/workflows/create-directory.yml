@@ -6,8 +6,8 @@ on:
   push
 
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a job called "create directory structure"
+  create-directory-structure:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -17,23 +17,33 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs multiple commands using the runners shell
-      - name: Create directory
+      - name: Create directory structure
         run: | 
               mkdir CC
               cd CC
-              mkdir CQ
+              mkdir SPARQLUnitTest
               mkdir IV
               mkdir EP
-              cd CQ
+              echo " This is a list of competency questions " > CQ.txt
+              echo " This is a list of general contraints! " > GC.sparql
+              cd SPARQLUnitTest
               mkdir CQTestCase
               mkdir CQDataSet
-              echo " This is a list of competency questions " > CQ.txt
-              echo " This is a list of SPARQL queries! " > Query.sparql
               cd CQTestCase 
               echo " This is a new test file! " > CQTestCase.owl
               cd ..
               cd CQDataSet 
               echo " This is a new dataset file! " > CQDataSet.ttl
+              cd ..
+              cd ..
+              cd IV
+              mkdir IVTestCase
+              mkdir IVDataSet
+              cd ..
+              cd EP
+              mkdir EPTestCase
+              mkdir EPDataSet
+              
             
         
 
