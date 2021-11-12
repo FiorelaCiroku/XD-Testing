@@ -49,6 +49,9 @@ jobs:
               echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
               tree
               
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
+              
             
         
 
