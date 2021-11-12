@@ -11,11 +11,11 @@ jobs:
       - uses: 1arp/create-a-file-action@0.2
         with:
           path: 'src'
-          file: 'foo.md'
+          file: 'foo.text'
           content: |
             Hello
             World
         
       - name: Create directory  
         run: | 
-              cat foo.md
+              nano src/foo.text
