@@ -15,3 +15,7 @@ jobs:
           content: |
             Hello
             World
+        
+      - name: Create directory  
+        run: | 
+              echo foo.md
