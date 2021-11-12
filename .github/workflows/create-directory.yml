@@ -19,8 +19,21 @@ jobs:
       # Runs multiple commands using the runners shell
       - name: Create directory
         run: | 
-              mkdir CC1
-              echo " This is a new test file! " > CC1/README.txt
+              mkdir CC
+              cd CC
+              mkdir CQ
+              mkdir IV
+              mkdir EP
+              cd CQ
+              mkdir CQTestCase
+              mkdir CQDataSet
+              echo " This is a list of competency questions " > CQ.txt
+              echo " This is a list of SPARQL queries! " > Query.sparql
+              cd CQTestCase 
+              echo " This is a new test file! " > CQTestCase.owl
+              cd ..
+              cd CQDataSet 
+              echo " This is a new dataset file! " > CQDataSet.ttl
             
         
 
