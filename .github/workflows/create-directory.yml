@@ -26,4 +26,5 @@ jobs:
         run: | 
               mkdir CC1
               echo " " > CC1/README.txt
+              return README.txt
                    
