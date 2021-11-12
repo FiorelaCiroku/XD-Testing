@@ -44,6 +44,11 @@ jobs:
               mkdir EPTestCase
               mkdir EPDataSet
               
+      - name: Display-tree-structure
+        run: |
+              echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
+              tree
+              
             
         
 
