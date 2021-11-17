@@ -19,7 +19,7 @@ jobs:
       # Runs multiple commands using the runners shell
       - name: Create directory structure for the CC testing
         run: |
-            filename = CQ.txt
+            filename = "CQ.txt"
             while read -r line; do
             name="$line"
             echo "Name read from file - $name"
