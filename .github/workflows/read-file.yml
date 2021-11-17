@@ -1,0 +1,24 @@
+# This is a workflow that is able to read files 
+
+name: Read file
+
+on: 
+  push
+
+jobs:
+  # This workflow contains a job called "read file"
+  create-directory-structure:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs multiple commands using the runners shell
+      - name: Create directory structure for the CC testing
+        run: |
+            while IFS= read -r line; do
+            echo "Text read from file: $line"
+            done < CQ.txt
