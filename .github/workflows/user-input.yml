@@ -17,5 +17,8 @@ jobs:
       # Runs multiple commands using the runners shell
       - name: Ask user input
         run: |
-            read -p "Please enter the conceptual compotent name  : " name
+            #/bin/bash
+            echo -n "What is the name of the conceptual component?"
+            read cc_name
+            echo "The name of the conceptual component is ${cc_name}"
             
