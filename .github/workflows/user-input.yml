@@ -18,4 +18,4 @@ jobs:
       - name: Ask user input
         run: |
             read -p "Please enter the conceptual compotent name  : " name
-            echo "So the name of the conceptual component is $name"
+            
