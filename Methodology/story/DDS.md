@@ -29,6 +29,8 @@ Sethus is a music theorist, composer and teacher, specialized in late Renaissanc
 
 ## Properties from sources
 
+## General constraints
+
 ## OE Competency Questions
 
 ## Issues and notes
