@@ -1,13 +1,12 @@
-name: 'Setup OWLUnit'
+name: Setup OWLUnit
 on: 
   workflow_dispatch:
   
 jobs:    
-  download-OWLUnit: 
+  setup-OWLUnit: 
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
-    - name: Setup Java
     - uses: actions/setup-java@v2
       with:
         distribution: 'temurin' 
