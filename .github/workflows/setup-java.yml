@@ -1,17 +1,17 @@
 name: Setup Java
 on: 
-  workflow_dispatch:
+  push
   
 jobs:    
   setup-java: 
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
-    - uses: actions/setup-java@v2
+    - uses: actions/setup-java@v2.4.0
       with:
         distribution: 'temurin' 
         java-version: '17'
-    - run: java -cp java HelloWorldApp
+
 
       
       
