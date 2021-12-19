@@ -1,9 +1,9 @@
-name: Setup OWLUnit
+name: Setup Java
 on: 
   workflow_dispatch:
   
 jobs:    
-  setup-OWLUnit: 
+  setup-java: 
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
@@ -12,9 +12,7 @@ jobs:
         distribution: 'temurin' 
         java-version: '17'
     - run: java -cp java HelloWorldApp
-      
-    - name: Clone OWLUnit github repository
-      run: git clone https://github.com/luigi-asprino/owl-unit.git
+
       
       
       
