@@ -51,6 +51,13 @@ jobs:
               
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
+        
+        
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.11
+        with:
+          versionSpec: '6.x'
+          includePrerelease: true
               
             
         
