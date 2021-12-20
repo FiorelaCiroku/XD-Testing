@@ -11,7 +11,12 @@ jobs:
       - uses: 1arp/create-a-file-action@0.2
         with:
           path: 'src'
-          file: 'foo.text'
+          file: 'CQ_List.text'
           content: |
-            Hello
-            World
+            Where was a musical composition performed?
+            When was a musical composition performed?
+  pushToRepository:
+    name: Push to repository
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: peter-evans/create-pull-request@v3
