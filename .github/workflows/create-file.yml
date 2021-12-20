@@ -15,8 +15,6 @@ jobs:
           content: |
             Where was a musical composition performed?
             When was a musical composition performed?
-  pushToRepository:
-    name: Push to repository
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: peter-evans/create-pull-request@v3
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
+     
