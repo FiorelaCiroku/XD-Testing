@@ -1,4 +1,4 @@
-name: Setup Java
+name: Setup environment
 on: 
   push
   
