@@ -3,7 +3,9 @@
 name: Create directory
 
 on: 
-  push
+  push: 
+    paths: 
+      - 'testmanagement/musical-performance/'
 
 jobs:
   # This workflow contains a job called "create directory structure"
