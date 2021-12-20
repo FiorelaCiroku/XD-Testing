@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout V2
         uses: actions/checkout@v2
-      - run: java -jar OWLUnit-0.3.2.jar -c <URI>       
+      - run: java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/FiorelaCiroku/testmanagement/main/musical-performance/test/CQ/test-case/CQ_01.ttl
 
   setup-environment:
     runs-on: ubuntu-latest
