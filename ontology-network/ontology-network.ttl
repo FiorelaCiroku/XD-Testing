@@ -1,0 +1,58 @@
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+<https://w3id.org/polifonia/ON/full/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/full/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-performance/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-composition/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-feature/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/source/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/instrument/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/comparative-measure/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/music-emotion/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/metadata/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/bell/0.0.1> .
+
+
+<https://w3id.org/polifonia/ON/core/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/musical-performance/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/musical-performance/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-composition/0.0.1> .
+
+<https://w3id.org/polifonia/ON/musical-composition/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/musical-composition/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/musical-feature/> rdf:type owl:Ontology ;
+   owl:versionInfo <https://w3id.org/polifonia/ON/musical-feature/0.0.1> ;
+   owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/source/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/source/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/instrument/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/instrument/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/comparative-measure/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/comparative-measure/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-performance/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/musical-feature/0.0.1> .
+
+<https://w3id.org/polifonia/ON/music-emotion/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/music-emotion/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/metadata/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/metadata/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
+
+<https://w3id.org/polifonia/ON/bell/> rdf:type owl:Ontology ;
+  owl:versionInfo <https://w3id.org/polifonia/ON/bell/0.0.1> ;
+  owl:imports <https://w3id.org/polifonia/ON/core/0.0.1> .
