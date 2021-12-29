@@ -43,6 +43,7 @@ jobs:
               echo " " > GeneralConstraints.txt
               echo " " > SPARQLQueries.txt
               echo " " > ExpectedResults.txt
+              echo " " > OWLFile.owl
               cd SPARQLUnitTest
               mkdir CQTestCase
               mkdir CQDataSet
