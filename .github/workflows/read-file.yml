@@ -29,54 +29,50 @@ jobs:
       # Reads the file line by line
       - name: read-line
         run: |
+            cd ontology-network
+            cd musical-performance-ontology
             while read -r line; do
             line="$line"
             echo "Line read from file - $line" 
+            mkdir $line
+            cd $line
             done < UserInput.txt
-            
-      # Create the directory structure for the testing of a Conceptual Component
-      - name: Create directory structure for the CC testing
-        run: | 
-              cd ontology-network
-              cd musical-performance-ontology
-              mkdir $line
-              cd Test
-              mkdir SPARQLUnitTest
-              mkdir InferenceVerificationTest
-              mkdir ErrorProvocationTest
-              echo " " > CompetencyQuestions.txt
-              echo " " > GeneralConstraints.txt
-              echo " " > SPARQLQueries.txt
-              echo " " > ExpectedResults.txt
-              echo " " > OWLFile.owl
-              cd SPARQLUnitTest
-              mkdir CQTestCase
-              mkdir CQDataSet
-              cd CQTestCase 
-              echo " " > CQTestCase.owl
-              cd ..
-              cd CQDataSet 
-              echo " " > CQDataSet.ttl
-              cd ..
-              cd ..
-              cd InferenceVerificationTest
-              mkdir IVTestCase
-              mkdir IVDataSet
-              cd IVTestCase
-              echo " " > IVTestCase.owl
-              cd ..
-              cd IVDataSet
-              echo " " > IVDataSet.ttl
-              cd ..
-              cd ..
-              cd ErrorProvocationTest
-              mkdir EPTestCase
-              mkdir EPDataSet
-              cd EPTestCase
-              echo " " > EPTestCase.owl
-              cd ..
-              cd EPDataSet
-              echo " " > EPDataSet.ttl
+            mkdir SPARQLUnitTest
+            mkdir InferenceVerificationTest
+            mkdir ErrorProvocationTest
+            echo " " > CompetencyQuestions.txt
+            echo " " > GeneralConstraints.txt
+            echo " " > SPARQLQueries.txt
+            echo " " > ExpectedResults.txt
+            echo " " > OWLFile.owl
+            cd SPARQLUnitTest
+            mkdir CQTestCase
+            mkdir CQDataSet
+            cd CQTestCase 
+            echo " " > CQTestCase.owl
+            cd ..
+            cd CQDataSet 
+            echo " " > CQDataSet.ttl
+            cd ..
+            cd ..
+            cd InferenceVerificationTest
+            mkdir IVTestCase
+            mkdir IVDataSet
+            cd IVTestCase
+            echo " " > IVTestCase.owl
+            cd ..
+            cd IVDataSet
+            echo " " > IVDataSet.ttl
+            cd ..
+            cd ..
+            cd ErrorProvocationTest
+            mkdir EPTestCase
+            mkdir EPDataSet
+            cd EPTestCase
+            echo " " > EPTestCase.owl
+            cd ..
+            cd EPDataSet
+            echo " " > EPDataSet.ttl
               
               
       - name: Display-tree-structure
