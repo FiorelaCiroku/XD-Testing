@@ -10,9 +10,11 @@ name: Create directory
 # The event that triggers the action is a commit to the ontology module directory. 
 on: 
   push: 
+    branches: [main]
     paths: 
       - 'XD-Testing/ontology-network/musical-performance-ontology/**'
-
+  workflow_dispatch:
+  
 jobs:
   
   # This workflow contains a job called "create directory structure"
