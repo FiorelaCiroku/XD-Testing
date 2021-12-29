@@ -1,9 +1,18 @@
-# This is a workflow that is able to read files 
+# This is an workflow that is able to read text files.
+# Trigger: Commit to the ontology module directory. 
+# Input: A file with the name of the conceptual component that is to be tested
+# Output: 1. Reading the file to extract the name 2. The display of the name 3. Creation of a test directory for the conceptual component. 4) A pull request to add the directories to the main branch. 
 
+# The name of the workflow
 name: Read file
 
+# The action is triggered when there is a commit in the ontology module folder.
 on: 
-  push
+  push: 
+    branches: 
+      - main
+    paths: 
+      - 'ontology-network/musical-performance-ontology/**'
 
 jobs:
   # This workflow contains a job called "read file"
@@ -11,15 +20,59 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Steps that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
-      # Runs multiple commands using the runners shell
-      - name: readLine
+      # Reads the file line by line
+      - name: read-line
         run: |
             while read -r line; do
             line="$line"
             echo "Line read from file - $line" 
-            done < CQ.txt
+            done < CC.txt
+            
+      # Create the directory structure for the testing of a Conceptual Component
+      - name: Create directory structure for the CC testing
+        run: | 
+              cd ontology-network
+              cd musical-performance-ontology
+              mkdir $line
+              cd Test
+              mkdir SPARQLUnitTest
+              mkdir InferenceVerificationTest
+              mkdir ErrorProvocationTest
+              echo " " > CompetencyQuestions.txt
+              echo " " > GeneralConstraints.txt
+              echo " " > SPARQLQueries.txt
+              echo " " > ExpectedResults.txt
+              echo " " > OWLFile.owl
+              cd SPARQLUnitTest
+              mkdir CQTestCase
+              mkdir CQDataSet
+              cd CQTestCase 
+              echo " " > CQTestCase.owl
+              cd ..
+              cd CQDataSet 
+              echo " " > CQDataSet.ttl
+              cd ..
+              cd ..
+              cd InferenceVerificationTest
+              mkdir IVTestCase
+              mkdir IVDataSet
+              cd IVTestCase
+              echo " " > IVTestCase.owl
+              cd ..
+              cd IVDataSet
+              echo " " > IVDataSet.ttl
+              cd ..
+              cd ..
+              cd ErrorProvocationTest
+              mkdir EPTestCase
+              mkdir EPDataSet
+              cd EPTestCase
+              echo " " > EPTestCase.owl
+              cd ..
+              cd EPDataSet
+              echo " " > EPDataSet.ttl
