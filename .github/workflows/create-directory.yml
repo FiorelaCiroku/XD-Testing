@@ -1,56 +1,79 @@
 # This is a workflow that is able to create a directory structure, diplay the structure and create a pull request
+# Trigger: Commit to the ontology module directory. 
+# Input: Preferable the name of the directory that is added
+# Output: 1. A directory structure for the testing of the conceptual component that was added. 2. A display of the directory that is added. 3. A pull request to add the directories to the main branch. 
 
+
+# The name of the directory
 name: Create directory
 
+# The event that triggers the action is a commit to the ontology module directory. 
 on: 
   push: 
     paths: 
-      - 'testmanagement/musical-performance/'
+      - 'XD-Testing/ontology-network/musical-performance-ontology/'
 
 jobs:
+  
   # This workflow contains a job called "create directory structure"
   create-directory-structure:
+    
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    
+    # Steps that are executed for this job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
-      # Runs multiple commands using the runners shell
+      # Create the directory structure for the testing of a Conceptual Component
       - name: Create directory structure for the CC testing
         run: | 
-              mkdir CC
-              cd CC
+              mkdir Test
+              cd Test
               mkdir SPARQLUnitTest
-              mkdir IV
-              mkdir EP
-              echo " This is a list of competency questions " > CQ.txt
-              echo " This is a list of general contraints! " > GC.txt
+              mkdir InferenceVerificationTest
+              mkdir ErrorProvocationTest
+              echo " " > CompetencyQuestions.txt
+              echo " " > GeneralConstraints.txt
+              echo " " > SPARQLQueries.txt
+              echo " " > ExpectedResults.txt
               cd SPARQLUnitTest
               mkdir CQTestCase
               mkdir CQDataSet
               cd CQTestCase 
-              echo " This is a new test file! " > CQTestCase.owl
+              echo " " > CQTestCase.owl
               cd ..
               cd CQDataSet 
-              echo " This is a new dataset file! " > CQDataSet.ttl
+              echo " " > CQDataSet.ttl
               cd ..
               cd ..
-              cd IV
+              cd InferenceVerificationTest
               mkdir IVTestCase
               mkdir IVDataSet
+              cd IVTestCase
+              echo " " > IVTestCase.owl
               cd ..
-              cd EP
+              cd IVDataSet
+              echo " " > IVDataSet.ttl
+              cd ..
+              cd ..
+              cd ErrorProvocationTest
               mkdir EPTestCase
               mkdir EPDataSet
+              cd EPTestCase
+              echo " " > EPTestCase.owl
+              cd ..
+              cd EPDataSet
+              echo " " > EPDataSet.ttl
               
+      # This step displays the structure of the directory that was created in the previous step.      
       - name: Display-tree-structure
         run: |
               echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
               tree
-              
+      # This step creates an automatic pull request for the directories that were created.      
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
         
