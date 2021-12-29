@@ -1,1 +1,50 @@
-for file in *.txt; do if [ ! -s $file ]; then echo $file; fi; done
+# This is a workflow that is able to check if all input necessary to execute the test is available.
+# Trigger: Commit to the testcase paths from different test directories. 
+# Input: The list of the files that is to be checked.
+# Output: A continuation of the test execution in case the files are not empty, and a stop to the test execution otherwise.
+
+# The name of the workflow
+name: Create directory
+
+# The event that triggers the action is a commit to the ontology module directory. 
+on: 
+  push: 
+    branches: 
+      - main
+    paths: 
+      - 'ontology-network/musical-performance-ontology/**'
+    workflow_dispatch:
+  
+jobs:
+  
+  # This workflow contains a job called "check-input"
+  check-input:
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # Steps that are executed for this job
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+      # Retrive the name of the 
+      - name: read-line
+        run: |
+            cd ontology-network
+            cd musical-performance-ontology
+            while read -r line; do
+            line="$line"
+            echo "Line read from file - $line" 
+            cd $line
+            # This script checks if the input that is necessary to run the test are non empty files. 
+            for file in *.txt; do if [ ! -s $file ]; then echo $file; fi; done
+            done < UserInput.txt
+      
+      
+                  
+              
+              
+              
+              
