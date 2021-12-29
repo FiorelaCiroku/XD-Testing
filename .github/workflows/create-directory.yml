@@ -32,6 +32,8 @@ jobs:
       # Create the directory structure for the testing of a Conceptual Component
       - name: Create directory structure for the CC testing
         run: | 
+              cd ontology-network
+              cd musical-performance-ontology
               mkdir Test
               cd Test
               mkdir SPARQLUnitTest
