@@ -4,7 +4,7 @@
 # Output: A continuation of the test execution in case the files are not empty, and a stop to the test execution otherwise.
 
 # The name of the workflow
-name: Create directory
+name: Input cross-check
 
 # The event that triggers the action is a commit to the ontology module directory. 
 on: 
@@ -13,7 +13,8 @@ on:
       - main
     paths: 
       - 'ontology-network/musical-performance-ontology/**'
-    workflow_dispatch:
+    
+  workflow_dispatch:
   
 jobs:
   
