@@ -13,6 +13,7 @@ on:
       - main
     paths: 
       - 'ontology-network/musical-performance-ontology/**'
+  workflow_dispatch:
 
 jobs:
   # This workflow contains a job called "read file"
@@ -29,7 +30,7 @@ jobs:
       - name: read-line
         run: |
             #!/bin/bash
-            source <UserInput.txt>
+            source UserInput.txt
             echo $CC_Name
             
       # Create the directory structure for the testing of a Conceptual Component
