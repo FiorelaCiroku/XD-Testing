@@ -76,3 +76,12 @@ jobs:
               cd ..
               cd EPDataSet
               echo " " > EPDataSet.ttl
+              
+              
+      - name: Display-tree-structure
+        run: |
+              echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
+              tree
+      # This step creates an automatic pull request for the directories that were created.      
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
