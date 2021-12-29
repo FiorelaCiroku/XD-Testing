@@ -1,1 +1,1 @@
-$CC_NAME = "TimeInterval"
+$CC_Name="TimeInterval"
