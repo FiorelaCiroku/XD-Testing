@@ -28,17 +28,16 @@ jobs:
       # Reads the file line by line
       - name: read-line
         run: |
-            while read -r line; do
-            line="$line"
-            echo "Line read from file - $line" 
-            done < CC.txt
+            #!/bin/bash
+            source <UserInput.txt>
+            echo $CC_Name
             
       # Create the directory structure for the testing of a Conceptual Component
       - name: Create directory structure for the CC testing
         run: | 
               cd ontology-network
               cd musical-performance-ontology
-              mkdir $line
+              mkdir $CC_Name
               cd Test
               mkdir SPARQLUnitTest
               mkdir InferenceVerificationTest
