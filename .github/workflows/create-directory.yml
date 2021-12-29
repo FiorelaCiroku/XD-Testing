@@ -11,7 +11,7 @@ name: Create directory
 on: 
   push: 
     paths: 
-      - 'XD-Testing/ontology-network/musical-performance-ontology/'
+      - 'XD-Testing/ontology-network/musical-performance-ontology/**'
 
 jobs:
   
