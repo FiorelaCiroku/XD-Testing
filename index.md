@@ -25,13 +25,13 @@ One of the most important steps of each ontology modelling methodology, includin
 
 ## Guidelines on using the automation for the testing of the ontologies
 
-The first thing that you have to do is it access the repository of the testing. The repository can be found by clicking the button in the top of the page or by clicking [here](https://github.com/FiorelaCiroku/XD-Testing). In this repository, you can find several directories, most importantly the Documentation folder and **ontology-network** folder. When you open the **ontology-network** folder, you will see that there is another folder named **musical-performance-module**. This is the folder where you, as an ontology tester, can trigger the automatic testing of conceptual components of your modules. The actions that you need to take are:
-- Create a folder for a new Conceptual Component with a README.md file in the **ontology-network** folder.
+The first thing you have to do is to access the repository of the testing. The repository can be found by clicking the button at the top of the page or by clicking [here](https://github.com/FiorelaCiroku/XD-Testing). In this repository, you can find several directories, most importantly the Documentation folder and **ontology-network** folder. When you open the **ontology-network** folder, you will see that there is another folder named **musical-performance-module**. This is the folder where you, as an ontology tester, can trigger the automatic testing of conceptual components of your modules. The actions that you need to take are:
+- In the UserInput.txt file in the **musical-performance-module** folder write the name of the new Conceptual Component that you want to test.
 - Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of Github. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below.
 
 ![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
 
-- Merge the Pull request to the master branch of the repository. Quickly, you can see in the **musical-performance-module** folder that a new folder was created with the name **test**. If you browse in the inside of the folder, you can verify that the structure shown above is the result of the automation performed when you added the new conceptual component folder. 
+- Merge the Pull request to the master branch of the repository. Quickly, you can see in the **musical-performance-module** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the result of the automation performed when you added the new conceptual component folder. 
 - In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. 
 
 ```
