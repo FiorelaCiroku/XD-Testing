@@ -30,7 +30,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
-      # Retrive the name of the 
+      # Retrive the name of the conceptual component
+      # Run through the files that are located in the conceptual component folder and check if they are empty or not.ù
+      # Display the result of the check for each file
       - name: read-line
         run: |
             cd ontology-network
