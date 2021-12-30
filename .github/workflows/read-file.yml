@@ -40,39 +40,39 @@ jobs:
             mkdir SPARQLUnitTest
             mkdir InferenceVerificationTest
             mkdir ErrorProvocationTest
-            echo " " > CompetencyQuestions.txt
-            echo " " > GeneralConstraints.txt
-            echo " " > SPARQLQueries.txt
-            echo " " > ExpectedResults.txt
-            echo " " > OWLFile.owl
+            echo "" > CompetencyQuestions.txt
+            echo "" > GeneralConstraints.txt
+            echo "" > SPARQLQueries.txt
+            echo "" > ExpectedResults.txt
+            echo "" > OWLFile.owl
             cd SPARQLUnitTest
             mkdir CQTestCase
             mkdir CQDataSet
             cd CQTestCase 
-            echo " " > CQTestCase.owl
+            echo "" > CQTestCase.owl
             cd ..
             cd CQDataSet 
-            echo " " > CQDataSet.ttl
+            echo "" > CQDataSet.ttl
             cd ..
             cd ..
             cd InferenceVerificationTest
             mkdir IVTestCase
             mkdir IVDataSet
             cd IVTestCase
-            echo " " > IVTestCase.owl
+            echo "" > IVTestCase.owl
             cd ..
             cd IVDataSet
-            echo " " > IVDataSet.ttl
+            echo "" > IVDataSet.ttl
             cd ..
             cd ..
             cd ErrorProvocationTest
             mkdir EPTestCase
             mkdir EPDataSet
             cd EPTestCase
-            echo " " > EPTestCase.owl
+            echo "" > EPTestCase.owl
             cd ..
             cd EPDataSet
-            echo " " > EPDataSet.ttl
+            echo "" > EPDataSet.ttl
               
               
       - name: Display-tree-structure
