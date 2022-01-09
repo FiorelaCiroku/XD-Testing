@@ -48,12 +48,12 @@ jobs:
               then
                 rm -f empty.txt
                 touch full.txt
-                echo "File not empty"
+                echo "$file is not empty"
             else
                 # The file is empty.
                 rm -f full.txt
                 touch empty.txt
-                echo "File empty"
+                echo "$file is empty"
             fi
             done
             done < UserInput.txt
