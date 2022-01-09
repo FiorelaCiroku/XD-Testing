@@ -43,9 +43,7 @@ jobs:
             exho "File empty"
             fi
             
-            [ -s CompetencyQuestions.txt] ] && echo "file has something" || echo "file is empty"
-            [ -s ExpectedResults.txt] ] && echo "file has something" || echo "file is empty"
-      
+            
       
                   
               
