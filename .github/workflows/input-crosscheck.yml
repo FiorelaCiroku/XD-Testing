@@ -42,17 +42,20 @@ jobs:
             echo "Line read from file - $line" 
             cd $line
             # This script checks if the input that is necessary to run the test are non empty files. 
-            for file in *.txt; 
-            do if [ -s $file ]; then
-            rm -f empty.txt
-            touch full.txt
-            echo "File not empty"
+            for file in *.txt
+            do 
+              if [ -s $file ] 
+              then
+                rm -f empty.txt
+                touch full.txt
+                echo "File not empty"
             else
-            # The file is empty.
-            rm -f full.txt
-            touch empty.txt
-            exho "File empty"
+                # The file is empty.
+                rm -f full.txt
+                touch empty.txt
+                echo "File empty"
             fi
+            done
             done < UserInput.txt
       
       
