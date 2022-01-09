@@ -32,7 +32,7 @@ jobs:
             cd ontology-network
             cd musical-performance-ontology
             cd TimeInterval
-            if [ -s CompetencyQuestions.txt ]; then
+            if [ -s GeneralConstraints.txt ]; then
             rm -f empty.txt
             touch full.txt
             echo "File not empty"
