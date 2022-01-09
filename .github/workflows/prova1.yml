@@ -32,8 +32,8 @@ jobs:
             cd ontology-network
             cd musical-performance-ontology
             cd TimeInterval
-            [ -s CompetencyQuestions.txt] ] && echo "file has something" || echo "file is empty"
-            
+            [ -s CompetencyQuestions.txt] && echo "file has something" || echo "file is empty"
+            [ -s ExpectedResults.txt] && echo "file has something" || echo "file is empty"
       
       
                   
