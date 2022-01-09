@@ -26,7 +26,7 @@ jobs:
     
     # Steps that are executed for this job
     steps:
-    
+  
       # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
@@ -53,7 +53,6 @@ jobs:
             touch empty.txt
             exho "File empty"
             fi
-            
             done < UserInput.txt
       
       
