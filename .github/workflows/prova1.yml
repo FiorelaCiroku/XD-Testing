@@ -32,6 +32,17 @@ jobs:
             cd ontology-network
             cd musical-performance-ontology
             cd TimeInterval
+            if [ -s CompetencyQuestions.txt ]; then
+            rm -f empty.txt
+            touch full.txt
+            echo "File not empty"
+            else
+            # The file is empty.
+            rm -f full.txt
+            touch empty.txt
+            exho "File empty"
+            fi
+            
             [ -s CompetencyQuestions.txt] ] && echo "file has something" || echo "file is empty"
             [ -s ExpectedResults.txt] ] && echo "file has something" || echo "file is empty"
       
