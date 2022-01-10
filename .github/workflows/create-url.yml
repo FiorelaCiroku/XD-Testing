@@ -37,7 +37,7 @@ jobs:
             base1="https://github.com/FiorelaCiroku/XD-Testing/tree/main/ontology-network/musical-performance-ontology/"
             base2="/SPARQLUnitTest/CQTestCase"
             testcase-url="$base1$line$base2"
-            printf '%s\n' "$testcase-url"
+            echo "$testcase-url"
             done < UserInput.txt
       
       
