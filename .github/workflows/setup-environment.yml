@@ -41,6 +41,7 @@ jobs:
             echo "OWLUnit jar has been successfully downloaded!"
       - name: Unzip-jar
         run: |
+            unzip OWLUnit-0.3.2.jar
 
 
       
