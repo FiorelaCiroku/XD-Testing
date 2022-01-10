@@ -1,0 +1,57 @@
+# This is a workflow that is able to create temporary urls for the test cases and dataset files.
+# Trigger: Input cross check completed successfully. 
+# Input: The directory path of a test case or dataset file. 
+# Output: Three urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url. 
+
+# The name of the workflow
+name: URL creation
+
+# The event that triggers the action.
+on: 
+  workflow_dispatch:
+  
+jobs:
+  
+  # This workflow contains a job called "temporary-urls"
+  temporary-urls:
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # Steps that are executed for this job
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+      # Retrive the name of the conceptual component
+      # Run through the files that are located in the conceptual component folder and check if they are empty or not.ù
+      # Display the result of the check for each file
+      - name: testcase-url
+        run: |
+            cd ontology-network
+            cd musical-performance-ontology
+            while read -r line; do
+            line="$line"
+            echo "Line read from file - $line" 
+            base1 = "https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
+            base2 = "/SPARQLUnitTest/CQTestCase"
+            testcase-url = "$base1$line$base2"
+            echo testcase-url
+            done < UserInput.txt
+      
+      
+      - name: dataset-url
+        run: |
+        
+      
+      - name: ontology-url
+        run: |
+            
+            
+      
+                  
+              
+              
+              
+              
