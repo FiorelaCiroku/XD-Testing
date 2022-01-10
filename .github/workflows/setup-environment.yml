@@ -37,7 +37,7 @@ jobs:
             else
               BIN="arm64"
             fi
-            LATEST=$(curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest | grep "linux-${BIN}.tar.gz" | cut -d '"' -f 4 | tail -1)
+            LATEST=$(curl -s "https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest" | grep "linux-${BIN}.tar.gz" | cut -d '"' -f 4 | tail -1)
             cd /tmp/
             curl -s -LJO $LATEST
             echo "OWLUnit jar has been successfully downloaded!"
