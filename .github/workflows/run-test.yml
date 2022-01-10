@@ -36,11 +36,15 @@ jobs:
             | cut -d : -f 2,3 \
             | tr -d \" \
             | wget -qi -
+      
+      - name: Display-tree-structure
+        run: |
+              echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
+              tree
             
       
       - name: Run CQ test
         run: |
-            # java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/luigi-asprino/owl-unit/main/examples/cq1.ttl
             cd ontology-network
             cd musical-performance-ontology
             while read -r line; do
@@ -59,12 +63,10 @@ jobs:
              testcaseURL="$CQtestcase$file"
              echo "Test case URL is $testcaseURL"
              cd /
-             pwd
-             var=$(pwd)
-             basename $(pwd)
-             mydir="$(basename $PWD)"
-             echo "$mydir"
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
+            
+            
+     
             
 
