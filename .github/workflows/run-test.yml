@@ -58,6 +58,7 @@ jobs:
              echo " The file is $file"
              testcaseURL="$CQtestcase$file"
              echo "Test case URL is $testcaseURL"
+             cd /
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
             
