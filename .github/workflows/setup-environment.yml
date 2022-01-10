@@ -32,11 +32,11 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            DOWNLOAD_URL=$(curl -s https://api.github.com/repos/felixb/swamp/releases/latest \
+            curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
             | grep browser_download_url \
-            | grep swamp_amd64 \
-            | cut -d '"' -f 4)
-            curl -s -L --create-dirs -o ~/downloadDir "$DOWNLOAD_URL"
+            | cut -d : -f 2,3 \
+            | tr -d \" \
+            | wget -qi -
             echo "OWLUnit jar has been successfully downloaded!"
 
 
