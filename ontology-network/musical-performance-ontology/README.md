@@ -2,8 +2,8 @@
 The Musical Performance ontology module of the [Polifonia ontology network](https://github.com/polifonia-project/ON) models concepts and relationships for representing musical performances and music-related events. 
 
 ## Conceptual components of MP
-- Time Interval
-
+- CC1
+- CC2
 
 ## Imported ontology modules
 The Musical Performance ontology module imports the following modules:
