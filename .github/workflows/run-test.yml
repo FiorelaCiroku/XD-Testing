@@ -5,7 +5,7 @@
 
 # The name of the workflow
 
-name: Run OWLUnit test cases
+name: Run testcase
 
 # The event that triggers the action.
 on: [push]
