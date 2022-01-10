@@ -57,7 +57,7 @@ jobs:
             echo "Test case directory url is $CQtestcase"
             cd SPARQLUnitTest
             cd CQTestCase
-            for file in *.owl
+            for file in *.ttl
             do 
              echo " The file is $file"
              testcaseURL="$CQtestcase$file"
