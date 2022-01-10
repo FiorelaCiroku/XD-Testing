@@ -78,8 +78,34 @@ tc:xx a owlunit:ErrorProvocation ;
       
 ```
 
-- Add the content to the OWLFile.owl.  
-- After you have created the test cases for each type of test, the automation is triggered again. The actions that take place in the background are: 1) Input cross-check where we verify that all the necessary information for the running of the test is available, 2) Test environment setup, where the action downloads java and the OWLUnit jar, 3) Test run, and 4) Test documentation, where we report about the result of the test. 
+- For the purpose of this test you can use the following test case example. Copy and paste it to the test case file in the CQTestCase folder.
+
+```
+@prefix owlunit: <https://w3id.org/OWLunit/ontology/> .
+@prefix ex: <https://w3id.org/OWLunit/examples/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:cq1.ttl a owlunit:CompetencyQuestionVerification ;
+ 	owlunit:hasCompetencyQuestion "What are the interests of a certain person?" ;
+ 	owlunit:hasSPARQLUnitTest "PREFIX foaf: <http://xmlns.com/foaf/0.1/>  SELECT DISTINCT ?interest {?person foaf:interest ?interest}" ;
+	owlunit:hasInputData ex:datacq1.ttl ;
+	owlunit:hasInputTestDataCategory owlunit:ToyDataset ;
+	owlunit:hasExpectedResult "{  \"head\": {  \"vars\": [  \"interest\" ] } ,  \"results\": {  \"bindings\": [ {  \"interest\": {  \"type\":  \"uri\" ,  \"value\":  \"https://w3id.org/OWLunit/examples/Basketball\" } } ] } }";
+	owlunit:testsOntology foaf: .
+
+```
+- For the purpose of this test you can use the following toy dataset example. Copy and paste the text below to the to the toy dataset file in the CQDataSet folder.
+
+```
+@prefix ex: <https://w3id.org/OWLunit/examples/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:Luigi foaf:interest ex:Basketball .
+
+```
+
+- If you want to add your own testcases and toydatasets, be aware to add the ontology to the OWLFile.owl file.  
+- After you have created the test cases, the automation is triggered again. The actions that take place in the background are: 1) Input cross-check where we verify that all the necessary information for the running of the test is available, 2) Test environment setup, where the action downloads java and the OWLUnit jar, 3) Test run, and 4) Test documentation, where we report about the result of the test. 
 - We ask from you to look closely to all the issues that you encounter during the testing of a conceptual component. We have created templates to make it easier for you to create issues [here](https://github.com/FiorelaCiroku/XD-Testing/issues). There is one template for bugs and one for features that you would like to have. 
 - We have also opened several discussion boards [here](https://github.com/FiorelaCiroku/XD-Testing/discussions) to light up conversations regarding features, bugs, documentation and general feedback. We would really appreciate if you could participate in the dicussion boards. 
 
