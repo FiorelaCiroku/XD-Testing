@@ -8,7 +8,12 @@
 name: Run testcase
 
 # The event that triggers the action.
-on: [push]
+on: 
+  push: 
+    branches: 
+      - main
+    paths: 
+      - 'ontology-network/musical-performance-ontology/**'
  
 jobs:
 
