@@ -49,7 +49,7 @@ jobs:
             mkdir CQTestCase
             mkdir CQDataSet
             cd CQTestCase 
-            touch CQTestCase.owl
+            touch CQTestCase.ttl
             cd ..
             cd CQDataSet 
             touch CQDataSet.ttl
@@ -59,7 +59,7 @@ jobs:
             mkdir IVTestCase
             mkdir IVDataSet
             cd IVTestCase
-            touch IVTestCase.owl
+            touch IVTestCase.ttl
             cd ..
             cd IVDataSet
             touch IVDataSet.ttl
@@ -69,7 +69,7 @@ jobs:
             mkdir EPTestCase
             mkdir EPDataSet
             cd EPTestCase
-            touch EPTestCase.owl
+            touch EPTestCase.ttl
             cd ..
             cd EPDataSet
             touch EPDataSet.ttl
