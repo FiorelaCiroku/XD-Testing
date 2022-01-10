@@ -32,11 +32,9 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            curl -s https://github.com/luigi-asprino/owl-unit/releases/latest \
-            grep "browser_download_url.*deb" \
-            cut -d : -f 2,3 \
-            tr -d \" \
-            wget -qi -
+            read repo"?type https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest : ";
+            URL=`curl -s "${repo}" | grep "browser_download_url" | cut -d '"' -f 4 | fzf`
+            curl -sOL ${URL}
             echo "OWLUnit jar has been successfully downloaded!"
 
 
