@@ -17,20 +17,12 @@ jobs:
   
   # The type of runner that the job will run on.
     runs-on: ubuntu-latest
-    needs: setup-environment
+    
     # Check out the repository where the action is going to be executed on.
     steps:
       - name: Checkout V2
         uses: actions/checkout@v2
         
-      - name: Run test
-        run: |
-            java -jar OWLUnit-0.3.2.jar -c,--test-case https://github.com/polifonia-project/musical-performance-ontology/blob/main/test/competency-question/test-case/CQ1.ttl
-
-  setup-environment:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
         with:
@@ -45,3 +37,8 @@ jobs:
             | tr -d \" \
             | wget -qi -
       
+      - name: Run test
+        run: |
+            java -jar OWLUnit-0.3.2.jar -c,--test-case https://github.com/polifonia-project/musical-performance-ontology/blob/main/test/competency-question/test-case/CQ1.ttl
+
+  
