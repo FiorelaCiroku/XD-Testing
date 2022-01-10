@@ -37,12 +37,6 @@ jobs:
             | tr -d \" \
             | wget -qi -
       
-      - name: Display-tree-structure
-        run: |
-              echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
-              tree
-            
-      
       - name: Run CQ test
         run: |
             cd ontology-network
@@ -59,13 +53,13 @@ jobs:
             CQtestcase="$base$line$CQbase"
             for file in *.owl
             do 
-             echo " The file is $file"
+             # echo " The file is $file"
              testcaseURL="$CQtestcase$file"
-             echo "Test case URL is $testcaseURL"
-             cd ~
-             java -jar OWLUnit-0.3.2.jar -c $testcaseURL
+             # echo "Test case URL is $testcaseURL"
+             # cd ~
             done
-            
+            cd ~
+            java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             
      
             
