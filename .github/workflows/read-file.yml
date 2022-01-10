@@ -44,7 +44,7 @@ jobs:
             touch GeneralConstraints.txt
             touch SPARQLQueries.txt
             touch ExpectedResults.txt
-            touch OWLFile.owl
+            touch $line.owl
             cd SPARQLUnitTest
             mkdir CQTestCase
             mkdir CQDataSet
