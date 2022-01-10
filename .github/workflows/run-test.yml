@@ -37,28 +37,10 @@ jobs:
             | tr -d \" \
             | wget -qi -
             
-      - name: testcase-url
-        run: |
-            cd ontology-network
-            cd musical-performance-ontology
-            while read -r line; do
-            line="$line"
-            base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
-            CQbase="/SPARQLUnitTest/CQTestCase"
-            IVbase="/InferenceVerificationTest/IVTestCase/"
-            EPbase="/ErrorProvocationTest/EPTestCase/"
-            echo "$CQtestcase"
-            echo "$IVtestcase"
-            echo "$EPtestcase"
-            CQtestcase="$base$line$CQbase"
-            IVtestcase="$base$line$IVbase"
-            EPtestcase="$base$line$EPbase"
-            echo "The prefixes of the test cases are is $CQtestcase, $IVtestcase, $EPtestcase."
-            done < UserInput.txt
       
       - name: Run test
         run: |
-            java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/luigi-asprino/owl-unit/main/examples/cq1.ttl
+            # java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/luigi-asprino/owl-unit/main/examples/cq1.ttl
             
             cd ontology-network
             cd musical-performance-ontology
@@ -71,7 +53,7 @@ jobs:
             CQbase="/SPARQLUnitTest/CQTestCase"
             echo "$CQtestcase"
             CQtestcase="$base$line$CQbase"
-            for file in *.ttl
+            for file in *.owl
             do 
              echo " The file is $file"
               testcaseURL="$CQtestcase$file"
@@ -79,4 +61,3 @@ jobs:
             done
             done < UserInput.txt
 
-  https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/Situation/SPARQLUnitTest/CQTestCase/CQTestCase.owl
