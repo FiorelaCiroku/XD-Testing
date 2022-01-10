@@ -1,12 +1,24 @@
-name: Test build
+# This is a workflow that is able to create temporary urls for the test cases and dataset files.
+# Trigger: Input cross check completed successfully. 
+# Input: The directory path of a test case or dataset file. 
+# Output: Four urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url, 4. The OWL ontology url.
+
+# The name of the workflow
+name: Construct OWLUnit test cases
+
+# The event that triggers the action.
 on: [push]
 
 jobs:
+
+# This workflow contains a job called "build-test"
   build-test:
+  
+  # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-environment@v1
+      
     
     
   
