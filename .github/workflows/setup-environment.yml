@@ -44,6 +44,10 @@ jobs:
             mkdir Resources
             mkdir OWLUnitJar
             unzip OWLUnit-0.3.2.jar -d OWLUnitJar
+            
+      - name: Install OWLUnit
+        run: |
+            java -jar OWLUnit-0.3.2.jar
 
 
       
