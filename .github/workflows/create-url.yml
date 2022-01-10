@@ -1,7 +1,7 @@
 # This is a workflow that is able to create temporary urls for the test cases and dataset files.
 # Trigger: Input cross check completed successfully. 
 # Input: The directory path of a test case or dataset file. 
-# Output: Three urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url. 
+# Output: Four urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url, 4. The OWL ontology url.
 
 # The name of the workflow
 name: Create URL
