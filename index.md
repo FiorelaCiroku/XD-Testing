@@ -32,11 +32,11 @@ The first thing you have to do is to access the repository of the testing. The r
 ![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
 
 - Merge the Pull request to the master branch of the repository. Quickly, you can see in the **musical-performance-module** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the result of the automation performed when you added the new conceptual component folder. 
-- In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. 
+- In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
 
 ```
 @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
-#prefix om: .
+@prefix om: .
 @prefix td: .
 @prefix tc: .
  
@@ -80,7 +80,8 @@ tc:xx a owlunit:ErrorProvocation ;
 
 - Add the content to the OWLFile.owl.  
 - After you have created the test cases for each type of test, the automation is triggered again. The actions that take place in the background are: 1) Input cross-check where we verify that all the necessary information for the running of the test is available, 2) Test environment setup, where the action downloads java and the OWLUnit jar, 3) Test run, and 4) Test documentation, where we report about the result of the test. 
-- We ask from you to look closely to all the issues that you encounter during the testing of a conceptual component. We have created templates to make it easier for you to create issues. There is one template for bugs and one for features that you would like to have. 
+- We ask from you to look closely to all the issues that you encounter during the testing of a conceptual component. We have created templates to make it easier for you to create issues [here](https://github.com/FiorelaCiroku/XD-Testing/issues). There is one template for bugs and one for features that you would like to have. 
+- We have also opened several discussion boards [here](https://github.com/FiorelaCiroku/XD-Testing/discussions) to light up conversations regarding features, bugs, documentation and general feedback. We would really appreciate if you could participate in the dicussion boards. 
 
 
 
