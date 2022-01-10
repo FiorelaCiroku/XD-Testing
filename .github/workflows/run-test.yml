@@ -61,8 +61,6 @@ jobs:
              cd ..
              cd ..
              cd ..
-             # result=${PWD##*/}
-             # printf '%s\n' "${PWD##*/}"
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done          
      
