@@ -63,6 +63,8 @@ jobs:
              testcaseURL="$CQtestcase$file"
              echo "Test case URL is $testcaseURL"
              cd /
+             cd FiorelaCiroku
+             cd XD-Testing
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
             
