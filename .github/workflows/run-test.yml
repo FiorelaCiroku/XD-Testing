@@ -41,7 +41,6 @@ jobs:
       - name: Run test
         run: |
             # java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/luigi-asprino/owl-unit/main/examples/cq1.ttl
-            
             cd ontology-network
             cd musical-performance-ontology
             while read -r line; do
@@ -56,8 +55,9 @@ jobs:
             for file in *.owl
             do 
              echo " The file is $file"
-              testcaseURL="$CQtestcase$file"
-              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
+             testcaseURL="$CQtestcase$file"
+             echo "Test case URL is $testcaseURL"
+             java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
             done < UserInput.txt
 
