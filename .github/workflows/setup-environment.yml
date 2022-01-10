@@ -32,14 +32,11 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            if [ "${OSTYPE}" = "x86_64" ]; then
-              BIN="amd64"
-            else
-              BIN="arm64"
-            fi
-            LATEST=$(curl -s "https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest" | grep "linux-${BIN}.tar.gz" | cut -d '"' -f 4 | tail -1)
-            cd /tmp/
-            curl -s -LJO $LATEST
+            wget -qO - https://api.github.com/repos/ankitects/anki/releases/latest \
+            grep browser_download_url \
+            grep amd64 \
+            cut -d  '"' -f 4  \
+            wget -cqi - -O Anki.tar.bz
             echo "OWLUnit jar has been successfully downloaded!"
 
 
