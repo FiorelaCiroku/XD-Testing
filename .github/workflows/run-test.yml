@@ -1,23 +1,47 @@
-name: Run OWLUnit Tests
+# This is a workflow that is able to create temporary urls for the test cases and dataset files.
+# Trigger: Input cross check completed successfully. 
+# Input: The directory path of a test case or dataset file. 
+# Output: Four urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url, 4. The OWL ontology url.
+
+# The name of the workflow
+
+name: Run OWLUnit test cases
+
+# The event that triggers the action.
 on: [push]
  
 jobs:
-  test-run:
+
+# This workflow contains a job called "test-run"
+  run-test:
+  
+  # The type of runner that the job will run on.
     runs-on: ubuntu-latest
     needs: setup-environment
+    # Check out the repository where the action is going to be executed on.
     steps:
       - name: Checkout V2
         uses: actions/checkout@v2
-      - run: java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/FiorelaCiroku/testmanagement/main/musical-performance/test/CQ/test-case/CQ_01.ttl
+        
+      - name: Run test
+        run: |
+            java -jar OWLUnit-0.3.2.jar -c,--test-case https://github.com/polifonia-project/musical-performance-ontology/blob/main/test/competency-question/test-case/CQ1.ttl
 
   setup-environment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v2.4.0
+      - name: Setup-JAVA
+        uses: actions/setup-java@v2.4.0
         with:
           distribution: 'temurin' 
           java-version: '17'
-      - run: git clone https://github.com/luigi-asprino/owl-unit.git
-
+        
+      - name: Setup-OWLUnit
+        run: |
+            curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
+            | grep browser_download_url \
+            | cut -d : -f 2,3 \
+            | tr -d \" \
+            | wget -qi -
       
