@@ -43,14 +43,15 @@ jobs:
             cd musical-performance-ontology
             while read -r line; do
             line="$line"
+            echo "CC is $line"
             cd $line
-            cd SPARQLUnitTest
-            cd CQTestCase
             base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
             CQbase="SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$line$CQbase"
-            echo "Test case directory url is $testcaseURL"
+            echo "Test case directory url is $CQtestcase"
+            cd SPARQLUnitTest
+            cd CQTestCase
             for file in *.owl
             do 
              echo " The file is $file"
