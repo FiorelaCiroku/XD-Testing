@@ -4,7 +4,7 @@
 # Output: Three urls that are needed for a test case: 1. the test case url, 2. the corresponding dataset url, 3. the ontology url. 
 
 # The name of the workflow
-name: URL creation
+name: Create URL
 
 # The event that triggers the action.
 on: 
@@ -34,11 +34,11 @@ jobs:
             while read -r line; do
             line="$line"
             echo "Line read from file - $line" 
-            base1 = "https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
-            base2 = "/SPARQLUnitTest/CQTestCase"
-            testcase-url = "$base1$line$base2"
-            echo testcase-url
-            done < UserInput.txt
+            base1="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
+            base2="/SPARQLUnitTest/CQTestCase"
+            testcase-url="$base1$line$base2"
+            echo $testcase-url
+            done 
       
       
       - name: dataset-url
