@@ -39,6 +39,6 @@ jobs:
       
       - name: Run test
         run: |
-            java -jar OWLUnit-0.3.2.jar -c,--test-case https://github.com/polifonia-project/musical-performance-ontology/blob/main/test/competency-question/test-case/CQ1.owl
+            java -jar OWLUnit-0.3.2.jar --test-case https://github.com/polifonia-project/musical-performance-ontology/blob/main/test/competency-question/test-case/CQ1.owl
 
   
