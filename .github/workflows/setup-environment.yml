@@ -32,7 +32,7 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            curl -s https://api.github.com/repos/jgm/pandoc/releases/latest \
+            curl -s https://github.com/luigi-asprino/owl-unit/releases \
             grep "browser_download_url.*deb" \
             cut -d : -f 2,3 \
             tr -d \" \
