@@ -32,11 +32,11 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            wget -qO - https://api.github.com/repos/ankitects/anki/releases/latest \
-            grep browser_download_url \
-            grep amd64 \
-            cut -d  '"' -f 4  \
-            wget -cqi - -O Anki.tar.bz
+            DOWNLOAD_URL=$(curl -s https://api.github.com/repos/felixb/swamp/releases/latest \
+            | grep browser_download_url \
+            | grep swamp_amd64 \
+            | cut -d '"' -f 4)
+            curl -s -L --create-dirs -o ~/downloadDir "$DOWNLOAD_URL"
             echo "OWLUnit jar has been successfully downloaded!"
 
 
