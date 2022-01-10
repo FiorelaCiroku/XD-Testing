@@ -55,7 +55,7 @@ jobs:
             do 
              # echo " The file is $file"
              testcaseURL="$CQtestcase$file"
-             echo "Test case URL is $testcaseURL
+             echo "Test case URL is $testcaseURL"
              cd ..
              cd ..
              cd ..
