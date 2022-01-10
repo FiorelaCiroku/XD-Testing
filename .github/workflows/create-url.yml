@@ -36,7 +36,8 @@ jobs:
             echo "Line read from file - $line" 
             base1="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
             base2="/SPARQLUnitTest/CQTestCase"
-            testcase-url="$base1$line$base2"
+            # testcase-url="$base1$line$base2"
+            testcase-url="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/$line/SPARQLUnitTest/CQTestCase"
             printf '%s\n' "$testcase-url"
             done < UserInput.txt
       
