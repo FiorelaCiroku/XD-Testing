@@ -38,7 +38,7 @@ jobs:
             | wget -qi -
             
       
-      - name: Run test
+      - name: Run CQ test
         run: |
             # java -jar OWLUnit-0.3.2.jar -c https://raw.githubusercontent.com/luigi-asprino/owl-unit/main/examples/cq1.ttl
             cd ontology-network
@@ -46,6 +46,7 @@ jobs:
             while read -r line; do
             line="$line"
             cd $line
+            done < UserInput.txt
             cd SPARQLUnitTest
             cd CQTestCase
             base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
@@ -59,5 +60,5 @@ jobs:
              echo "Test case URL is $testcaseURL"
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
-            done < UserInput.txt
+            
 
