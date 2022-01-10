@@ -59,6 +59,11 @@ jobs:
              testcaseURL="$CQtestcase$file"
              echo "Test case URL is $testcaseURL"
              cd /
+             pwd
+             var=$(pwd)
+             basename $(pwd)
+             mydir="$(basename $PWD)"
+             echo "$mydir"
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done
             
