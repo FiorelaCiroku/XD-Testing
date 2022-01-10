@@ -32,20 +32,15 @@ jobs:
         
       - name: Setup-OWLUnit
         run: |
-            # curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
-            # | grep browser_download_url \
-            # | cut -d : -f 2,3 \
-            # | tr -d \" \
-            # | wget -qi -
-            
-            $ file="$(
             curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
             | grep browser_download_url \
-            | sed -re 's/.*: "([^"]+)".*/\1/' \
-            )"
-            $ echo ${file##*/}
+            | cut -d : -f 2,3 \
+            | tr -d \" \
+            | wget -qi -
 
             echo "OWLUnit jar has been successfully downloaded!"
+      - name: Unzip-jar
+        run: |
 
 
       
