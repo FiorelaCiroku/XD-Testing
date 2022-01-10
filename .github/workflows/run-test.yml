@@ -46,7 +46,7 @@ jobs:
             echo "CC is $line"
             cd $line
             base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
-            CQbase="SPARQLUnitTest/CQTestCase/"
+            CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$line$CQbase"
             echo "Test case directory url is $CQtestcase"
