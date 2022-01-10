@@ -14,6 +14,7 @@ on:
       - main
     paths: 
       - 'ontology-network/musical-performance-ontology/**'
+  workflow_dispatch:
  
 jobs:
 
