@@ -49,7 +49,7 @@ jobs:
             cd SPARQLUnitTest
             cd CQTestCase
             base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
-            CQbase="/SPARQLUnitTest/CQTestCase"
+            CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$line$CQbase"
             for file in *.owl
