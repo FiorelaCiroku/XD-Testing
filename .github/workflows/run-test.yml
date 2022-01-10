@@ -51,9 +51,10 @@ jobs:
             CQbase="SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$line$CQbase"
+            echo "Test case directory url is $testcaseURL"
             for file in *.owl
             do 
-             # echo " The file is $file"
+             echo " The file is $file"
              testcaseURL="$CQtestcase$file"
              echo "Test case URL is $testcaseURL"
              cd ..
