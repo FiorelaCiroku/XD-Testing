@@ -44,18 +44,43 @@ jobs:
             CQtestcase="$base$line$CQbase"
             IVtestcase="$base$line$IVbase"
             EPtestcase="$base$line$EPbase"
-            
             echo "The prefixes of the test cases are is $CQtestcase, $IVtestcase, $EPtestcase."
             done < UserInput.txt
       
       
       - name: dataset-url
         run: |
+            cd ontology-network
+            cd musical-performance-ontology
+            while read -r line; do
+            line="$line"
+            echo "Line read from file - $line" 
+            base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
+            CQbase="SPARQLUnitTest/CQDataSet/"
+            IVbase="/InferenceVerificationTest/IVDataSet/"
+            EPbase="/ErrorProvocationTest/EPDataSet/"
+            echo "$CQtestcase"
+            echo "$IVtestcase"
+            echo "$EPtestcase"
+            CQtestcase="$base$line$CQbase"
+            IVtestcase="$base$line$IVbase"
+            EPtestcase="$base$line$EPbase"
+            echo "The prefixes of the data sets are is $CQtestcase, $IVtestcase, $EPtestcase."
+            done < UserInput.txt
             
-        
       
       - name: ontology-url
         run: |
+            echo "$ontologyURL"
+            ontologyURL="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/Situation/OWLFile.owl"
+            echo "The URL of the ontology is $ontologyURL"
+            
+      - name: OWL-url
+        run: |
+            echo "$OWLURL"
+            OWLURL="https://w3id.org/OWLunit/ontology/"
+            echo "The URL of the OWL ontology is $OWLURL"
+            
            
               
               
