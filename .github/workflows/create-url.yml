@@ -34,10 +34,9 @@ jobs:
             while read -r line; do
             line="$line"
             echo "Line read from file - $line" 
-            base1="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
+            base1="https://github.com/FiorelaCiroku/XD-Testing/tree/main/ontology-network/musical-performance-ontology/"
             base2="/SPARQLUnitTest/CQTestCase"
-            # testcase-url="$base1$line$base2"
-            testcase-url="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/$line/SPARQLUnitTest/CQTestCase"
+            testcase-url="$base1$line$base2"
             printf '%s\n' "$testcase-url"
             done < UserInput.txt
       
