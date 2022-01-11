@@ -1,0 +1,22 @@
+
+on: [push]
+name: Create an issue on push
+permissions:
+  contents: read
+  issues: write 
+jobs:
+  stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.ISSUE_TOKEN }}
+        with:
+          filename: .github/test_analysis.md
+          assignees: FiorelaCiroku
+          update_existing: true
+          search_existing: all
+          id: create-issue
+      - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
+      - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
