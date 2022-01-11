@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: send custom message with args
+    - name: send notification with commit message
       uses: appleboy/discord-action@master
       with:
         webhook_id: ${{ secrets.WEBHOOK_ID }}
@@ -15,5 +15,12 @@ jobs:
         color: "#cd42f4"
         username: "UnicornLove"
         args: The new commit has been pushed in the XDTesting repository with the message ${{github.event.commits[0].message}}. 
-        message: You can access it in the following link ${{ github.event.commits[0].url }}. Please check it at your earliest convenience. Thank you!
 
+    - name: send notification with commit link
+      uses: appleboy/discord-action@master
+      with:
+        webhook_id: ${{ secrets.WEBHOOK_ID }}
+        webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+        color: "#cd42f4"
+        username: "UnicornLove"
+        args: You can access it in the following link ${{ github.event.commits[0].url }}. Please check it at your earliest convenience. Thank you!
