@@ -17,6 +17,6 @@ jobs:
           assignees: FiorelaCiroku
           update_existing: true
           search_existing: all
-          id: create-issue
+        id: create-issue
       - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
       - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
