@@ -1,4 +1,4 @@
-
+# new action
 on: [push]
 name: Create an issue on push
 permissions:
