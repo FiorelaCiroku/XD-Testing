@@ -14,6 +14,6 @@ jobs:
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
         color: "#cd42f4"
         username: "UnicornLove"
-        args: The new commit has been pushed in the XDTesting repository with the message ${{github.event.commits[0].message}}. You can access it in the following link ${{ github.event.commits[0].url }}. Please check it at your earliest convenience. Thank you!
-        
+        args: The new commit has been pushed in the XDTesting repository with the message ${{github.event.commits[0].message}}. 
+        message: You can access it in the following link ${{ github.event.commits[0].url }}. Please check it at your earliest convenience. Thank you!
 
