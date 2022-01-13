@@ -1,4 +1,4 @@
-# This is a workflow that is able to create temporary urls for the test cases and dataset files.
+# This is a workflow that is able to setup the environment for the running of the test cases in XD.
 # Trigger: Input cross check completed successfully. 
 # Input: 
 # Output: 
@@ -29,7 +29,8 @@ jobs:
         with:
           distribution: 'temurin' 
           java-version: '17'
-        
+
+# Download the latest release of OWLUnit jar from the Github repository
       - name: Setup-OWLUnit
         run: |
             curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
@@ -38,13 +39,7 @@ jobs:
             | tr -d \" \
             | wget -qi -
 
-            echo "OWLUnit jar has been successfully downloaded!"
-      - name: Unzip-jar
-        run: |
-            mkdir Resources
-            mkdir OWLUnitJar
-            unzip OWLUnit-0.3.2.jar -d OWLUnitJar
-            
+# Install OWLUnit         
       - name: Install OWLUnit
         run: |
             java -jar OWLUnit-0.3.2.jar
