@@ -112,9 +112,6 @@ jobs:
               else
                 echo "Test run ready to begin!"
             fi
-      
-      - name: XDTesting Setup Environment
-        uses: FiorelaCiroku/XDTesting-Setup-Environment@v1.0.0
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
