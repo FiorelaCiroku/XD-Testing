@@ -51,6 +51,8 @@ jobs:
             line="$line"
             # echo "CC is $line"
             cd $line
+            var=(git rev-parse --show-toplevel)
+            echo "$var"
             base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
             CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
