@@ -1,4 +1,0 @@
-@prefix ex: <https://w3id.org/OWLunit/examples/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-
-ex:Luigi foaf:interest ex:Basketball .
