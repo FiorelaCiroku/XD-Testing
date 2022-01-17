@@ -109,13 +109,13 @@ jobs:
              cd ..
              cd ..
              output=$(java -jar OWLUnit-0.3.2.jar -c $testcaseURL)
-             cd ontology-network
-             cd module1
-             cd $line
-             cd TestDocumentation
-             touch DocCase.txt
-             echo "$output" >> DocCase.txt
+            done
+            cd ontology-network
+            cd module1
+            cd $line
+            cd TestDocumentation
+            touch DocCase.txt
+            echo "$output" >> DocCase.txt
 
-            done          
             done < UserInput.txt
             
