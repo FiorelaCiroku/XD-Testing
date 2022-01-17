@@ -65,6 +65,7 @@ jobs:
                 echo "Missing files: Test run cannot start!"
               else
                 echo "Test run ready to begin!"
+            fi
       
       
                   
