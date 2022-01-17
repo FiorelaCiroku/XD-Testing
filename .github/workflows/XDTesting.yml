@@ -102,7 +102,7 @@ jobs:
             do 
              echo " The file is $file"
              testcaseURL="$CQtestcase$file"
-             echo "Test case URL is $testcaseURL"
+             # echo "Test case URL is $testcaseURL"
              cd ..
              cd ..
              cd ..
@@ -115,8 +115,7 @@ jobs:
              cd TestDocumentation
              touch DocCase.txt
              echo "$output" >> DocCase.txt
-             echo "The output of the run is $output"
-             cat DocCase.txt
+
             done          
             done < UserInput.txt
             
