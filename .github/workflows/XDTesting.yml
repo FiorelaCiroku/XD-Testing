@@ -117,4 +117,7 @@ jobs:
             cd TestDocumentation
             touch DocCase.txt
             echo "$output" >> DocCase.txt
+        # This step creates an automatic pull request for the directories that were created.      
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
             
