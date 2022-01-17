@@ -33,7 +33,7 @@ jobs:
       # Retrive the name of the conceptual component
       # Run through the files that are located in the conceptual component folder and check if they are empty or not.ù
       # Display the result of the check for each file
-      - name: read-line
+      - name: check-input
         run: |
             cd ontology-network
             cd musical-performance-ontology
@@ -49,7 +49,7 @@ jobs:
               then
                 rm -f empty.txt
                 touch full.txt
-                counter=counter+1
+                counter++
                 echo "$file is not empty"
             else
                 # The file is empty.
@@ -57,8 +57,8 @@ jobs:
                 touch empty.txt
                 echo "$file is empty"
               fi
-              echo "Counter is $counter"
             done
+            echo "Counter is $counter"
             done < UserInput.txt
       
       
