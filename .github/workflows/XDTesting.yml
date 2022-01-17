@@ -4,7 +4,7 @@
 # Output: The execution of a test case. 
 
 # The name of the workflow
-name: Run testcase
+name: XDTesting
 
 # The event that triggers the action.
 on: 
