@@ -46,6 +46,9 @@ jobs:
             touch ExpectedResults.txt
             touch $line.owl
             done < UserInput.txt
+            cd TestDocumentation
+            touch README.md
+            cd ..
             cd SPARQLUnitTest
             mkdir CQTestCase
             mkdir CQDataSet
