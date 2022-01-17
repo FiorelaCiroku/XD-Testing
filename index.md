@@ -1,6 +1,6 @@
 # Welcome to eXtreme Design Testing
 
-This website is created to present the work regarding the test automation for the [eXtreme Design](https://extremedesign.info) ontology modelling methodology.
+XDTesting is a test automation tool for the [eXtreme Design](https://extremedesign.info) ontology modelling methodology. This website provides material, instructions and examples for the XDTesting 1st Session, whose purpose is to test the tool, provide feedback and collect requirement from ontology engineers. 
 
 ## eXtreme Design and Conceptual Components
 
@@ -14,7 +14,6 @@ A conceptual component (CC) is a complex (cognitive) relational structure that a
 be implemented by means of different ontology fragments, the
 observed ontology design patterns (OODPs), across different ontologies.
 
-
 ## eXtreme Design, a test-driven ontology modelling mothodology
 
 One of the most important steps of each ontology modelling methodology, including eXtreme Design, is the testing of the ontology. The testing in XD includes the following tests:
@@ -23,15 +22,17 @@ One of the most important steps of each ontology modelling methodology, includin
 - **Inference Verification** allows to verify that the inference mechanisms are in place, to ensure the correct fulfillment of the inference requirement.
 - **Error Provocation** allows to verify how the ontology acts when it is fed random or incorrect data. 
 
-## Guidelines on using the automation for the testing of the ontologies
+## Guidelines on using the XDTesting tool 
 
-The first thing you have to do is to access the repository of the testing. The repository can be found by clicking the button at the top of the page or by clicking [here](https://github.com/FiorelaCiroku/XD-Testing). In this repository, you can find several directories, most importantly the Documentation folder and **ontology-network** folder. When you open the **ontology-network** folder, you will see that there is another folder named **musical-performance-module**. This is the folder where you, as an ontology tester, can trigger the automatic testing of conceptual components of your modules. The actions that you need to take are:
-- In the UserInput.txt file in the **musical-performance-module** folder write the name of the new Conceptual Component that you want to test.
-- Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of Github. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below.
-
+1. Create a repository of your own in GitHub. You can include a README.md file if you like. 
+2. Copy the file XDTesting.yml from the [FiorelaCiroku/XDTesting](https://github.com/FiorelaCiroku/XD-Testing/blob/main/.github/workflows/XDTesting.yml) repository under the .github/workflows directory to your own repository under the same directory and file name. 
+3. Create a directory named **ontology-network** which will have as subfolders the ontology modules. 
+4. Create a directory named **module1** in the **ontology-network** directory. 
+5. Add a README.md file and a file named UserInput.txt.
+6. In the UserInput.txt file write the name of the new Conceptual Component that you want to test, for example CC1.
+7. Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of GitHub. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below.
 ![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
-
-- Merge the Pull request to the master branch of the repository. Quickly, you can see in the **musical-performance-module** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the result of the automation performed when you added the new conceptual component folder. 
+8. Merge the Pull request to the master branch of the repository. Quickly, you can see in the **module1** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the same as the one that you merged. 
 - In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
 
 ```
