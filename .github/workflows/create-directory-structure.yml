@@ -12,7 +12,7 @@ on:
     branches: 
       - main
     paths: 
-      - 'ontology-network/musical-performance-ontology/**'
+      - 'ontology-network/module1/**'
   workflow_dispatch:
 
 jobs:
