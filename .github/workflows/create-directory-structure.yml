@@ -30,7 +30,7 @@ jobs:
       - name: read-line
         run: |
             cd ontology-network
-            cd musical-performance-ontology
+            cd module1
             while read -r line; do
             line="$line"
             echo "Line read from file - $line" 
