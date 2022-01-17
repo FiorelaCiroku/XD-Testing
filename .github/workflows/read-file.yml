@@ -37,6 +37,7 @@ jobs:
             mkdir $line
             cd $line
             done < UserInput.txt
+            mkdir TestDocumentation
             mkdir SPARQLUnitTest
             mkdir InferenceVerificationTest
             mkdir ErrorProvocationTest
