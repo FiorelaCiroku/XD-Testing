@@ -51,13 +51,14 @@ jobs:
             line="$line"
             # echo "CC is $line"
             cd $line
-            var=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
-            echo "Var variable is $var"
-            base="https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance-ontology/"
+            base="https://raw.githubusercontent.com/"
+            base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+            echo "$base2"
+            base2="/main/ontology-network/module1/"
             CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
-            CQtestcase="$base$line$CQbase"
-            echo "Test case directory url is $CQtestcase"
+            CQtestcase="$base$base1$base2$line$CQbase"
+            # echo "Test case directory url is $CQtestcase"
             cd SPARQLUnitTest
             cd CQTestCase
             for file in *.ttl
