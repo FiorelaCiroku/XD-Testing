@@ -113,7 +113,8 @@ jobs:
              cd module1
              cd $line
              cd TestDocumentation
-             echo "$output" >> DocCase.txt
+             echo $output >> DocCase.txt
+             echo $output
             done          
             done < UserInput.txt
             
