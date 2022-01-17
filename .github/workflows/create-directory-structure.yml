@@ -36,7 +36,6 @@ jobs:
             echo "Line read from file - $line" 
             mkdir $line
             cd $line
-            done < UserInput.txt
             mkdir TestDocumentation
             mkdir SPARQLUnitTest
             mkdir InferenceVerificationTest
@@ -46,6 +45,7 @@ jobs:
             touch SPARQLQueries.txt
             touch ExpectedResults.txt
             touch $line.owl
+            done < UserInput.txt
             cd SPARQLUnitTest
             mkdir CQTestCase
             mkdir CQDataSet
