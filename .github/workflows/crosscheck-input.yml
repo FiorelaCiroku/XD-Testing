@@ -48,13 +48,15 @@ jobs:
               then
                 rm -f empty.txt
                 touch full.txt
+                $counter=counter+1
                 echo "$file is not empty"
             else
                 # The file is empty.
                 rm -f full.txt
                 touch empty.txt
                 echo "$file is empty"
-            fi
+                echo "Counter is $counter"
+              fi
             done
             done < UserInput.txt
       
