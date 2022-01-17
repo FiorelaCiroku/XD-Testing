@@ -60,6 +60,11 @@ jobs:
             done
             echo "Counter is $counter"
             done < UserInput.txt
+            if [counter<4]
+              then 
+                echo "Missing files: Test run cannot start!"
+              else
+                echo "Test run ready to begin!"
       
       
                   
