@@ -28,11 +28,112 @@ jobs:
       - name: Checkout V2
         uses: actions/checkout@v2
       
-      - name: Create directory
-        uses: FiorelaCiroku/XDTesting-Create-Directory@v1.0.0
+      - name: XDTesting Create directory
+        run: |
+            cd ontology-network
+            cd musical-performance-ontology
+            while read -r line; do
+            line="$line"
+            echo "Line read from file - $line" 
+            mkdir $line
+            cd $line
+            done < UserInput.txt
+            mkdir TestDocumentation
+            mkdir SPARQLUnitTest
+            mkdir InferenceVerificationTest
+            mkdir ErrorProvocationTest
+            touch CompetencyQuestions.txt
+            touch GeneralConstraints.txt
+            touch SPARQLQueries.txt
+            touch ExpectedResults.txt
+            touch $line.owl
+            cd SPARQLUnitTest
+            mkdir CQTestCase
+            mkdir CQDataSet
+            cd CQTestCase 
+            touch CQTestCase.ttl
+            cd ..
+            cd CQDataSet 
+            touch CQDataSet.ttl
+            cd ..
+            cd ..
+            cd InferenceVerificationTest
+            mkdir IVTestCase
+            mkdir IVDataSet
+            cd IVTestCase
+            touch IVTestCase.ttl
+            cd ..
+            cd IVDataSet
+            touch IVDataSet.ttl
+            cd ..
+            cd ..
+            cd ErrorProvocationTest
+            mkdir EPTestCase
+            mkdir EPDataSet
+            cd EPTestCase
+            touch EPTestCase.ttl
+            cd ..
+            cd EPDataSet
+            touch EPDataSet.ttl
+      
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
+      
+      - name: XDTesting Check Input
+        run: |
+            cd ontology-network
+            cd musical-performance-ontology
+            while read -r line; do
+            line="$line"
+            echo "Line read from file - $line" 
+            cd $line
+            # This script checks if the input that is necessary to run the test are non empty files. 
+            counter=0
+            for file in *.txt
+            do 
+              if [ -s $file ] 
+              then
+                rm -f empty.txt
+                touch full.txt
+                counter=$((counter+1))
+                echo "$file is not empty"
+            else
+                # The file is empty.
+                rm -f full.txt
+                touch empty.txt
+                echo "$file is empty"
+              fi
+            done
+            echo "Counter is $counter"
+            done < UserInput.txt
+            if ((counter<4))
+              then 
+                echo "Missing files: Test run cannot start!"
+              else
+                echo "Test run ready to begin!"
+            fi
       
       - name: XDTesting Setup Environment
         uses: FiorelaCiroku/XDTesting-Setup-Environment@v1.0.0
+        
+      - name: Setup-JAVA
+        uses: actions/setup-java@v2.4.0
+        with:
+          distribution: 'temurin' 
+          java-version: '17'
+
+# Download the latest release of OWLUnit jar from the Github repository
+      - name: Setup-OWLUnit
+        run: |
+            curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
+            | grep browser_download_url \
+            | cut -d : -f 2,3 \
+            | tr -d \" \
+            | wget -qi -
+# Install OWLUnit         
+      - name: Install OWLUnit
+        run: |
+            java -jar OWLUnit-0.3.2.jar
       
       - name: Run CQ test
         run: |
