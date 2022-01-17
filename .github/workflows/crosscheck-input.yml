@@ -42,9 +42,9 @@ jobs:
             echo "Line read from file - $line" 
             cd $line
             # This script checks if the input that is necessary to run the test are non empty files. 
+            counter=0
             for file in *.txt
             do 
-              counter=0
               if [ -s $file ] 
               then
                 rm -f empty.txt
