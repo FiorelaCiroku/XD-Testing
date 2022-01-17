@@ -114,7 +114,7 @@ jobs:
              cd $line
              cd TestDocumentation
              echo $output >> DocCase.txt
-             echo $output
+             echo "The output of the run is $output"
             done          
             done < UserInput.txt
             
