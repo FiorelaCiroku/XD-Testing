@@ -54,7 +54,7 @@ jobs:
             base="https://raw.githubusercontent.com/"
             base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
             echo "$base2"
-            base2="/main/ontology-network/module1/"
+            base2="/main/ontology-network/musical-performance-ontology/"
             CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$base1$base2$line$CQbase"
