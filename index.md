@@ -33,8 +33,9 @@ One of the most important steps of each ontology modelling methodology, includin
 7. Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of GitHub. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below.
 
 ![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
+
 8. Merge the Pull request to the master branch of the repository. Quickly, you can see in the **module1** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the same as the one that you merged. 
-- In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
+9. In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
 
 ```
 @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
