@@ -1,4 +1,4 @@
-# This is a workflow that is able to check if all input necessary to execute the test is available.
+# This is an action that is able to check if all input necessary to construct the test is available.
 # Trigger: Commit to the testcase paths from different test directories. 
 # Input: The list of the files that is to be checked.
 # Output: A continuation of the test execution in case the files are not empty, and a stop to the test execution otherwise.
