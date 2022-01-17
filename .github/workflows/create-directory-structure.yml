@@ -36,10 +36,10 @@ jobs:
             echo "Line read from file - $line" 
             mkdir $line
             cd $line
-            mkdir TestDocumentation
             mkdir SPARQLUnitTest
             mkdir InferenceVerificationTest
             mkdir ErrorProvocationTest
+            mkdir TestDocumentation
             touch CompetencyQuestions.txt
             touch GeneralConstraints.txt
             touch SPARQLQueries.txt
