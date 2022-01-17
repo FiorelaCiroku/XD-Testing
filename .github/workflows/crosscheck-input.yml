@@ -48,7 +48,7 @@ jobs:
               then
                 rm -f empty.txt
                 touch full.txt
-                $counter=counter+1
+                $counter=$counter+1
                 echo "$file is not empty"
             else
                 # The file is empty.
