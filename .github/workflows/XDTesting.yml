@@ -113,9 +113,10 @@ jobs:
              cd module1
              cd $line
              cd TestDocumentation
-             echo $output >> DocCase.txt
+             touch DocCase.txt
+             echo "$output" >> DocCase.txt
              echo "The output of the run is $output"
-             echo DocCase.txt
+             cat DocCase.txt
             done          
             done < UserInput.txt
             
