@@ -108,7 +108,9 @@ jobs:
              cd ..
              cd ..
              cd ..
-             java -jar OWLUnit-0.3.2.jar -c $testcaseURL
+             output=((java -jar OWLUnit-0.3.2.jar -c $testcaseURL))
+             cd TestDocumentation
+             echo "$output" >> DocCase.txt
             done          
             done < UserInput.txt
             
