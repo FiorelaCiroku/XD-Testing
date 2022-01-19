@@ -10,5 +10,5 @@ jobs:
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          INPUT_SCHEMA: XD-Testing/.github/workflows/jsonSchema.json
+          INPUT_SCHEMA: XD-Testing/.github/jsonSchema.json
           INPUT_JSONS: XD-Testing/jsonExample.json
