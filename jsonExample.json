@@ -1,5 +1,13 @@
 {
-  "firstName": "John",
-  "lastName": "Doe",
-  "age": 21
+  "id": 7,
+  "name": "John Doe",
+  "age": 22,
+  "hobbies": {
+        "indoor": [
+            "Chess"
+        ],
+        "outdoor": [
+            "BasketballStand-up Comedy"
+        ]
+    }
 }
