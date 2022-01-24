@@ -11,4 +11,5 @@ jobs:
       - name: Run JSON validator
         run: |
           extectedResult="""{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }"""
-          print(python .github/script/validateJSON.py extectedResult)
+          result=$(python .github/script/validateJSON.py extectedResult)
+          cat result
