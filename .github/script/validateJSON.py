@@ -3,6 +3,6 @@ import json
 def validateJSON(jsonData):
     try:
         json.loads(jsonData)
-        return "Success!"
+        print("Success!")
     except ValueError as err:
-        return "Error!"
+        print("Error!")
