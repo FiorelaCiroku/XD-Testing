@@ -8,4 +8,4 @@ def validateJSON(jsonData):
     return True
 
 validation = validateJSON(jsonData)
-return validation
+print(validation)
