@@ -10,4 +10,4 @@ jobs:
       - name: Validate RDF
         uses: vemonet/jena-riot-action@v3.14
         with:
-          input: rdfExample.ttl.ttl
+          input: rdfExample.ttl
