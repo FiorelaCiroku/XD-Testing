@@ -3,7 +3,7 @@ name: Validate SPARQL
 on: push
 
 jobs:
-  verify-SPARQL-validation:
+  validate-SPARQL:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -12,5 +12,5 @@ jobs:
           pip install rdflib
       - name: Run SPARQL validator
         run: |
-          query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          python .github/script/validateSPARQL.py $query
+          query="SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+          python .github/script/validateSPARQL.py query
