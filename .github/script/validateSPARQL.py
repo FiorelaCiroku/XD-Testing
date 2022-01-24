@@ -26,5 +26,5 @@ def SPARQLValidation(query):
         print("Error!")
                       
             
-# query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-# SPARQLValidation(query)
+query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+SPARQLValidation(query)
