@@ -1,2 +1,0 @@
- INFO 2022-01-17 16:08:39,564 [main] (OWLUnit.java:89) - Test case URI https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/module1/Turi/SPARQLUnitTest/CQTestCase/CQTestCase.ttl
- INFO 2022-01-17 16:08:40,539 [main] (OWLUnit.java:102) - https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/module1/Turi/SPARQLUnitTest/CQTestCase/CQTestCase.ttl doesn't define any test case.
