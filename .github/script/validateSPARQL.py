@@ -20,7 +20,7 @@ from rdflib.namespace import XSD
 
 def SPARQLValidation(query):
     try:
-        q = prepareQuery(sys.argv, initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+        q = prepareQuery(sys.argv[1], initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
         print("Success!")
     
     except Exception as error:
