@@ -1,4 +1,4 @@
-requirements=$(grep -i '[CQ][0-9][0-9]*:\s' cq.txt)
+requirements=$(grep -i '[CQ][0-9][0-9]*:\s' CompetencyQuestions.txt)
 echo "$requirements" > "requirements.txt"
 while read line; do
   echo "${line//[!0-9]/}"
