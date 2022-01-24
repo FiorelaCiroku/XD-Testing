@@ -7,9 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Install json 
-        run: |
-          pip install json
+      
       - name: Run JSON validator
         run: |
           extectedResult="""{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }"""
