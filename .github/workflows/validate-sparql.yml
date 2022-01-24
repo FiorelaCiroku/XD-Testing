@@ -13,4 +13,4 @@ jobs:
       - name: Run SPARQL validator
         run: |
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          python ./.github/scripts/SPARQLValidator.py query
+          python .github/script/validateSPARQL.py query
