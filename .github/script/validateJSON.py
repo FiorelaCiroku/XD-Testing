@@ -7,5 +7,3 @@ def validateJSON(jsonData):
         return validation
     except ValueError as err:
         return False
-    return True
-
