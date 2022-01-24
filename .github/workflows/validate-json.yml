@@ -12,3 +12,9 @@ jobs:
         env:
           INPUT_SCHEMA: ./jsonSchema.json
           INPUT_JSONS: ./jsonExample.json
+          
+      - name: Validate JSON 2
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: ./jsonSchema1.json
+          INPUT_JSONS: ./jsonExample1.json
