@@ -1,0 +1,13 @@
+name: Validate RDF
+
+on: push
+
+jobs:
+  verify-rdf-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Validate RDF
+        uses: vemonet/jena-riot-action@v3.14
+        with:
+          input: rdfExample.ttl.ttl
