@@ -8,6 +8,7 @@ When executing, variables can be bound with the
 ``initBindings`` keyword parameter.
 """
 
+import sys
 import rdflib
 from rdflib.plugins.sparql import prepareQuery
 from rdflib.namespace import FOAF
@@ -19,12 +20,12 @@ from rdflib.namespace import XSD
 
 def SPARQLValidation(query):
     try:
-        q = prepareQuery(query, initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+        q = prepareQuery(sys.query, initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
         print("Success!")
     
     except Exception as error:
         print("Error!")
                       
             
-query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-SPARQLValidation(query)
+# query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+# SPARQLValidation(query)
