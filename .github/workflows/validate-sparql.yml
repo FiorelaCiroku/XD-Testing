@@ -14,5 +14,5 @@ jobs:
         run: |
           param="SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           echo $param
-          python .github/script/validateSPARQL.py $param
+          python3 .github/script/validateSPARQL.py $param
 
