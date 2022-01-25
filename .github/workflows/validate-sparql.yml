@@ -12,22 +12,5 @@ jobs:
           pip install rdflib
       - name: Run SPARQL validator
         run: |
-          python3
-          import rdflib
-          from rdflib.plugins.sparql import prepareQuery
-          from rdflib.namespace import FOAF
-          from rdflib.namespace import RDF
-          from rdflib.namespace import RDFS
-          from rdflib.namespace import DC
-          from rdflib.namespace import OWL
-          from rdflib.namespace import XSD
-          def SPARQLValidation(query):
-            try:
-              q = prepareQuery(query, initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-              print("Success!")
-            except Exception as error:
-              print("Error!")
-          query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          SPARQLValidation(query)
-# query="SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-# python .github/script/validateSPARQL.py query
+          python .github/script/validateSPARQL.py "SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+#   query="SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
