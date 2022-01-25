@@ -12,7 +12,7 @@ jobs:
           pip install rdflib
       - name: Run SPARQL validator
         run: |
-          param="SELECT ?info ?name WHERE {?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+          param="SELECT \?info \?name WHERE {\?person rdfs:seeAlso \?info . \?person foaf:homepage \?name .}"
           cat $param
           python .github/script/validateSPARQL.py $param
 
