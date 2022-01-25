@@ -18,6 +18,7 @@ from rdflib.namespace import OWL
 from rdflib.namespace import XSD
 
 def SPARQLValidation(query):
+    print("The variable is ", query)
     try:
         q = prepareQuery(query, initNs={"foaf": FOAF,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
         print("Success!")
