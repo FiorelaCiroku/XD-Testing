@@ -11,8 +11,7 @@ eXtreme Design (XD) is an ontology design methodology that puts the reuse of [On
 - Test-driven approach.
 
 A conceptual component (CC) is a complex (cognitive) relational structure that a designer implements in an ontology by using classes, properties, axioms, etc [1]. Conceptual components are cognitive objects: they are the intensional counterparts of OWL implementations in semantic web ontologies. A CC may
-be implemented by means of different ontology fragments, the
-observed ontology design patterns (OODPs), across different ontologies.
+be implemented by means of different ontology fragments, the observed ontology design patterns (OODPs), across different ontologies.
 
 ## eXtreme Design, a test-driven ontology modelling mothodology
 
@@ -27,15 +26,15 @@ One of the most important steps of each ontology modelling methodology, includin
 1. Create a repository of your own in GitHub. You can include a README.md file if you like. 
 2. Copy the file XDTesting.yml from the [FiorelaCiroku/XDTesting](https://github.com/FiorelaCiroku/XD-Testing/blob/main/.github/workflows/XDTesting.yml) repository under the .github/workflows directory to your own repository under the same directory and file name. 
 3. Create a directory named **ontology-network** which will have as subfolders the ontology modules. 
-4. Create a directory named **module1** in the **ontology-network** directory. 
-5. Add a README.md file and a file named UserInput.txt.
-6. In the UserInput.txt file write the name of the new Conceptual Component that you want to test, for example CC1.
-7. Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of GitHub. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below.
+4. Create a directory named **musical-performance** in the **ontology-network** directory. 
+5. Add a README.md file and a file named UserInput.txt under the **musical-performance** directory.
+6. In the UserInput.txt file write the name of the new Conceptual Component that you want to test, for example **Time**.
+7. Wait a couple of second for the first automation to be completed. This automation will create a Pull request that you can find in the horizontal menu of GitHub. The Pull request consists on the creation of a directory structure for the testing of the conceptual component. The structure should be as shown below. ![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
+8. Merge the Pull request to the master branch of the repository. Quickly, you can see in the **musical-performance** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the same as the one that you merged. 
+9. In the newly created folder, you should populate the input files. In the CompetencyQuestions.txt, add `CQ1: When was a recording produced?`. In the SPARQLQueries.txt, add `SQ1: SELECT ?timeInterval WHERE { ?musicalperformance mp:isRecordingProducedBy ?recordingActivity. ?recordingActivity core:hasTimeInterval ?timeInterval .}`. In the ExpectedResults.txt, add `ER1: { \"head\": {  \"vars\": [  \"timeInterval\" ] } ,  \"results\": {  \"bindings\": [ {  \"timeInterval\": {  \"type\":  \"uri\" ,  \"value\":  \"https://w3id.org/musical-perfomance/TimeInterval/June-July1929" } } ] } }";`. 
 
-![Screenshot 2021-12-29 at 06 50 29](https://user-images.githubusercontent.com/12375920/147631401-d4ab9ebd-1215-4356-a351-ca22bfacd13c.png)
 
-8. Merge the Pull request to the master branch of the repository. Quickly, you can see in the **module1** folder that a new folder was created with the name of the conceptual component. If you browse in the inside of the folder, you can verify that the structure shown above is the same as the one that you merged. 
-9. In the newly created folder, you should populate the test case files with real test cases. For the creation of the test case for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
+if you like to create your own test cases, make sure to use this format for competency question verification or else named SPARQL unit test, you should use the following template. The namespaces of the prefixes are: 1) om for ontology module, 2)td for toy dataset and 3) tc for testcase. 
 
 ```
 @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
