@@ -31,7 +31,7 @@ jobs:
           cd ontology-network
           cd module1
           cd Situation
-          bash getCQ.sh
+          bash XD-Testing/.github/script/getCQ.sh
       
       
     
