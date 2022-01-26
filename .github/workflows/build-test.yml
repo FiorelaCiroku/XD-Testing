@@ -7,7 +7,13 @@
 name: Construct OWLUnit test cases
 
 # The event that triggers the action.
-on: [push]
+on: 
+  push: 
+    branches: 
+      - main
+    paths: 
+      - 'ontology-network/module1/**'
+  workflow_dispatch:
 
 jobs:
 
@@ -17,7 +23,18 @@ jobs:
   # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Use checkout
+        uses: actions/checkout@v2
+        
+      - name: Retrive ID and content of input
+        run: |
+          cd ontology-network
+          cd module1
+          cd Situation
+          bash getCQ.sh
+          bash getSQ.sh
+          bash getER.sh
+      
       
     
     
