@@ -1,4 +1,5 @@
-requirements=$(grep -i '[CQ][0-9][0-9]*:\s' CompetencyQuestions.txt)
+cqPath="ontology-network/module1/Situation/CompetencyQuestions.txt"
+requirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
 echo "$requirements" > "requirements.txt"
 while read line; do
   echo "${line//[!0-9]/}"
