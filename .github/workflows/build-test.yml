@@ -32,8 +32,6 @@ jobs:
           cd module1
           cd Situation
           bash getCQ.sh
-          bash getSQ.sh
-          bash getER.sh
       
       
     
