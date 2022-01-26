@@ -28,9 +28,6 @@ jobs:
         
       - name: Retrive ID and content of input
         run: |
-          cd ontology-network
-          cd module1
-          cd Situation
           bash .github/script/getCQ.sh
       
       
