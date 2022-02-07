@@ -1,3 +1,5 @@
+# To install SPARQLWrapper use: pip install SPARQLWrapper in the command line
+
 # Import the SPARQLWrapper package
 from SPARQLWrapper import SPARQLWrapper, JSON
 
