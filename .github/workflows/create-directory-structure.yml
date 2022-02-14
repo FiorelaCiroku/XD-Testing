@@ -4,7 +4,7 @@
 # Output: 1. Reading the file to extract the name 2. The display of the name 3. Creation of a test directory for the conceptual component. 4) A pull request to add the directories to the main branch. 
 
 # The name of the workflow
-name: Read file
+name: Create directory structure
 
 # The action is triggered when there is a commit in the ontology module folder.
 on: 
