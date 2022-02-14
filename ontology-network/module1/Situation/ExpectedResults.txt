@@ -1,1 +1,0 @@
-ER1: {  \"head\": {  \"vars\": [  \"composer\" ] } ,  \"results\": {  \"bindings\": [ {  \"composer\": {  \"type\":  \"uri\" ,  \"value\":  \"http://www.w3id.org/example/Basketball\" } } ] } }";
