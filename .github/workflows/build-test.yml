@@ -12,7 +12,7 @@ on:
     branches: 
       - main
     paths: 
-      - 'ontology-network/module1/**'
+      - 'ontology-network/musical-performance/**'
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,38 @@ jobs:
     steps:
       - name: Use checkout
         uses: actions/checkout@v2
+        
+      - name: Input crosscheck
+        run: |
+            cd ontology-network
+            cd musical-performance
+            while read -r line; do
+            line="$line"
+            cd $line
+            counter=0
+            for file in *.txt
+            do 
+              if [ -s $file ] 
+              then
+                rm -f empty.txt
+                touch full.txt
+                counter=$((counter+1))
+                echo "$file is not empty"
+            else
+                # The file is empty.
+                rm -f full.txt
+                touch empty.txt
+                echo "$file is empty"
+              fi
+            done
+            echo "Counter is $counter"
+            done < UserInput.txt
+            if ((counter<4))
+              then 
+                echo "Missing files: Test run cannot start!"
+              else
+                bash .github/script/getCQ.sh
+            fi
         
       - name: Retrive ID and content of input
         run: |
