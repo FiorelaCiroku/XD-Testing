@@ -13,7 +13,7 @@ on:
     branches: 
       - main
     paths: 
-      - 'ontology-network/musical-performance-ontology/**'
+      - 'ontology-network/musical-performance/**'
   workflow_dispatch:
  
 jobs:
@@ -46,7 +46,7 @@ jobs:
       - name: Run CQ test
         run: |
             cd ontology-network
-            cd musical-performance-ontology
+            cd musical-performance
             while read -r line; do
             line="$line"
             # echo "CC is $line"
@@ -54,7 +54,7 @@ jobs:
             base="https://raw.githubusercontent.com/"
             base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
             echo "$base2"
-            base2="/main/ontology-network/musical-performance-ontology/"
+            base2="/main/ontology-network/musical-performance/"
             CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$base1$base2$line$CQbase"
