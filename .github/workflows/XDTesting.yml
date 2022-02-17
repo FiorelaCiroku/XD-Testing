@@ -9,8 +9,6 @@ name: XDTesting
 # The event that triggers the action.
 on: 
   push: 
-    branches: 
-      - main
     paths: 
       - 'ontology-network/musical-performance/**'
   workflow_dispatch:
@@ -28,7 +26,7 @@ jobs:
       - name: Checkout V2
         uses: actions/checkout@v2
       
-      - name: XDTesting Check Input
+      - name: Check-Input
         run: |
             cd ontology-network
             cd musical-performance
@@ -43,22 +41,28 @@ jobs:
                 rm -f empty.txt
                 touch full.txt
                 counter=$((counter+1))
-                echo "$file is not empty"
             else
                 # The file is empty.
                 rm -f full.txt
                 touch empty.txt
-                echo "$file is empty"
               fi
             done
-            echo "Counter is $counter"
             done < UserInput.txt
             if ((counter<4))
               then 
-                echo "Missing files: Test run cannot start!"
+                return 'stop'
               else
-                echo "Test run ready to begin!"
+                return 'build'
             fi
+      
+      - name: Waiting for cancellation
+        run: sleep 60
+        if: steps.Check-Input.outputs.result == 'stop'
+        
+      - name: Syntax check
+        if: steps.Check-Input.outputs.result == 'build'
+        run: |
+            echo "It works!"
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
