@@ -1,4 +1,4 @@
-# This is an workflow that is able to read text files.
+# This is an workflow that is able to read text files and create directory structures.
 # Trigger: Commit to the ontology module directory. 
 # Input: A file with the name of the conceptual component that is to be tested
 # Output: 1. Reading the file to extract the name 2. The display of the name 3. Creation of a test directory for the conceptual component. 4) A pull request to add the directories to the main branch. 
@@ -26,14 +26,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
       - uses: actions/checkout@v2
 
-      # Reads the file line by line
-      - name: read-line
+      # Create directory based on input
+      - name: Create-Directory
         run: |
             cd ontology-network
             cd musical-performance
             while read -r line; do
             line="$line"
-            echo "Line read from file - $line" 
             mkdir $line
             cd $line
             mkdir SPARQLUnitTest
@@ -78,11 +77,12 @@ jobs:
             cd EPDataSet
             touch EPDataSet.ttl
               
-              
+      # Display the tree structure of the directory        
       - name: Display-tree-structure
         run: |
               echo " alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" " > printTree.zshrc
               tree
+              
       # This step creates an automatic pull request for the directories that were created.      
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
