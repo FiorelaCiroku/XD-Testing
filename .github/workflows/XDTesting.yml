@@ -110,7 +110,7 @@ jobs:
              output=$(java -jar OWLUnit-0.3.2.jar -c $testcaseURL)
             done
             cd ontology-network
-            cd module1
+            cd musical-performance
             cd $line
             cd TestDocumentation
             touch DocCase.txt
