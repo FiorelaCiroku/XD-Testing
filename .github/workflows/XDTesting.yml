@@ -20,8 +20,6 @@ jobs:
   
   # The type of runner that the job will run on.
     runs-on: ubuntu-latest
-    env:
-      check: False
     
     # Check out the repository where the action is going to be executed on.
     steps:
@@ -29,6 +27,8 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Check-Input
+        env:
+          check: False
         run: |
             cd ontology-network
             cd musical-performance
@@ -52,9 +52,9 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                $check=False
+                echo "::set-env name=check::False"
               else
-                $check=True
+                echo "::set-env name=check::True"
             fi
             echo $check
       
