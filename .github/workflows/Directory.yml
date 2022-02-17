@@ -2,6 +2,8 @@
 # Trigger: Commit to the ontology module directory. 
 # Input: A file with the name of the conceptual component that is to be tested
 # Output: 1. Reading the file to extract the name 2. The display of the name 3. Creation of a test directory for the conceptual component. 4) A pull request to add the directories to the main branch. 
+# branches:  - main
+
 
 # The name of the workflow
 name: Create directory structure
