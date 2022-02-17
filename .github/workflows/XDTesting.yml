@@ -59,6 +59,26 @@ jobs:
         id: check
         with:
           script: |
+            cd ontology-network
+            cd musical-performance
+            while read -r line; do
+            line="$line"
+            cd $line
+            counter=0
+            for file in *.txt
+            do 
+              if [ -s $file ] 
+              then
+                rm -f empty.txt
+                touch full.txt
+                counter=$((counter+1))
+            else
+                # The file is empty.
+                rm -f full.txt
+                touch empty.txt
+              fi
+            done
+            done < UserInput.txt
             if ((counter<4)) {
               return 'stop'
             } else {
