@@ -1,0 +1,5 @@
+@prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
+@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVDataSet/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+td:Session01 a mp:Session .
