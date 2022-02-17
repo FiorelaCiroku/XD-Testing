@@ -9,8 +9,6 @@ name: Create directory structure
 # The action is triggered when there is a commit in the ontology module folder.
 on: 
   push: 
-    branches: 
-      - main
     paths: 
       - 'ontology-network/musical-performance/UserInput.txt'
   workflow_dispatch:
