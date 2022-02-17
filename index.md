@@ -1,8 +1,8 @@
-# Welcome to eXtreme Design Testing
+# XDTesting
 
 XDTesting is a test automation tool for the [eXtreme Design](https://extremedesign.info) ontology modelling methodology. This website provides material, instructions and examples for the XDTesting 1st Session, whose purpose is to test the tool, provide feedback and collect requirements from ontology engineers. 
 
-## eXtreme Design and Conceptual Components
+## eXtreme Design
 
 eXtreme Design (XD) is an ontology design methodology that puts the reuse of [Ontology Design Patterns (ODPs)](http://ontologydesignpatterns.org/wiki/Main_Page) at its core both as a principle and as an explicit activity. The main characterising principles of the method are intensive use of:
 
