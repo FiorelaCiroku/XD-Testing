@@ -52,7 +52,7 @@ jobs:
               then 
                 echo "Not able to continue"
               else
-                return "Able to continue"
+                echo "Able to continue"
             fi
       
       - uses: actions/github-script@v2
