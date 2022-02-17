@@ -125,4 +125,9 @@ tc:xx a owlunit:ErrorProvocation ;
 - Integrate tested ontology fragments to module
 - Adapt the tool to work with ontologies that are not structured in the same way
 
+## Materials
+- [Presentation](https://drive.google.com/file/d/1cTGpGYFXaAnyP0skhF4IgT8DIGB_H5Ti/view?usp=sharing)
+- [Video Tutorial](https://www.dropbox.com/s/wnm5zwa443o4m68/XDTesting%20tutorial.mov?dl=0)
+- [Ontology file](https://drive.google.com/file/d/1yHWstifYpPlByf1esQ_J9vGEvE4gZx1f/view?usp=sharing)
+
 
