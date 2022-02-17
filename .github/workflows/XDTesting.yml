@@ -50,10 +50,21 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                return 'stop'
+                echo "Not able to continue"
               else
-                return 'build'
+                return "Able to continue"
             fi
+      
+      - uses: actions/github-script@v2
+        id: check
+        with:
+          script: |
+            if ((counter<4)) {
+              return 'stop'
+            } else {
+              return 'build'
+            }
+          result-encoding: string
       
       - name: Waiting for cancellation
         run: sleep 60
