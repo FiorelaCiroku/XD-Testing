@@ -20,6 +20,8 @@ jobs:
   
   # The type of runner that the job will run on.
     runs-on: ubuntu-latest
+    env:
+      input-check: False
     
     # Check out the repository where the action is going to be executed on.
     steps:
@@ -50,50 +52,12 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                echo "Not able to continue"
+                $input-check: False
               else
-                echo "Able to continue"
+                $input-check: True
             fi
+            echo $input-check
       
-      - uses: actions/github-script@v2
-        id: check
-        with:
-          script: |
-            cd ontology-network
-            cd musical-performance
-            while read -r line; do
-            line="$line"
-            cd $line
-            counter=0
-            for file in *.txt
-            do 
-              if [ -s $file ] 
-              then
-                rm -f empty.txt
-                touch full.txt
-                counter=$((counter+1))
-            else
-                # The file is empty.
-                rm -f full.txt
-                touch empty.txt
-              fi
-            done
-            done < UserInput.txt
-            if ((counter<4)) {
-              return 'stop'
-            } else {
-              return 'build'
-            }
-          result-encoding: string
-      
-      - name: Waiting for cancellation
-        run: sleep 60
-        if: steps.Check-Input.outputs.result == 'stop'
-        
-      - name: Syntax check
-        if: steps.Check-Input.outputs.result == 'build'
-        run: |
-            echo "It works!"
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
