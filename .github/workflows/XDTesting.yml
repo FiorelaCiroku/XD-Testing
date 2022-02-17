@@ -56,6 +56,7 @@ jobs:
               else
                 echo "$check=True" >> $GITHUB_ENV
             fi
+            echo $counter
             echo $check
       
         
