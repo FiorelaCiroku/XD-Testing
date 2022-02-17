@@ -12,7 +12,7 @@ on:
     branches: 
       - main
     paths: 
-      - 'ontology-network/musical-performance/**'
+      - 'ontology-network/musical-performance/UserInput.txt'
   workflow_dispatch:
 
 jobs:
