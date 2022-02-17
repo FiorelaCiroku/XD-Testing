@@ -52,9 +52,9 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                echo "::set-env name=check::False"
+                echo "$check=False" >> $GITHUB_ENV
               else
-                echo "::set-env name=check::True"
+                echo "$check=True" >> $GITHUB_ENV
             fi
             echo $check
       
