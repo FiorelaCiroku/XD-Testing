@@ -52,9 +52,9 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                $check: False
+                $check=False
               else
-                $check: True
+                $check=True
             fi
             echo $check
       
