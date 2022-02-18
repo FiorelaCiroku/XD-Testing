@@ -27,7 +27,11 @@ jobs:
           )"
             echo $validator_result
           }
-          expand-q json """{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }"""'
+          
+          MAGIC () {
+            printf "%s\n" "${(q+)@}"
+            }
+          json=$(MAGIC ' """{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }"""')
           
           JSON_Validator "$json"
           
