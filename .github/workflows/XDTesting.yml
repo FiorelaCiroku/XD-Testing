@@ -123,6 +123,7 @@ jobs:
           print(os.environ['PYTHON_ARG'])
           
           try:
+            print(os.environ['PYTHON_ARG'])
             json.loads(os.environ['PYTHON_ARG'])
             print("Correct!")
           except ValueError as error:
@@ -130,8 +131,6 @@ jobs:
             
           END
           )"
-          
-            echo $validator_result
           }
           
           echo "$erPath"
