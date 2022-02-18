@@ -23,6 +23,8 @@ jobs:
     
     env:
         check: False
+        JSONValidator: False
+        SPARQLValidator: false
           
     # Check out the repository where the action is going to be executed on.
     steps:
@@ -66,7 +68,277 @@ jobs:
      
       - name: Syntax check
         if: ${{ env.check == 'True' }}
-        run: echo "Haha"  
+        run: |
+          pip install rdflib
+      
+      - name: Run SPARQL validator
+        run: |
+          function SPARQL_Validator () {
+            validator_result="$( PYTHON_ARG="$1" python3 - <<END
+          import os
+          import sys
+          import rdflib
+          from rdflib.plugins.sparql import prepareQuery
+          from rdflib.namespace import FOAF
+          from rdflib.namespace import RDF
+          from rdflib.namespace import RDFS
+          from rdflib.namespace import DC
+          from rdflib.namespace import OWL
+          from rdflib.namespace import XSD
+          try:
+            q = prepareQuery(os.environ['PYTHON_ARG'], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            print("Syntax is correct")
+            echo "$SPARQLValidator=True" >> $GITHUB_ENV
+          except Exception as error:
+            print(error)
+            echo "$SPARQLValidator=False" >> $GITHUB_ENV
+          END
+          )"
+            echo $validator_result
+          }
+          
+          echo "$sparqlPath"
+          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
+          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
+          echo "$sparqlCQRequirements" > "sparqlCQRequirements.txt"
+            while read line; do
+              if [[ $line =~ :(.+) ]]; then
+                SQstrresult=${BASH_REMATCH[1]}
+              fi
+            done <sparqlCQRequirements.txt
+          SPARQL_Validator "$SQstrresult"
+          
+      - name: Run JSON validator
+        if: ${{ env.SPARQLValidator == 'True' }}
+        run: |
+          function JSON_Validator () {
+            validator_result="$( PYTHON_ARG="$1" python3 - <<END
+          import os
+          import sys
+          import json
+          print(os.environ['PYTHON_ARG'])
+          
+          try:
+            json.loads(os.environ['PYTHON_ARG'])
+            print("Syntax is correct")
+          except ValueError as error:
+            print(error) 
+            
+          END
+          )"
+          
+            echo $validator_result
+          }
+          
+          echo "$erPath"
+          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
+          echo "$erRequirements" > "erRequirements.txt"
+            while read line; do
+              if [[ $line =~ :(.+) ]]; then
+                ERstrresult=${BASH_REMATCH[1]}
+              fi
+            done <erRequirements.txt
+          
+          JSON_Validator "$ERstrresult"
+          
+      - name: Construct CQ test cases
+        run: |
+          echo "$cqPath"
+          cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
+          cqRequirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
+          
+          echo "$sparqlPath"
+          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
+          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
+          
+          echo "$erPath"
+          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
+          
+          base="https://raw.githubusercontent.com/"
+          base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+          
+          echo "$MPbase"
+          MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
+          
+          echo "$tdbase"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestData/"
+          
+          echo "$tcbase"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/"
+          
+          echo "$mp"
+          mp="$base$base1$MPbase"
+          
+          echo "$cqtd"
+          cqtd="$base$base1$tdbase"
+          
+          echo "$cqtc"
+          cqtc="$base$base1$tcbase"
+          
+          mpPrefix="@prefix mp: < ${mp} > ."
+          tdPrefix="@prefix td: < ${cqtd} > ."
+          tcPrefix="@prefix mp: < ${cqtc} > ."
+          
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
+          echo $mpPrefix >> cqTemplate.txt 
+          echo $tdPrefix >> cqTemplate.txt 
+          echo $tcPrefix >> cqTemplate.txt 
+          echo 'tc:01 a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
+          
+          echo "$cqRequirements" > "cqRequirements.txt"
+          while read line; do
+            CQid=${line//[!0-9]/}
+            if [[ $line =~ :(.+) ]]; then
+              CQstrresult=${BASH_REMATCH[1]}
+              echo $CQstrresult >> cqTemplate.txt 
+              echo ' "; owlunit:hasSPARQLUnitTest " ' >> cqTemplate.txt 
+            else
+              echo "unable to parse string $line"
+            fi
+          done <cqRequirements.txt
+          
+          echo "$sparqlCQRequirements" > "sparqlCQRequirements.txt"
+            while read line; do
+              SQid=${line//[!0-9]/}
+              if [[ $line =~ :(.+) ]]; then
+                SQstrresult=${BASH_REMATCH[1]}
+              fi
+            done <sparqlCQRequirements.txt
+          
+          if [[ $CQid = $SQid ]]; then
+            echo $SQstrresult >> cqTemplate.txt 
+            echo ' " ; owlunit:hasInputData td:CQDataSet.ttl ; owlunit:hasInputTestDataCategory owlunit:ToyDataset ; owlunit:hasExpectedResult " ' >> cqTemplate.txt  
+          else
+            echo "No matching SPARQL query"
+          fi
+          
+          echo "$erRequirements" > "erRequirements.txt"
+            while read line; do
+              ERid=${line//[!0-9]/}
+              if [[ $line =~ :(.+) ]]; then
+                ERstrresult=${BASH_REMATCH[1]}
+              fi
+            done <erRequirements.txt
+            
+          if [[ $CQid = $ERid ]]; then
+            echo $ERstrresult >> cqTemplate.txt 
+            echo ' "; owlunit:testsOntology mp: . ' >> cqTemplate.txt  
+          else
+            echo "No matching expected result"
+          fi
+          
+          cat cqTemplate.txt
+          cp cqTemplate.txt ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/CQTestCase.ttl
+      
+      - name: Construct IV test cases
+        run: |
+          echo "$ivPath"
+          ivPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          ivRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $ivPath)
+          
+          echo "$sparqlPath"
+          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
+          sparqlIVRequirements=$(grep -i '[SQIV][0-9][0-9]*:\s' $sparqlPath)
+          
+          base="https://raw.githubusercontent.com/"
+          base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+          
+          echo "$MPbase"
+          MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
+          
+          echo "$tdbase"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVDataSet/"
+          
+          echo "$tcbase"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/"
+          
+          echo "$mp"
+          mp="$base$base1$MPbase"
+          
+          echo "$ivtd"
+          ivtd="$base$base1$tdbase"
+          
+          echo "$ivtc"
+          ivtc="$base$base1$tcbase"
+          
+          mpPrefix="@prefix mp: < ${mp} > ."
+          tdPrefix="@prefix td: < ${ivtd} > ."
+          tcPrefix="@prefix mp: < ${ivtc} > ."
+          
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > ivTemplate.txt
+          echo $mpPrefix >> ivTemplate.txt 
+          echo $tdPrefix >> ivTemplate.txt 
+          echo $tcPrefix >> ivTemplate.txt 
+          echo 'tc:01 a owlunit:InferenceVerification ; owlunit:hasInputData td:IVDataSet.ttl ; owlunit:hasSPARQLUnitTest "' >> ivTemplate.txt 
+          
+          echo "$ivRequirements" > "ivRequirements.txt"
+          while read line; do
+            IVid=${line//[!0-9]/}
+            echo $IVid
+            if [[ $line =~ :(.+) ]]; then
+              IVstrresult=${BASH_REMATCH[1]}
+            else
+              echo "unable to parse string $line"
+            fi
+          done <ivRequirements.txt
+          
+          echo "$sparqlIVRequirements" > "sparqlIVRequirements.txt"
+            while read line; do
+              SQIVid=${line//[!0-9]/}
+              if [[ $line =~ :(.+) ]]; then
+                SQIVstrresult=${BASH_REMATCH[1]}
+              fi
+            done <sparqlIVRequirements.txt
+          
+          if [[ $IVid = $SQIVid ]]; then
+            echo $SQstrresult >> ivTemplate.txt 
+            echo ' " ; owlunit:hasReasoner owlunit:HermiT ; owlunit:hasExpectedResult true ; owlunit:testsOntology mp: .  ' >> ivTemplate.txt  
+          else
+            echo "No matching SPARQL query"
+          fi
+          
+          cp ivTemplate.txt ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/IVTestCase.ttl
+          
+      - name: Construct ER test cases
+        run: |
+          echo "$epPath"
+          epPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          epRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $epPath)
+          
+          base="https://raw.githubusercontent.com/"
+          base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+          
+          echo "$MPbase"
+          MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
+          
+          echo "$tdbase"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERDataSet/"
+          
+          echo "$tcbase"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERTestCase/"
+          
+          echo "$mp"
+          mp="$base$base1$MPbase"
+          
+          echo "$ertd"
+          eptd="$base$base1$tdbase"
+          
+          echo "$ertc"
+          eptc="$base$base1$tcbase"
+          
+          mpPrefix="@prefix mp: < ${mp} > ."
+          tdPrefix="@prefix td: < ${eptd} > ."
+          tcPrefix="@prefix mp: < ${eptc} > ."
+          
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > epTemplate.txt
+          echo $mpPrefix >> epTemplate.txt 
+          echo $tdPrefix >> epTemplate.txt 
+          echo $tcPrefix >> epTemplate.txt 
+          echo 'tc:01 a owlunit:ErrorProvocation ; owlunit:hasInputData td:EPDataSet.ttl ; owlunit:testsOntology mp: . ' >> epTemplate.txt 
+          
+          cp epTemplate.txt ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/EPTestCase/EPTestCase.ttl
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
