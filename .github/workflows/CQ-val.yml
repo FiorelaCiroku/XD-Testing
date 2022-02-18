@@ -59,7 +59,8 @@ jobs:
             CQid=${line//[!0-9]/}
             if [[ $line =~ :(.+) ]]; then
               CQstrresult=${BASH_REMATCH[1]}
-              echo '$CQstrresult "; owlunit:hasSPARQLUnitTest " ' >> cqTemplate.txt 
+              echo $CQstrresult >> cqTemplate.txt 
+              echo ' "; owlunit:hasSPARQLUnitTest " ' >> cqTemplate.txt 
               echo "$SPARQLquery" > "sparqlCQRequirements.txt"
               cat cqTemplate.txt
               while read line; do
