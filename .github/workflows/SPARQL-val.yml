@@ -38,5 +38,5 @@ jobs:
           )"
             echo "SPARQL Syntax check result is: $validator_result"
           }
-          my_query=my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+          my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           SPARQL_Validator $my_query
