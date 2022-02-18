@@ -49,7 +49,7 @@ jobs:
           echo $mpPrefix >> ivTemplate.txt 
           echo $tdPrefix >> ivTemplate.txt 
           echo $tcPrefix >> ivTemplate.txt 
-          echo 'tc:xx a owlunit:InferenceVerification ; owlunit:hasInputData td:xx ; owlunit:hasSPARQLUnitTest "' >> cqTemplate.txt 
+          echo 'tc:01 a owlunit:InferenceVerification ; owlunit:hasInputData td:IVDataSet.ttl ; owlunit:hasSPARQLUnitTest "' >> ivTemplate.txt 
           
           echo "$ivRequirements" > "ivRequirements.txt"
           while read line; do
