@@ -28,13 +28,11 @@ jobs:
           from rdflib.namespace import DC
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
-          def SPARQLValidation(query):  
-            try:
-              q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-              return True
-            except Exception as error:
-              print(error)
-          SPARQLValidation(my_query)
+          try:
+            q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            print("True")
+          except Exception as error:
+            print(error)
           END
           )"
             echo "Python value is: $validator_result"
