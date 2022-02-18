@@ -120,7 +120,6 @@ jobs:
           import os
           import sys
           import json
-          print(os.environ['PYTHON_ARG'])
           
           try:
             print(os.environ['PYTHON_ARG'])
