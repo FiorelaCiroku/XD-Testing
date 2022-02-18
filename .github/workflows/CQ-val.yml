@@ -17,7 +17,7 @@ jobs:
           
           echo "$sparqlPath"
           sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
-          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
+          sparqlCQRequirements=$(grep -i '[SQ][0-9][0-9]*:\s' $sparqlPath)
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
