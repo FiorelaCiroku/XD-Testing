@@ -12,15 +12,67 @@ jobs:
       - name: Run CQ validator
         run: |
           cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
-          requirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
-          echo "$requirements" > "requirements.txt"
+          cqRequirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
+          
+          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
+          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
+          
+          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          erRequirements=$(grep -i '[EP][0-9][0-9]*:\s' $erPath)
+          
+          base="https://raw.githubusercontent.com/"
+          base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+          
+          echo "$MPbase"
+          MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
+          
+          echo "$tdbase"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestData/"
+          
+          echo "$tcbase"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/"
+          
+          echo "$mp"
+          mp="$base$base1$MPbase"
+          echo $mp
+          
+          echo "$cqtd"
+          cqtd="$base$base1$tdbase"
+          echo $cqtd
+          
+          echo "$cqtc"
+          cqtc="$base$base1$tcbase"
+          echo $cqtc
+          
+          mpPrefix="@prefix mp:< ${mp} > ."
+          tdPrefix="@prefix td:< ${cqtd} > ."
+          tcPrefix="@prefix mp:< ${cqtc} > ."
+          
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
+          echo $mpPrefix >> cqTemplate.txt 
+          echo $tdPrefix >> cqTemplate.txt 
+          echo $tcPrefix >> cqTemplate.txt 
+          echo 'tc:01 a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
+          
+          echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
-            id=${line//[!0-9]/}
-            echo $id
+            CQid=${line//[!0-9]/}
             if [[ $line =~ :(.+) ]]; then
-              strresult=${BASH_REMATCH[1]}
-              echo "$strresult"
+              CQstrresult=${BASH_REMATCH[1]}
+              echo '$CQstrresult "; owlunit:hasSPARQLUnitTest " ' >> cqTemplate.txt 
+              echo "$SPARQLquery" > "sparqlCQRequirements.txt"
+              while read line; do
+                SQid=${line//[!0-9]/}
+                if [[ $line =~ :(.+) ]]; then
+                  SQstrresult=${BASH_REMATCH[1]}
+                  if [[ CQid == SQid ]]; then
+                    echo $SQstrresult >> cqTemplate.txt 
+                    cat cqTemplate.txt
             else
               echo "unable to parse string $line"
             fi
-          done <requirements.txt
+          done <cqRequirements.txt
+          
+          
+          
+          echo "$var" >> "$destdir"
