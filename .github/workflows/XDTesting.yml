@@ -104,6 +104,7 @@ jobs:
             done <sparqlCQRequirements.txt
           
           valResult=$(SPARQL_Validator "$SQstrresult")
+          echo $valResult
           
           if [[$valResult == "Success!"]]; then
             echo "SPARQLValidator=True" >> $GITHUB_ENV
@@ -111,8 +112,6 @@ jobs:
             echo "SPARQLValidator=False" >> $GITHUB_ENV
           fi
       
-      - name: Print SPARQLValidator
-        run: echo $SPARQLValidator
           
       - name: Run JSON validator
         if: ${{ env.SPARQLValidator == 'True' }}
