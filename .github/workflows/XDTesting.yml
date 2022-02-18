@@ -105,7 +105,7 @@ jobs:
           
           valResult=$(SPARQL_Validator "$SQstrresult")
           
-          if ($valResult = "Success!")
+          if ($valResult == "Success!")
             then
               echo "SPARQLValidator=True" >> $GITHUB_ENV
             else
