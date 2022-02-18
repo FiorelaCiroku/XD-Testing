@@ -60,7 +60,7 @@ jobs:
  
       - name: Print check
         if: ${{ env.check == 'False' }}
-        run: echo $env.check     
+        run: echo $check     
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
