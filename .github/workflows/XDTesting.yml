@@ -141,6 +141,8 @@ jobs:
             done <erRequirements.txt
           
           valResult=$(JSON_Validator "$ERstrresult")
+          
+          echo "Evaluation result is"
           echo $valResult
           
           if [ "$valResult" = "Success!" ]; then
