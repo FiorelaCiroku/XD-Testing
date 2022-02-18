@@ -24,6 +24,7 @@ jobs:
     
           END
           )"
+          echo $validator_result
           }
   
           echo "$erPath"
@@ -36,7 +37,6 @@ jobs:
             fi
           done <erRequirements.txt
           
-          echo $ERstrresult
           valResult=$(JSON_Validator "$ERstrresult")
   
           echo "Evaluation result is"
