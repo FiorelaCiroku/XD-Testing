@@ -21,7 +21,7 @@ jobs:
             json.loads(os.environ['PYTHON_ARG'])
             print("Syntax is correct")
           except ValueError as error:
-            print("There is an error") 
+            print(error) 
             
           END
           )"
