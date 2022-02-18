@@ -1,0 +1,21 @@
+name: Validate SPARQL
+
+on: push
+
+jobs:
+  validate-SPARQL:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Run SPARQL validator
+        run: |
+          function date_time {
+          python3 - <<END
+          from datetime import datetime
+          print('Current date:')
+          print(datetime.now())
+          END
+          }
+          # Call the python code.
+          date_time
