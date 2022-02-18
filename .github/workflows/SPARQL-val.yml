@@ -32,6 +32,9 @@ jobs:
     
             except Exception as error:
               print(error)
+          
+          query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
+          SPARQLValidation(query)
           END
           }
           # Call the python code.
