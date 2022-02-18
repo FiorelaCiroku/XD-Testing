@@ -59,25 +59,12 @@ jobs:
               else
                 echo "check=True" >> $GITHUB_ENV
             fi
- 
-      - name: Open issue for input request
-        if: ${{ env.check == 'False' }} 
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.ISSUE_TOKEN }}
-        with:
-          filename: .github/ISSUE_TEMPLATE/request-input.md
-          update_existing: true
-          search_existing: all
-        id: create-issue
-      - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
-      - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
       
       - name: Stop process
         if: ${{ env.check == 'False' }}
         uses: andymckay/cancel-action@0.2  
      
-      - name: Syntax check
+      - name: Pass first check
         if: ${{ env.check == 'True' }}
         run: |
           pip install rdflib
@@ -131,7 +118,6 @@ jobs:
           function JSON_Validator () {
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
-          import sys
           import json
           
           try:
@@ -146,11 +132,14 @@ jobs:
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          echo $erPath
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
+          echo $erRequirements
             while read line; do
               if [[ $line =~ :(.+) ]]; then
                 ERstrresult=${BASH_REMATCH[1]}
+                echo $ERstrresult
               fi
             done <erRequirements.txt
           
