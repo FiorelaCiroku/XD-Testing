@@ -132,14 +132,11 @@ jobs:
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          echo $erPath
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
-          echo $erRequirements
             while read line; do
               if [[ $line =~ :(.+) ]]; then
                 ERstrresult=${BASH_REMATCH[1]}
-                echo $ERstrresult
               fi
             done <erRequirements.txt
           
