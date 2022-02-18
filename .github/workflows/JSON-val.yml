@@ -15,9 +15,8 @@ jobs:
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
-  
+          print("test")
           try:
-            print(os.environ['PYTHON_ARG'])
             json.loads(os.environ['PYTHON_ARG'])
             print("Correct!")
           except ValueError as error:
