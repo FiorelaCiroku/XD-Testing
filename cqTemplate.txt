@@ -9,4 +9,3 @@ PREFIX mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/onto
  " ; owlunit:hasInputData td:CQDataSet.ttl ; owlunit:hasInputTestDataCategory owlunit:ToyDataset ; owlunit:hasExpectedResult " 
 { "head": { "vars": [ "recording" ] } , "results": { "bindings": [ { "recording": { "type": "uri" , "value": ”https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] }
  "; owlunit:testsOntology mp: . 
-tc:xx a owlunit:InferenceVerification ; owlunit:hasInputData td:xx ; owlunit:hasSPARQLUnitTest "
