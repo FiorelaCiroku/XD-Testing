@@ -3,7 +3,7 @@ name: Construct IV test cases
 on: push
 
 jobs:
-  validate-CQ:
+  validate-IV:
     runs-on: ubuntu-latest
         
     steps:
