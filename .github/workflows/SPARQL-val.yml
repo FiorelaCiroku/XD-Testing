@@ -19,6 +19,7 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator () {
+            query=sys.argv[1]
             validator_result="$(python3 - <<END
           import sys
           import rdflib
@@ -39,4 +40,4 @@ jobs:
             echo "SPARQL Syntax check result is: $validator_result"
           }
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          SPARQL_Validator $query
+          SPARQL_Validator "$query"
