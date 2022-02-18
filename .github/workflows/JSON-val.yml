@@ -31,7 +31,7 @@ jobs:
           MAGIC () {
             printf "%q\n" "$@"
             }
-          json=$(MAGIC """{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }""")
+          json=$(MAGIC '''{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }''')
           echo $json
           JSON_Validator "$json"
           
