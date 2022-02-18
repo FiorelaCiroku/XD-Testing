@@ -59,7 +59,7 @@ jobs:
             fi
  
       - name: Print check
-        if: (env.check == False)
+        if: (env.check == "False")
         run: echo env.check     
         
       - name: Setup-JAVA
