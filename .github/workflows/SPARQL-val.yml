@@ -29,10 +29,8 @@ jobs:
           from rdflib.namespace import DC
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
-          print(sys.argv[0])
-          print("Test check")
           try:
-            q = prepareQuery(sys.argv[0], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            q = prepareQuery(env.query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
             print("Syntax is correct")
           except Exception as error:
             print(error)
@@ -41,4 +39,4 @@ jobs:
             echo $validator_result
           }
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          SPARQL_Validator "$query"
+          SPARQL_Validator #"$query"
