@@ -9,10 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
-      - name: Install rdflib 
-        run: |
-          pip install rdflib
-      
       - name: Run JSON validator
         run: |
           function JSON_Validator () {
@@ -21,12 +17,12 @@ jobs:
           import sys
           import json
 
-          def validateJSON(jsonData):
-            try:
-              json.loads(os.environ['PYTHON_ARG'])
-              print("Syntax is correct")
-            except ValueError as error:
-              print(error) 
+          try:
+            json.loads(os.environ['PYTHON_ARG'])
+            print("Syntax is correct")
+          except ValueError as error:
+            print(error) 
+            
           END
           )"
             echo $validator_result
