@@ -61,8 +61,8 @@ jobs:
             fi
  
       - name: Print check
-        if: ${{ env.check == 'False' }}
-        run: echo $check     
+        if: $check == 'False'
+        run: echo "Haha"     
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
