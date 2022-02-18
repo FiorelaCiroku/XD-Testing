@@ -97,5 +97,9 @@ jobs:
           fi
           
           cat cqTemplate.txt
+          cp cqTemplate.txt ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/CQTestCase.ttl
+    
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
           
         
