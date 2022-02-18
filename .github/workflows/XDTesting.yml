@@ -85,10 +85,9 @@ jobs:
           from rdflib.namespace import XSD
           try:
             q = prepareQuery(os.environ['PYTHON_ARG'], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-            echo "SPARQLValidator=True" >> $GITHUB_ENV
+            print("Success!")
           except Exception as error:
-            #print(error)
-            echo "SPARQLValidator=False" >> $GITHUB_ENV
+            print(error)
           END
           )"
             echo $validator_result
@@ -103,7 +102,13 @@ jobs:
                 SQstrresult=${BASH_REMATCH[1]}
               fi
             done <sparqlCQRequirements.txt
-          SPARQL_Validator "$SQstrresult"
+          valResult=$(SPARQL_Validator "$SQstrresult")
+          
+          if [$valResult == "Success!"]:
+            echo "SPARQLValidator=True" >> $GITHUB_ENV
+          else:
+            echo "SPARQLValidator=False" >> $GITHUB_ENV
+          echo $SPARQLValidator
           
       - name: Run JSON validator
         if: ${{ env.SPARQLValidator == 'True' }}
