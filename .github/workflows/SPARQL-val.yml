@@ -35,8 +35,6 @@ jobs:
             print(error)
           END
           )"
-          
-          # Call the python code.
-          echo "Python value is: $validator_result"
+            echo "Python value is: $validator_result"
           }
           SPARQL_Validator
