@@ -105,14 +105,14 @@ jobs:
           
           valResult=$(SPARQL_Validator "$SQstrresult")
           
-          if ($valResult == "Success!")
-            then
-              echo "SPARQLValidator=True" >> $GITHUB_ENV
-            else
-              echo "SPARQLValidator=False" >> $GITHUB_ENV
+          if [[$valResult == "Success!"]]; then
+            echo "SPARQLValidator=True" >> $GITHUB_ENV
+          else
+            echo "SPARQLValidator=False" >> $GITHUB_ENV
           fi
-          
-          echo $SPARQLValidator
+      
+      - name: Print SPARQLValidator
+        run: echo $SPARQLValidator
           
       - name: Run JSON validator
         if: ${{ env.SPARQLValidator == 'True' }}
