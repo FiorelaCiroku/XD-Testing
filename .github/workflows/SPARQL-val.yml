@@ -38,7 +38,7 @@ jobs:
             print(error)
           END
           )"
-            return $validator_result
+            echo $validator_result
           }
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           SPARQL_Validator "$query"
