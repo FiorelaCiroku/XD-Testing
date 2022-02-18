@@ -8,6 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
+      - name: Install rdflib 
+        run: |
+          pip install rdflib
+      
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator {
