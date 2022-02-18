@@ -32,7 +32,7 @@ jobs:
             return True
           except Exception as error:
             print(error)
-          END)"
+          END )"
           
           # Call the python code.
           echo "Python value is: $validator_result"
