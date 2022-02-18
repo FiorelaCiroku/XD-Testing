@@ -19,7 +19,8 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator () {
-            validator_result="$(python3 - <<END
+            query=sys.argv[1]
+            validator_result="$( query=$query python3 - <<END
           import sys
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
