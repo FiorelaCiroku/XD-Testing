@@ -10,12 +10,25 @@ jobs:
       
       - name: Run SPARQL validator
         run: |
-          function date_time {
+          function SPARQL_Validator {
           python3 - <<END
-          from datetime import datetime
-          print('Current date:')
-          print(datetime.now())
+          import rdflib
+          from rdflib.plugins.sparql import prepareQuery
+          from rdflib.namespace import FOAF
+          from rdflib.namespace import RDF
+          from rdflib.namespace import RDFS
+          from rdflib.namespace import DC
+          from rdflib.namespace import OWL
+          from rdflib.namespace import XSD
+
+          def SPARQLValidation(query):
+            try:
+              q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+              return True
+    
+            except Exception as error:
+              print(error)
           END
           }
           # Call the python code.
-          date_time
+          SPARQL_Validator
