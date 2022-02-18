@@ -29,7 +29,7 @@ jobs:
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
           try:
-            q = prepareQuery(environ.get('my_query', 'SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}'), initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            q = prepareQuery(os.environ.get('my_query', 'SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}'), initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
             print("Syntax is correct")
           except Exception as error:
             print(error)
