@@ -1,55 +1,55 @@
-name: Validate CQ
+name: Construct ER test cases
 
 on: push
 
 jobs:
-  validate-CQ:
+  validate-ER:
     runs-on: ubuntu-latest
         
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout V2
+        uses: actions/checkout@v2
       
-      - name: Run CQ validator
+      - name: Construct ER test cases
         run: |
-          cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
-          cqRequirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
-          
-          ivPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
-          ivRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $ivPath)
-          
-          epPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
-          epRequirements=$(grep -i '[EP][0-9][0-9]*:\s' $epPath)
-          
-          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
-          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
-          sparqlIVRequirements=$(grep -i '[SQIV][0-9][0-9]*:\s' $sparqlPath)
-          
-          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          erRequirements=$(grep -i '[EP][0-9][0-9]*:\s' $erPath)
+          echo "$erPath"
+          erPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          erRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $ivPath)
           
           base="https://raw.githubusercontent.com/"
           base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
-          echo "$base2"
-          base2="/main/ontology-network/musical-performance/"
-          CQbase="/SPARQLUnitTest/CQTestCase/"
-          echo "$cqtd"
-          cqtd="$base$base1$base2$line$CQbase"
-          cqTemplate="@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . @prefix mp:<> . @prefix td:<> . @prefix tc: <>. tc:xx a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion"
-          ivTemplate=""
-          erTemplate=""
-          echo "$cqRequirements" > "cqRequirements.txt"
-          while read line; do
-            id=${line//[!0-9]/}
-            echo $id
-            if [[ $line =~ :(.+) ]]; then
-              strresult=${BASH_REMATCH[1]}
-              echo "$strresult"
-              
-            else
-              echo "unable to parse string $line"
-            fi
-          done <cqRequirements.txt
           
+          echo "$MPbase"
+          MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
           
+          echo "$tdbase"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocation/ERDataSet/"
           
-          echo "$var" >> "$destdir"
+          echo "$tcbase"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocation/ERTestCase/"
+          
+          echo "$mp"
+          mp="$base$base1$MPbase"
+          
+          echo "$ertd"
+          eptd="$base$base1$tdbase"
+          
+          echo "$ertc"
+          eptc="$base$base1$tcbase"
+          
+          mpPrefix="@prefix mp: < ${mp} > ."
+          tdPrefix="@prefix td: < ${eptd} > ."
+          tcPrefix="@prefix mp: < ${eptc} > ."
+          
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > epTemplate.txt
+          echo $mpPrefix >> epTemplate.txt 
+          echo $tdPrefix >> epTemplate.txt 
+          echo $tcPrefix >> epTemplate.txt 
+          echo 'tc:01 a owlunit:ErrorProvocation ; owlunit:hasInputData td:EPDataSet.ttl ; owlunit:testsOntology mp: . ' >> epTemplate.txt 
+          
+          cp epTemplate.txt ontology-network/musical-performance/RecordingProcess/ErrorProvocation/EPTestCase/EPTestCase.ttl
+      
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
+          
+        
