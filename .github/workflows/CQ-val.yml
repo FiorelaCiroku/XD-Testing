@@ -69,7 +69,7 @@ jobs:
           done <cqRequirements.txt
           
           echo "$SPARQLquery" > "sparqlCQRequirements.txt"
-          echo "$SPARQLquery"
+          cat sparqlCQRequirements.txt
             while read line; do
               SQid=${line//[!0-9]/}
               echo "This is the SQid"
