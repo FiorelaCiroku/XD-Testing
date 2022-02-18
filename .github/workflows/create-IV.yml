@@ -54,6 +54,7 @@ jobs:
           echo "$ivRequirements" > "ivRequirements.txt"
           while read line; do
             IVid=${line//[!0-9]/}
+            echo $IVid
             if [[ $line =~ :(.+) ]]; then
               IVstrresult=${BASH_REMATCH[1]}
             else
@@ -63,13 +64,13 @@ jobs:
           
           echo "$sparqlIVRequirements" > "sparqlIVRequirements.txt"
             while read line; do
-              SQid=${line//[!0-9]/}
+              SQIVid=${line//[!0-9]/}
               if [[ $line =~ :(.+) ]]; then
-                SQstrresult=${BASH_REMATCH[1]}
+                SQIVstrresult=${BASH_REMATCH[1]}
               fi
             done <sparqlIVRequirements.txt
           
-          if [[ $IVid = $SQid ]]; then
+          if [[ $IVid = $SQIVid ]]; then
             echo $SQstrresult >> ivTemplate.txt 
             echo ' " ; owlunit:hasReasoner owlunit:HermiT ; owlunit:hasExpectedResult true ; owlunit:testsOntology mp: .  ' >> ivTemplate.txt  
           else
