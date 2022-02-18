@@ -1,4 +1,4 @@
-name: Validate CQ
+name: Construct CQ test cases
 
 on: push
 
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout V2
         uses: actions/checkout@v2
       
-      - name: Run CQ validator
+      - name: Construct CQ test cases
         run: |
           echo "$cqPath"
           cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
