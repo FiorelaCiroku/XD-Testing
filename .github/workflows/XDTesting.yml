@@ -104,7 +104,6 @@ jobs:
             done <sparqlCQRequirements.txt
           
           valResult=$(SPARQL_Validator "$SQstrresult")
-          echo $valResult
           
           if [ $valResult = "Success!" ]; then
             echo "SPARQLValidator=True" >> $GITHUB_ENV
@@ -125,7 +124,7 @@ jobs:
           
           try:
             json.loads(os.environ['PYTHON_ARG'])
-            print("Syntax is correct")
+            print("Correct!")
           except ValueError as error:
             print(error) 
             
@@ -145,9 +144,18 @@ jobs:
               fi
             done <erRequirements.txt
           
-          JSON_Validator "$ERstrresult"
+          valResult=$(JSON_Validator "$ERstrresult")
+          echo $valResult
+          
+          if [ $valResult = "Success!" ]; then
+            echo "JSONValidator=True" >> $GITHUB_ENV
+          else
+            echo "JSONValidator=False" >> $GITHUB_ENV
+          fi
+          
           
       - name: Construct CQ test cases
+        if: ${{ env.JSONValidator == 'True' }}
         run: |
           echo "$cqPath"
           cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
