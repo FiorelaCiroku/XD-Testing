@@ -14,17 +14,14 @@ jobs:
           echo "$cqPath"
           cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
           cqRequirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
-          echo $cqRequirements
           
           echo "$sparqlPath"
           sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
           sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
-          echo $sparqlCQRequirements
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
-          echo $erRequirements
           
           base="https://raw.githubusercontent.com/"
           base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
@@ -40,17 +37,15 @@ jobs:
           
           echo "$mp"
           mp="$base$base1$MPbase"
-          echo $mp
           
           echo "$cqtd"
           cqtd="$base$base1$tdbase"
-          echo $cqtd
           
           echo "$cqtc"
           cqtc="$base$base1$tcbase"
-          echo $cqtc
           
           mpPrefix="@prefix mp:< ${mp} > ."
+          echo $mpPrefix
           tdPrefix="@prefix td:< ${cqtd} > ."
           tcPrefix="@prefix mp:< ${cqtc} > ."
           
