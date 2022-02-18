@@ -24,7 +24,7 @@ jobs:
     env:
         check: False
         JSONValidator: False
-        SPARQLValidator: false
+        SPARQLValidator: False
           
     # Check out the repository where the action is going to be executed on.
     steps:
@@ -60,6 +60,19 @@ jobs:
                 echo "check=True" >> $GITHUB_ENV
             fi
  
+      - name: Open issue for input request
+        if: ${{ env.check == 'False' }} 
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.ISSUE_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/request-input.md
+          update_existing: true
+          search_existing: all
+        id: create-issue
+      - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
+      - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
+      
       - name: Stop process
         if: ${{ env.check == 'False' }}
         uses: andymckay/cancel-action@0.2  
