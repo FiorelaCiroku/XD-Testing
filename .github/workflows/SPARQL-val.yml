@@ -14,8 +14,9 @@ jobs:
       
       - name: Run SPARQL validator
         run: |
+          #my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           function SPARQL_Validator {
-          validator_result="$(python3 - <<END
+          my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}" python3 - <<END
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
           from rdflib.namespace import FOAF
@@ -25,16 +26,12 @@ jobs:
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
 
-          def SPARQLValidation(query):
-            try:
-              q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-              return True
+          try:
+            q = prepareQuery(my_query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            return True
     
-            except Exception as error:
-              print(error)
-          
-          query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          SPARQLValidation(query)
+          except Exception as error:
+            print(error)
           END)"
           }
           # Call the python code.
