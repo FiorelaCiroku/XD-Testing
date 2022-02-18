@@ -44,17 +44,16 @@ jobs:
           echo "$cqtc"
           cqtc="$base$base1$tcbase"
           
-          mpPrefix="@prefix mp:< ${mp} > ."
-          echo $mpPrefix
-          tdPrefix="@prefix td:< ${cqtd} > ."
-          tcPrefix="@prefix mp:< ${cqtc} > ."
+          mpPrefix="@prefix mp: < ${mp} > ."
+          tdPrefix="@prefix td: < ${cqtd} > ."
+          tcPrefix="@prefix mp: < ${cqtc} > ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
           echo $mpPrefix >> cqTemplate.txt 
           echo $tdPrefix >> cqTemplate.txt 
           echo $tcPrefix >> cqTemplate.txt 
           echo 'tc:01 a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
-          
+          echo $cqTemplate.txt
           echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
             CQid=${line//[!0-9]/}
