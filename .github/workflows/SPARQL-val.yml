@@ -19,7 +19,7 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator () {
-            validator_result="$( query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}" python3 - <<END
+            validator_result="$(  python3 - <<END
           import os
           import sys
           import rdflib
