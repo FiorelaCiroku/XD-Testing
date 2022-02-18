@@ -5,6 +5,10 @@ on: push
 jobs:
   validate-SPARQL:
     runs-on: ubuntu-latest
+    
+    env:
+        my_query: No query
+        
     steps:
       - uses: actions/checkout@v1
       
@@ -14,9 +18,8 @@ jobs:
       
       - name: Run SPARQL validator
         run: |
-          #my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           function SPARQL_Validator {
-          my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}" python3 - <<END
+          validator_result="$(my_query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}" python3 - <<END
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
           from rdflib.namespace import FOAF
@@ -32,7 +35,7 @@ jobs:
     
           except Exception as error:
             print(error)
-          END
+          END)"
           }
           # Call the python code.
           echo "Python value is: $validator_result"
