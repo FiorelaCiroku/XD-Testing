@@ -11,7 +11,7 @@ jobs:
       
       - name: Run JSON validator
         run: |
-          cqPath="ontology-network/musical-performance/Situation/CompetencyQuestions.txt"
+          cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
           requirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
           echo "$requirements" > "requirements.txt"
           while read line; do
