@@ -55,7 +55,7 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                echo "$check=False" >> $GITHUB_ENV
+                echo "check=False" >> $GITHUB_ENV
               else
                 echo "check=True" >> $GITHUB_ENV
             fi
