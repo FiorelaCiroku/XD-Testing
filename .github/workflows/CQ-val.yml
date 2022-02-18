@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       
-      - name: Run JSON validator
+      - name: Run CQ validator
         run: |
           cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
           requirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
