@@ -10,7 +10,7 @@ jobs:
       - name: Checkout V2
         uses: actions/checkout@v2
       
-      - name: Construct CQ test cases
+      - name: Construct IV test cases
         run: |
           echo "$ivPath"
           ivPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
