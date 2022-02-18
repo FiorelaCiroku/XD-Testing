@@ -29,12 +29,12 @@ jobs:
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
           try:
-            q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-            print("True")
+            q = prepareQuery(my_query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            print("Syntax is correct")
           except Exception as error:
             print(error)
           END
           )"
-            echo "Python value is: $validator_result"
+            echo "SPARQL Syntax check result is: $validator_result"
           }
           SPARQL_Validator
