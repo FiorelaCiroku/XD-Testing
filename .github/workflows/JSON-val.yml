@@ -14,23 +14,36 @@ jobs:
           function JSON_Validator () {
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
-          import sys
           import json
-          print(os.environ['PYTHON_ARG'])
-          
+  
           try:
             json.loads(os.environ['PYTHON_ARG'])
-            print("Syntax is correct")
+            print("Correct!")
           except ValueError as error:
             print(error) 
-            
+    
           END
           )"
-          
-            echo $validator_result
           }
-          
-          json='"""{ "head": { "vars": ["recording" ] } , "results": { "bindings": [ {  "recording": { "type":  "uri" ,  "value": "https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] } }"""'
-          echo $json
-          JSON_Validator "$json"
+  
+          echo "$erPath"
+          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
+          echo "$erRequirements" > "erRequirements.txt"
+          while read line; do
+            if [[ $line =~ :(.+) ]]; then
+              ERstrresult=${BASH_REMATCH[1]}
+            fi
+          done <erRequirements.txt
+  
+          valResult=$(JSON_Validator "$ERstrresult")
+  
+          echo "Evaluation result is"
+          echo $valResult
+  
+          if [ "$valResult" = "Success!" ]; then
+            echo "JSONValidator=True" >> $GITHUB_ENV
+          else
+            echo "JSONValidator=False" >> $GITHUB_ENV
+          fi
           
