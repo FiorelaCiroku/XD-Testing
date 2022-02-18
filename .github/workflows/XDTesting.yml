@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-          check: False
+        check: False
           
     # Check out the repository where the action is going to be executed on.
     steps:
@@ -55,7 +55,7 @@ jobs:
               then 
                 echo "$check=False" >> $GITHUB_ENV
               else
-                echo "$check=True" >> $GITHUB_ENV
+                echo "check=True" >> $GITHUB_ENV
             fi
             echo $counter
             echo $check
