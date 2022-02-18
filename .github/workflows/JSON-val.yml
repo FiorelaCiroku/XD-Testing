@@ -29,6 +29,6 @@ jobs:
             echo $validator_result
           }
           
-          json=' """{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }""" '
+          json='"""{ "head": { "vars": ["recording" ] } , "results": { "bindings": [ {  "recording": { "type":  "uri" ,  "value": "https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] } }"""'
           JSON_Validator "$json"
           
