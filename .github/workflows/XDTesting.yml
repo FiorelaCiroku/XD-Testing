@@ -57,9 +57,9 @@ jobs:
               else
                 echo "check=True" >> $GITHUB_ENV
             fi
-            echo $counter
-            echo $check
-      
+ 
+      - name: Print check
+        run: echo $check     
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
