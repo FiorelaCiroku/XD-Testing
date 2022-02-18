@@ -30,7 +30,7 @@ jobs:
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
           try:
-            q = prepareQuery(sys.args[1], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            q = prepareQuery(sys.argv[1], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
             print("Syntax is correct")
           except Exception as error:
             print(error)
