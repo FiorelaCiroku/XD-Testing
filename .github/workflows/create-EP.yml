@@ -23,10 +23,10 @@ jobs:
           MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
           
           echo "$tdbase"
-          tdbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocation/ERDataSet/"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERDataSet/"
           
           echo "$tcbase"
-          tcbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocation/ERTestCase/"
+          tcbase="/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERTestCase/"
           
           echo "$mp"
           mp="$base$base1$MPbase"
@@ -47,7 +47,7 @@ jobs:
           echo $tcPrefix >> epTemplate.txt 
           echo 'tc:01 a owlunit:ErrorProvocation ; owlunit:hasInputData td:EPDataSet.ttl ; owlunit:testsOntology mp: . ' >> epTemplate.txt 
           
-          cp epTemplate.txt ontology-network/musical-performance/RecordingProcess/ErrorProvocation/EPTestCase/EPTestCase.ttl
+          cp epTemplate.txt ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/EPTestCase/EPTestCase.ttl
       
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
