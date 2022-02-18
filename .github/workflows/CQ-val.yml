@@ -57,6 +57,7 @@ jobs:
           echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
             CQid=${line//[!0-9]/}
+            echo $CQid
             if [[ $line =~ :(.+) ]]; then
               CQstrresult=${BASH_REMATCH[1]}
               echo $CQstrresult >> cqTemplate.txt 
@@ -69,6 +70,7 @@ jobs:
           echo "$SPARQLquery" > "sparqlCQRequirements.txt"
             while read line; do
               SQid=${line//[!0-9]/}
+              echo $SQid
               if [[ $line =~ :(.+) ]]; then
                 SQstrresult=${BASH_REMATCH[1]}
               fi
