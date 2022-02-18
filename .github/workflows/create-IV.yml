@@ -77,9 +77,7 @@ jobs:
             echo "No matching SPARQL query"
           fi
           
-          
-          cat cqTemplate.txt
-          cp cqTemplate.txt ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/IVTestCase.ttl
+          cp ivTemplate.txt ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/IVTestCase.ttl
       
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
