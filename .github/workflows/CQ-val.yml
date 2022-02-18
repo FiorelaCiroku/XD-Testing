@@ -53,7 +53,7 @@ jobs:
           echo $tdPrefix >> cqTemplate.txt 
           echo $tcPrefix >> cqTemplate.txt 
           echo 'tc:01 a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
-          cat $cqTemplate.txt
+          cat cqTemplate.txt
           echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
             CQid=${line//[!0-9]/}
@@ -68,6 +68,11 @@ jobs:
                   if [[ CQid == SQid ]]; then
                     echo $SQstrresult >> cqTemplate.txt 
                     cat cqTemplate.txt
+                  fi
+                else
+                  echo "No matching SPARQL query"
+                fi
+              done <parqlCQRequirements.txt
             else
               echo "unable to parse string $line"
             fi
