@@ -42,8 +42,8 @@ jobs:
           ivtc="$base$base1$tcbase"
           
           mpPrefix="@prefix mp: < ${mp} > ."
-          tdPrefix="@prefix td: < ${cqtd} > ."
-          tcPrefix="@prefix mp: < ${cqtc} > ."
+          tdPrefix="@prefix td: < ${ivtd} > ."
+          tcPrefix="@prefix mp: < ${ivtc} > ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > ivTemplate.txt
           echo $mpPrefix >> ivTemplate.txt 
