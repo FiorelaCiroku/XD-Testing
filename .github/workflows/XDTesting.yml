@@ -55,7 +55,7 @@ jobs:
             done < UserInput.txt
             if ((counter<4))
               then 
-                echo "$check=False" >> $GITHUB_ENV
+                echo "check=False" >> $GITHUB_ENV
                 echo $check
               else
                 echo "check=True" >> $GITHUB_ENV
@@ -87,10 +87,10 @@ jobs:
           from rdflib.namespace import XSD
           try:
             q = prepareQuery(os.environ['PYTHON_ARG'], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-            echo "$SPARQLValidator=True" >> $GITHUB_ENV
+            echo "SPARQLValidator=True" >> $GITHUB_ENV
           except Exception as error:
             #print(error)
-            echo "$SPARQLValidator=False" >> $GITHUB_ENV
+            echo "SPARQLValidator=False" >> $GITHUB_ENV
           END
           )"
             echo $validator_result
