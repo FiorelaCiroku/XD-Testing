@@ -60,9 +60,13 @@ jobs:
                 echo $check
             fi
  
-      - name: Print check
+      - name: Stop process
         if: ${{ env.check == 'False' }}
-        run: echo "Haha"     
+        uses: andymckay/cancel-action@0.2  
+     
+      - name: Syntax check
+        if: ${{ env.check == 'True' }}
+        run: echo "Haha"  
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
