@@ -19,8 +19,8 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator () {
-            query=sys.argv[1]
-            validator_result="$( query=$query python3 - <<END
+            validator_result="$( query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}" python3 - <<END
+          import os
           import sys
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
@@ -31,7 +31,7 @@ jobs:
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
           try:
-            q = prepareQuery(query, initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
+            q = prepareQuery(os.environ['query'], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
             print("Syntax is correct")
           except Exception as error:
             print(error)
@@ -40,4 +40,4 @@ jobs:
             echo $validator_result
           }
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
-          SPARQL_Validator "$env.query"
+          SPARQL_Validator "$query"
