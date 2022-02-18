@@ -1,0 +1,37 @@
+name: Validate JSON
+
+on: push
+
+jobs:
+  validate-SPARQL:
+    runs-on: ubuntu-latest
+    
+    env:
+        json: No text
+        
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Install rdflib 
+        run: |
+          pip install rdflib
+      
+      - name: Run JSON validator
+        run: |
+          function JSON_Validator () {
+            validator_result="$( PYTHON_ARG="$1" python3 - <<END
+          import os
+          import sys
+          import json
+
+          def validateJSON(jsonData):
+            try:
+              json.loads(os.environ['PYTHON_ARG'])
+              print("Syntax is correct")
+            except ValueError as error:
+              print(error) 
+          END
+          )"
+            echo $validator_result
+          }
+          JSON_Validator "$json"
