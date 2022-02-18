@@ -59,8 +59,8 @@ jobs:
             fi
  
       - name: Print check
-        if: ($check == False)
-        run: echo $check     
+        if: (env.check == False)
+        run: echo env.check     
         
       - name: Setup-JAVA
         uses: actions/setup-java@v2.4.0
