@@ -15,7 +15,8 @@ jobs:
           requirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
           echo "$requirements" > "requirements.txt"
           while read line; do
-            echo "${line//[!0-9]/}"
+            id=${line//[!0-9]/}
+            echo $id
             if [[ $line =~ :(.+) ]]; then
               strresult=${BASH_REMATCH[1]}
               echo "$strresult"
