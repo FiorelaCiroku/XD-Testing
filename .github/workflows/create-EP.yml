@@ -1,9 +1,9 @@
-name: Construct ER test cases
+name: Construct EP test cases
 
 on: push
 
 jobs:
-  validate-ER:
+  validate-EP:
     runs-on: ubuntu-latest
         
     steps:
@@ -12,9 +12,9 @@ jobs:
       
       - name: Construct ER test cases
         run: |
-          echo "$erPath"
-          erPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
-          erRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $ivPath)
+          echo "$epPath"
+          epPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          epRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $epPath)
           
           base="https://raw.githubusercontent.com/"
           base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
