@@ -54,8 +54,10 @@ jobs:
             if ((counter<4))
               then 
                 echo "$check=False" >> $GITHUB_ENV
+                echo $check
               else
                 echo "check=True" >> $GITHUB_ENV
+                echo $check
             fi
  
       - name: Print check
