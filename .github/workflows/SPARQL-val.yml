@@ -15,7 +15,7 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator {
-          python3 - <<END
+          validator_result="$(python3 - <<END
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
           from rdflib.namespace import FOAF
@@ -35,7 +35,7 @@ jobs:
           
           query = "SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
           SPARQLValidation(query)
-          END
+          END)"
           }
           # Call the python code.
-          SPARQL_Validator
+          echo "Python value is: $validator_result"
