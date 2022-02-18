@@ -3,7 +3,7 @@ name: Validate JSON
 on: push
 
 jobs:
-  validate-SPARQL:
+  validate-JSON:
     runs-on: ubuntu-latest
         
     steps:
