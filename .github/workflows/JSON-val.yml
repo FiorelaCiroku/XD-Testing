@@ -27,5 +27,5 @@ jobs:
           )"
             echo $validator_result
           }
-          json=/"/"/"{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }/"/"/"
+          json=' """{ "head": { "vars": [ "interest" ] }, "results": { "bindings": [{ "interest": { "type": "uri", "value": "https://w3id.org/OWLunit/examples/Basketball" } } ] } }""" '
           JSON_Validator "$json"
