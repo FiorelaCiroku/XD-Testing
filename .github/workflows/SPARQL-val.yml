@@ -29,6 +29,7 @@ jobs:
           from rdflib.namespace import DC
           from rdflib.namespace import OWL
           from rdflib.namespace import XSD
+          print(sys.argv[0])
           try:
             q = prepareQuery(sys.argv[0], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
             print("Syntax is correct")
