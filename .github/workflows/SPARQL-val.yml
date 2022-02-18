@@ -19,7 +19,7 @@ jobs:
       - name: Run SPARQL validator
         run: |
           function SPARQL_Validator () {
-            validator_result="$( PYTHON_ARG="$1" $query python3 - <<END
+            validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import sys
           import rdflib
