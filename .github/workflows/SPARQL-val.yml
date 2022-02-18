@@ -38,7 +38,7 @@ jobs:
             print(error)
           END
           )"
-            wait(60)
+            wait 60
             echo "SPARQL Syntax check result is: $validator_result"
           }
           query="SELECT ?info ?name WHERE { ?person rdfs:seeAlso ?info . ?person foaf:homepage ?name .}"
