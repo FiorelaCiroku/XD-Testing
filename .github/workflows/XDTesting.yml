@@ -87,10 +87,9 @@ jobs:
           from rdflib.namespace import XSD
           try:
             q = prepareQuery(os.environ['PYTHON_ARG'], initNs={"foaf": FOAF ,"rdfs": RDFS, "rdf": RDF, "owl": OWL, "xsd": XSD},)
-            print("Syntax is correct")
             echo "$SPARQLValidator=True" >> $GITHUB_ENV
           except Exception as error:
-            print(error)
+            #print(error)
             echo "$SPARQLValidator=False" >> $GITHUB_ENV
           END
           )"
