@@ -59,6 +59,7 @@ jobs:
             fi
  
       - name: Print check
+        if: ($check == False)
         run: echo $check     
         
       - name: Setup-JAVA
