@@ -108,6 +108,7 @@ jobs:
             echo "SPARQLValidator=True" >> $GITHUB_ENV
           else:
             echo "SPARQLValidator=False" >> $GITHUB_ENV
+          fi
           echo $SPARQLValidator
           
       - name: Run JSON validator
