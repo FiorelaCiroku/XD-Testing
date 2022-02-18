@@ -20,6 +20,7 @@ jobs:
         run: |
           function SPARQL_Validator () {
             validator_result="$(python3 - <<END
+          import sys
           import rdflib
           from rdflib.plugins.sparql import prepareQuery
           from rdflib.namespace import FOAF
