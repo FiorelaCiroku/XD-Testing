@@ -57,7 +57,7 @@ jobs:
               then 
                 echo "$check=False" >> $GITHUB_ENV
               else
-                echo "$check=True" >> $GITHUB_ENV
+                echo "check=True" >> $GITHUB_ENV
             fi
  
       - name: Stop process
