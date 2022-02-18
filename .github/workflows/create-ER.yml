@@ -1,0 +1,55 @@
+name: Validate CQ
+
+on: push
+
+jobs:
+  validate-CQ:
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Run CQ validator
+        run: |
+          cqPath="ontology-network/musical-performance/RecordingProcess/CompetencyQuestions.txt"
+          cqRequirements=$(grep -i '[CQ][0-9][0-9]*:\s' $cqPath)
+          
+          ivPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          ivRequirements=$(grep -i '[IV][0-9][0-9]*:\s' $ivPath)
+          
+          epPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
+          epRequirements=$(grep -i '[EP][0-9][0-9]*:\s' $epPath)
+          
+          sparqlPath="ontology-network/musical-performance/RecordingProcess/SPARQLQueries.txt"
+          sparqlCQRequirements=$(grep -i '[SQCQ][0-9][0-9]*:\s' $sparqlPath)
+          sparqlIVRequirements=$(grep -i '[SQIV][0-9][0-9]*:\s' $sparqlPath)
+          
+          erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
+          erRequirements=$(grep -i '[EP][0-9][0-9]*:\s' $erPath)
+          
+          base="https://raw.githubusercontent.com/"
+          base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
+          echo "$base2"
+          base2="/main/ontology-network/musical-performance/"
+          CQbase="/SPARQLUnitTest/CQTestCase/"
+          echo "$cqtd"
+          cqtd="$base$base1$base2$line$CQbase"
+          cqTemplate="@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . @prefix mp:<> . @prefix td:<> . @prefix tc: <>. tc:xx a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion"
+          ivTemplate=""
+          erTemplate=""
+          echo "$cqRequirements" > "cqRequirements.txt"
+          while read line; do
+            id=${line//[!0-9]/}
+            echo $id
+            if [[ $line =~ :(.+) ]]; then
+              strresult=${BASH_REMATCH[1]}
+              echo "$strresult"
+              
+            else
+              echo "unable to parse string $line"
+            fi
+          done <cqRequirements.txt
+          
+          
+          
+          echo "$var" >> "$destdir"
