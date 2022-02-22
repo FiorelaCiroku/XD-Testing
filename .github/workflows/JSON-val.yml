@@ -31,7 +31,7 @@ jobs:
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
-          while read line; do
+          while IFS=read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
               valResult=$(JSON_Validator "$ERstrresult")
