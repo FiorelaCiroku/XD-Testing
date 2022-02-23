@@ -15,7 +15,6 @@ jobs:
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
-          print("test")
           try:
             json.loads(os.environ['PYTHON_ARG'])
             print("Correct!")
@@ -34,11 +33,10 @@ jobs:
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
-              echo "The result is $ERstrresult"
-              echo "The first value is ${ERstrresult[0]}"
+              param=${ERstrresult[0]}
             fi
             
-            valResult=$(JSON_Validator "${ERstrresult[0]}")
+            valResult=$(JSON_Validator "param")
             echo $valResult
             if [ "$valResult" = "Success!" ]; then
               echo "JSONValidator=True" >> $GITHUB_ENV
