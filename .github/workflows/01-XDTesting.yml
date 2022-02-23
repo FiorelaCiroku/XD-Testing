@@ -191,9 +191,9 @@ jobs:
           echo "$cqtc"
           cqtc="$base$base1$tcbase"
           
-          mpPrefix="@prefix mp: < ${mp} > ."
-          tdPrefix="@prefix td: < ${cqtd} > ."
-          tcPrefix="@prefix mp: < ${cqtc} > ."
+          mpPrefix="@prefix mp: <${mp}> ."
+          tdPrefix="@prefix td: <${cqtd}> ."
+          tcPrefix="@prefix mp: <${cqtc}> ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
           echo $mpPrefix >> cqTemplate.txt 
@@ -278,9 +278,9 @@ jobs:
           echo "$ivtc"
           ivtc="$base$base1$tcbase"
           
-          mpPrefix="@prefix mp: < ${mp} > ."
-          tdPrefix="@prefix td: < ${ivtd} > ."
-          tcPrefix="@prefix mp: < ${ivtc} > ."
+          mpPrefix="@prefix mp: <${mp}> ."
+          tdPrefix="@prefix td: <${ivtd}> ."
+          tcPrefix="@prefix mp: <${ivtc}> ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > ivTemplate.txt
           echo $mpPrefix >> ivTemplate.txt 
@@ -344,9 +344,9 @@ jobs:
           echo "$ertc"
           eptc="$base$base1$tcbase"
           
-          mpPrefix="@prefix mp: < ${mp} > ."
-          tdPrefix="@prefix td: < ${eptd} > ."
-          tcPrefix="@prefix mp: < ${eptc} > ."
+          mpPrefix="@prefix mp: <${mp}> ."
+          tdPrefix="@prefix td: <${eptd}> ."
+          tcPrefix="@prefix mp: <${eptc}> ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > epTemplate.txt
           echo $mpPrefix >> epTemplate.txt 
