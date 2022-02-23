@@ -247,6 +247,7 @@ jobs:
           cp cqTemplate.txt ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/CQTestCase.ttl
       
       - name: Construct IV test cases
+        if: ${{ env.JSONValidator == 'True' }}
         run: |
           echo "$ivPath"
           ivPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
@@ -316,6 +317,7 @@ jobs:
           cp ivTemplate.txt ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/IVTestCase.ttl
           
       - name: Construct ER test cases
+        if: ${{ env.JSONValidator == 'True' }}
         run: |
           echo "$epPath"
           epPath="ontology-network/musical-performance/RecordingProcess/GeneralConstraints.txt"
