@@ -35,6 +35,7 @@ jobs:
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
               echo "The result is $ERstrresult"
+              echo "The second value is ${ERstrresult[1]}"
             fi
             
             valResult=$(JSON_Validator "${ERstrresult[0]}")
