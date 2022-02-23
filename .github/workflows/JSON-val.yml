@@ -37,11 +37,11 @@ jobs:
             fi
             
             valResult=$(JSON_Validator "param")
-            echo $valResult
+            echo "Validation result is $valResult)
             if [ "$valResult" = "Success!" ]; then
-              echo "JSONValidator=True" >> $GITHUB_ENV
+              echo "nice"
             else
-              echo "JSONValidator=False" >> $GITHUB_ENV
+              echo "bad" 
             fi
           done <erRequirements.txt
           
