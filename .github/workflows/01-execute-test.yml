@@ -44,6 +44,7 @@ jobs:
       
       - name: Run CQ test
         run: |
+            cd /
             cd ontology-network
             cd musical-performance
             while read -r line; do
