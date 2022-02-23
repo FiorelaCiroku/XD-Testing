@@ -36,7 +36,8 @@ jobs:
               param=${ERstrresult[0]}
             fi
             
-            valResult=$(JSON_Validator "param")
+            param_test=' """{ "head": { "vars": ["recording" ] } , "results": { "bindings": [ { "recording": { "type": "uri" , "value": "https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] } }""" '
+            valResult=$(JSON_Validator "$param")
             echo "Validation result is $valResult"
             if [ "$valResult" = "Success!" ]; then
               echo "nice"
