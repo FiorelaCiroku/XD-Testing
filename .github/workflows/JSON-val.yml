@@ -37,7 +37,7 @@ jobs:
             fi
             
             valResult=$(JSON_Validator "param")
-            echo "Validation result is $valResult)
+            echo "Validation result is $valResult"
             if [ "$valResult" = "Success!" ]; then
               echo "nice"
             else
