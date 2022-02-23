@@ -193,7 +193,7 @@ jobs:
           
           mpPrefix="@prefix mp: <${mp}> ."
           tdPrefix="@prefix td: <${cqtd}> ."
-          tcPrefix="@prefix mp: <${cqtc}> ."
+          tcPrefix="@prefix tc: <${cqtc}> ."
           
           echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
           echo $mpPrefix >> cqTemplate.txt 
