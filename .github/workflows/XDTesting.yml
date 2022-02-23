@@ -21,6 +21,7 @@ jobs:
   # The type of runner that the job will run on.
     runs-on: ubuntu-latest
     
+  # Add environment variables that are going to be used as conditions for the validation of the input's syntax.
     env:
         check: False
         JSONValidator: False
@@ -30,7 +31,8 @@ jobs:
     steps:
       - name: Checkout V2
         uses: actions/checkout@v2
-      
+    # Feature 1: Check if all input files are not empty. If one is empty the process cannot continue. 
+    # This feature will be modified because there are cases when no general constraints have been identified yet. This does not mean that the testing of the competency questions cannot continue. 
       - name: Check-Input
         run: |
             cd ontology-network
@@ -59,15 +61,16 @@ jobs:
               else
                 echo "check=True" >> $GITHUB_ENV
             fi
-      
+            
+      # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
       - name: Stop process
         if: ${{ env.check == 'False' }}
         uses: andymckay/cancel-action@0.2  
-     
+        
+     # A step to install rdflib if a condition is met.
       - name: Pass first check
         if: ${{ env.check == 'True' }}
-        run: |
-          pip install rdflib
+        run: pip install rdflib
       
       - name: Run SPARQL validator
         run: |
@@ -351,62 +354,7 @@ jobs:
           
           cp epTemplate.txt ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/EPTestCase/EPTestCase.ttl
         
-      - name: Setup-JAVA
-        uses: actions/setup-java@v2.4.0
-        with:
-          distribution: 'temurin' 
-          java-version: '17'
-
-# Download the latest release of OWLUnit jar from the Github repository
-      - name: Setup-OWLUnit
-        run: |
-            curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
-            | grep browser_download_url \
-            | cut -d : -f 2,3 \
-            | tr -d \" \
-            | wget -qi -
-# Install OWLUnit         
-      - name: Install OWLUnit
-        run: |
-            java -jar OWLUnit-0.3.2.jar
-      
-      - name: Run CQ test
-        run: |
-            cd ontology-network
-            cd musical-performance
-            while read -r line; do
-            line="$line"
-            # echo "Ontology fragment is $line"
-            cd $line
-            base="https://raw.githubusercontent.com/"
-            base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
-            echo "$base2"
-            base2="/main/ontology-network/musical-performance/"
-            CQbase="/SPARQLUnitTest/CQTestCase/"
-            echo "$CQtestcase"
-            CQtestcase="$base$base1$base2$line$CQbase"
-            # echo "Test case directory url is $CQtestcase"
-            cd SPARQLUnitTest
-            cd CQTestCase
-            for file in *.ttl
-            do 
-             echo " The file is $file"
-             testcaseURL="$CQtestcase$file"
-             # echo "Test case URL is $testcaseURL"
-             cd ..
-             cd ..
-             cd ..
-             cd ..
-             cd ..
-             output=$(java -jar OWLUnit-0.3.2.jar -c $testcaseURL)
-            done
-            cd ontology-network
-            cd musical-performance
-            cd $line
-            cd TestDocumentation
-            touch DocCase.txt
-            echo "$output" >> DocCase.txt
-            done < UserInput.txt
+     
         # This step creates an automatic pull request for the directories that were created.      
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
