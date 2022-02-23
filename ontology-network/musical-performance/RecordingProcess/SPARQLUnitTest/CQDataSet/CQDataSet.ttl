@@ -1,4 +1,5 @@
-@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/>. @prefix tc: <https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/>.
+@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/> . 
+@prefix tc: <https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/> .
 @prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
 
 td:Session01 mp:isSessionOf td:RecordingProcess120 . 
