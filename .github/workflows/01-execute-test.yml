@@ -45,7 +45,6 @@ jobs:
       - name: Run CQ test
         run: |
             cd ontology-network
-            # track directory name by commit info. 
             cd musical-performance
             while read -r line; do
             line="$line"
