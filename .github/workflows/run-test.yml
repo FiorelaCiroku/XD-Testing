@@ -58,7 +58,7 @@ jobs:
             CQbase="/SPARQLUnitTest/CQTestCase/"
             echo "$CQtestcase"
             CQtestcase="$base$base1$base2$line$CQbase"
-            # echo "Test case directory url is $CQtestcase"
+            echo "Test case directory url is $CQtestcase"
             cd SPARQLUnitTest
             cd CQTestCase
             for file in *.ttl
