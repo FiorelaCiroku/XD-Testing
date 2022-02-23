@@ -33,11 +33,22 @@ jobs:
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
-              param=${ERstrresult[0]}
             fi
             
-            param_test=' """{ "head": { "vars": ["recording" ] } , "results": { "bindings": [ { "recording": { "type": "uri" , "value": "https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] } }""" '
-            valResult=$(JSON_Validator $param_test)
+            for i in "${ERstrresult[@]}"
+              do
+                evalResult=$(JSON_Validator ${ERstrresult[i]})
+                echo "Validation result is $evalResult"
+                if [ "$evalResult" = "Success!" ]; then
+                  echo "nice"
+                else
+                  echo "bad" 
+                fi
+            done
+            
+            
+            
+            # valResult=$(JSON_Validator $param_test)
             echo "Validation result is $valResult"
             if [ "$valResult" = "Success!" ]; then
               echo "nice"
