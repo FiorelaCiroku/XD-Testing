@@ -34,7 +34,7 @@ jobs:
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
-              valResult=$(JSON_Validator "$ERstrresult[@]")
+              valResult=$(JSON_Validator "${ERstrresult[@]}")
               echo $valResult
               if [ "$valResult" = "Success!" ]; then
                 echo "JSONValidator=True" >> $GITHUB_ENV
