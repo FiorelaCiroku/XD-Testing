@@ -37,7 +37,7 @@ jobs:
             
             for i in "${ERstrresult[@]}"
               do
-                evalResult=$(JSON_Validator ${ERstrresult[i]})
+                evalResult=$(JSON_Validator "$i")
                 echo "Validation result is $evalResult"
                 if [ "$evalResult" = "Success!" ]; then
                   echo "nice"
