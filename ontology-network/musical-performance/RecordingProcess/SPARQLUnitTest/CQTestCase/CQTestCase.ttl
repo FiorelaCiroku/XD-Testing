@@ -1,6 +1,6 @@
 @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
 @prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
-@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestData/> .
+@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/> .
 @prefix tc: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/> .
 
 tc:CQTestCase.ttl a owlunit:CompetencyQuestionVerification ; 
