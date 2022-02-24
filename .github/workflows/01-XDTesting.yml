@@ -177,7 +177,7 @@ jobs:
           MPbase="/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl"
           
           echo "$tdbase"
-          tdbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestData/"
+          tdbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/"
           
           echo "$tcbase"
           tcbase="/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQTestCase/"
