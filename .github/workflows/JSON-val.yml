@@ -25,7 +25,7 @@ jobs:
             print(error) 
           END
           )"
-            return $validator_result
+            echo $validator_result
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
