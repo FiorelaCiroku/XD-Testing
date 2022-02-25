@@ -170,7 +170,8 @@ jobs:
       # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
       - name: JSON Stop process
         if: ${{ env.JSONValidator == 'False' }}
-        uses: andymckay/cancel-action@0.2  
+        #uses: andymckay/cancel-action@0.2  
+        run: echo ${{ env.JSONValidator }}
           
       - name: Construct CQ test cases
         if: ${{ env.JSONValidator == 'True' }}
