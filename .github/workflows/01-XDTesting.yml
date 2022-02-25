@@ -160,7 +160,7 @@ jobs:
               else
                 echo "JSONValidator=False" >> $GITHUB_ENV
               fi
-          done
+            done
           done <erRequirements.txt
         
           
