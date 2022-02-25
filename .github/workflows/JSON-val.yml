@@ -12,7 +12,6 @@ jobs:
       - name: Run JSON validator
         run: |
           function JSON_Validator () {
-            echo "Parameter is $1"
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
@@ -20,7 +19,7 @@ jobs:
           str = str(os.environ['PYTHON_ARG'])
           try:
             json.loads(str)
-            print("Correct!")
+            print("Success!")
           except ValueError as error:
             print(error) 
           END
