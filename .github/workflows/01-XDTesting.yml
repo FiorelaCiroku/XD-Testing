@@ -63,7 +63,7 @@ jobs:
             fi
             
       # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
-      - name: Stop process
+      - name: Check Stop process
         if: ${{ env.check == 'False' }}
         uses: andymckay/cancel-action@0.2  
         
@@ -128,11 +128,10 @@ jobs:
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
-          
+          query = os.environ['PYTHON_ARG']
           try:
-            query = os.environ['PYTHON_ARG']
             json.loads(query)
-            print("Correct!")
+            print("Success!")
           except ValueError as error:
             print(error) 
             
