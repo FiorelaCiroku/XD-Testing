@@ -119,36 +119,43 @@ jobs:
         if: ${{ env.SPARQLValidator == 'True' }}
         run: |
           function JSON_Validator () {
+            echo $1
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
           
           try:
-            json.loads(os.environ['PYTHON_ARG'])
+            query = os.environ['PYTHON_ARG']
+            json.loads(query)
             print("Correct!")
           except ValueError as error:
             print(error) 
             
           END
           )"
+            echo $validator_result
           }
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
-            while read line; do
-              if [[ $line =~ :(.+) ]]; then
-                ERstrresult=${BASH_REMATCH[1]}
-              fi
-            done <erRequirements.txt
+          while read -r line; do
+            if [[ $line =~ :(.+) ]]; then
+              ERstrresult=${BASH_REMATCH[1]}
+            fi
+            
+          for i in "${ERstrresult[@]}"
+            do
+              # remove spaces in the line
+              no_whitespace="$(echo -e "${i}" | tr -d '[:space:]')"
+                
+              # remove string quotations: beginning """ and ending """
+              remove_string_quotations=${no_whitespace:3:-3}
+                
+              evalResult=$(JSON_Validator "$remove_string_quotations")
           
-          valResult=$(JSON_Validator "$ERstrresult")
-          
-          echo "Evaluation result is"
-          echo $valResult
-          
-          if [ "$valResult" = "Success!" ]; then
+          if [ "$evalResult" = "Success!" ]; then
             echo "JSONValidator=True" >> $GITHUB_ENV
           else
             echo "JSONValidator=False" >> $GITHUB_ENV
