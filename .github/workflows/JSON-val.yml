@@ -5,6 +5,9 @@ on: push
 jobs:
   validate-JSON:
     runs-on: ubuntu-latest
+    env: 
+      JSONValidator: False
+      
         
     steps:
       - uses: actions/checkout@v1
@@ -45,17 +48,16 @@ jobs:
                 
                 evalResult=$(JSON_Validator "$remove_string_quotations")
                 echo "EvalResult is $evalResult"
+                
                 if [ "$evalResult" = "Success!" ]; then
-                  echo "nice"
+                  echo "JSONValidator=True" >> $GITHUB_ENV
                 else
-                  echo "bad" 
+                  echo "JSONValidator=False" >> $GITHUB_ENV
                 fi
             done
           done <erRequirements.txt
           
-          # valResult=$(JSON_Validator "$ERstrresult")
-
-          # echo $valResult
+          echo env.JSONValidator
   
           #if [ "$valResult" = "Success!" ]; then
           #  echo "JSONValidator=True" >> $GITHUB_ENV
