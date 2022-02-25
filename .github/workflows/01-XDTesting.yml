@@ -14,9 +14,8 @@ on:
   workflow_dispatch:
  
 jobs:
-
 # This workflow contains a job called "test-run"
-  run-test:
+  build-test:
   
   # The type of runner that the job will run on.
     runs-on: ubuntu-latest
@@ -128,7 +127,7 @@ jobs:
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
-          query = os.environ['PYTHON_ARG']
+          query = str(os.environ['PYTHON_ARG'])
           try:
             json.loads(query)
             print("Success!")
