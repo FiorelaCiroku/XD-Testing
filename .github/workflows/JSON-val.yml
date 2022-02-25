@@ -12,7 +12,7 @@ jobs:
       - name: Run JSON validator
         run: |
           function JSON_Validator () {
-            echo $1
+            echo "Parameter is $1"
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
@@ -25,7 +25,7 @@ jobs:
             print(error) 
           END
           )"
-            echo $validator_result
+            echo "Validator result is $validator_result"
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
@@ -40,11 +40,12 @@ jobs:
               do
                 # remove spaces in the line
                 no_whitespace="$(echo -e "${i}" | tr -d '[:space:]')"
-                echo $no_whitespace
+                echo "NO WHITESPACE $no_whitespace"
                 # remove string quotations: beginning """ and ending """
                 remove_string_quotations=${no_whitespace:3:-3}
-                echo $remove_string_quotations
+                echo "No quotation $remove_string_quotations"
                 JSON_Validator $remove_string_quotations
+                echo " The function has been called"
                 evalResult=$(JSON_Validator $remove_string_quotations)
                 if [ "$evalResult" = "Success!" ]; then
                   echo "nice"
