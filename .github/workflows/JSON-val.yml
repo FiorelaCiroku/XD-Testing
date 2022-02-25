@@ -42,7 +42,7 @@ jobs:
                 no_whitespace="$(echo -e "${i}" | tr -d '[:space:]')"
                 # # remove string quotations: beginning """ and ending """
                 remove_string_quotations=${no_whitespace:3:-3}
-                echo " Bash script result is JSON_Validator $remove_string_quotations"
+                echo " Bash script result is $(JSON_Validator $remove_string_quotations)"
                 evalResult=$(JSON_Validator $remove_string_quotations)
                 echo "Validation result is $evalResult"
                 if [ "$evalResult" = "Success!" ]; then
