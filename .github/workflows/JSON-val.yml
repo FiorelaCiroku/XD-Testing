@@ -25,7 +25,7 @@ jobs:
             print(error) 
           END
           )"
-            echo "Python script result is $validator_result"
+            return $validator_result
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
