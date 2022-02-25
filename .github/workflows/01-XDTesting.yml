@@ -114,6 +114,11 @@ jobs:
             echo "SPARQLValidator=False" >> $GITHUB_ENV
           fi
       
+      # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
+      - name: SPARQL Stop process
+        if: ${{ env.SPARQLValidator == 'False' }}
+        uses: andymckay/cancel-action@0.2  
+      
           
       - name: Run JSON validator
         if: ${{ env.SPARQLValidator == 'True' }}
@@ -163,7 +168,10 @@ jobs:
             done
           done <erRequirements.txt
         
-          
+      # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
+      - name: JSON Stop process
+        if: ${{ env.JSONValidator == 'False' }}
+        uses: andymckay/cancel-action@0.2  
           
       - name: Construct CQ test cases
         if: ${{ env.JSONValidator == 'True' }}
