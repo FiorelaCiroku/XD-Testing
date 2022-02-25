@@ -12,20 +12,21 @@ jobs:
       - name: Run JSON validator
         run: |
           function JSON_Validator () {
+            echo $1
             validator_result="$( PYTHON_ARG="$1" python3 - <<END
           import os
           import json
+          import traceback
+          str = str(os.environ['PYTHON_ARG'])
           try:
-            json.loads(os.environ['PYTHON_ARG'])
+            json.loads(str)
             print("Correct!")
           except ValueError as error:
             print(error) 
-    
           END
           )"
-          echo $validator_result
+            echo $validator_result
           }
-  
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
@@ -37,7 +38,9 @@ jobs:
             
             for i in "${ERstrresult[@]}"
               do
-                evalResult=$(JSON_Validator $i)
+                no_whitespace="$(echo -e "${i}" | tr -d '[:space:]')"
+                remove_string_quotations=${no_whitespace:3:-3}
+                evalResult=$(JSON_Validator $remove_string_quotations)
                 echo "Validation result is $evalResult"
                 if [ "$evalResult" = "Success!" ]; then
                   echo "nice"
