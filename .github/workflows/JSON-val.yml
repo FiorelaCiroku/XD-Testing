@@ -57,7 +57,7 @@ jobs:
             done
           done <erRequirements.txt
           
-          echo env.JSONValidator
+          echo $env.JSONValidator
   
           #if [ "$valResult" = "Success!" ]; then
           #  echo "JSONValidator=True" >> $GITHUB_ENV
