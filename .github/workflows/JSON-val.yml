@@ -45,6 +45,7 @@ jobs:
                 remove_string_quotations=${no_whitespace:3:-3}
                 
                 evalResult=$(JSON_Validator "$remove_string_quotations")
+                echo "EvalResult is $evalResult"
                 if [ "$evalResult" = "Success!" ]; then
                   echo "nice"
                 else
