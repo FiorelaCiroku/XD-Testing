@@ -25,7 +25,7 @@ jobs:
             print(error) 
           END
           )"
-            echo "Bash function result is $validator_result"
+            echo $validator_result
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
@@ -40,8 +40,11 @@ jobs:
               do
                 # remove spaces in the line
                 no_whitespace="$(echo -e "${i}" | tr -d '[:space:]')"
+                echo $no_whitespace
                 # remove string quotations: beginning """ and ending """
                 remove_string_quotations=${no_whitespace:3:-3}
+                echo $remove_string_quotations
+                JSON_Validator $remove_string_quotations
                 evalResult=$(JSON_Validator $remove_string_quotations)
                 if [ "$evalResult" = "Success!" ]; then
                   echo "nice"
