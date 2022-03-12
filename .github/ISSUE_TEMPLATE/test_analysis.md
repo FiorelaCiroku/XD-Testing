@@ -17,7 +17,6 @@ assignees: 'FiorelaCiroku'
 | Input test data | Pointing at the test data used for this test. |  |
 | Expected result | The expected output |  |
 | Actual result | The actual output |  |
-| Executed by | The person or organization who performed the test. |  |
 | Executed on | The date the test was performed |  |
 | Environment | Information about the test environment |  |
 | Execution result | Assessment of the test execution |  |
