@@ -1,5 +1,0 @@
-@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
-@prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
-@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERDataSet/> .
-@prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/ERTestCase/> .
-tc:01 a owlunit:ErrorProvocation ; owlunit:hasInputData td:EPDataSet.ttl ; owlunit:testsOntology mp: . 

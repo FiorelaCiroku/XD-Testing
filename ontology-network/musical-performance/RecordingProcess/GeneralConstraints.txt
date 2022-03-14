@@ -1,2 +1,0 @@
-IV01: Session01 is a Session.
-ER01: RecordingProcess120 is a recording process and not a recording.
