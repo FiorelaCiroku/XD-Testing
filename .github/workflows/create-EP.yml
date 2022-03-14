@@ -1,7 +1,7 @@
 name: Construct EP test cases
 
-on: push
-
+on: 
+  workflow_dispatch:
 jobs:
   validate-EP:
     runs-on: ubuntu-latest
