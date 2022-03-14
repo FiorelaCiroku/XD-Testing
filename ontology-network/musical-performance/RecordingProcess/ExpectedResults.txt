@@ -1,1 +1,0 @@
-ER01: { \"head\": { \"vars\": [ \"recording\" ] } , \"results\": { \"bindings\": [ { \"recording\": { \"type\": \"uri\" , \"value\": \"https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe\" } } ] } }.
