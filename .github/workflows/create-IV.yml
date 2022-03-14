@@ -1,6 +1,7 @@
 name: Construct IV test cases
 
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   validate-IV:
