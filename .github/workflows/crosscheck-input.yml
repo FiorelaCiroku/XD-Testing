@@ -8,11 +8,11 @@ name: Input cross-check
 
 # The event that triggers the action is a commit to the ontology module directory. 
 on: 
-  push: 
-    branches: 
-      - main
-    paths: 
-      - 'ontology-network/musical-performance-ontology/**'
+ # push: 
+ #   branches: 
+ #     - main
+ #   paths: 
+ #     - 'ontology-network/musical-performance-ontology/**'
     
   workflow_dispatch:
   
