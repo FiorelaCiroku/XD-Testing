@@ -1,6 +1,7 @@
 name: Construct CQ test cases
 
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   validate-CQ:
