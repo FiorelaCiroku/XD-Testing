@@ -8,7 +8,7 @@ name: Setup environment
 
 # The event that triggers the action.
 on: 
-  push
+  workflow_dispatch:
   
 jobs:
 # This workflow contains a job called "setup"
