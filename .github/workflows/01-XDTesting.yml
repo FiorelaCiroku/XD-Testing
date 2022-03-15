@@ -160,7 +160,7 @@ jobs:
                 if [ "$evalResult" = "Success!" ]; then
                   echo "JSONValidator=True" >> $GITHUB_ENV
                 else
-                  echo "JSONValidator=True" >> $GITHUB_ENV
+                  echo "JSONValidator=False" >> $GITHUB_ENV
                 fi
             done
           done <erRequirements.txt
