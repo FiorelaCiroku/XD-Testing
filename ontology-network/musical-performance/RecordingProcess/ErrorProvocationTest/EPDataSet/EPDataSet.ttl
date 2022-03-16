@@ -1,6 +1,0 @@
-@prefix mp: <https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
-@prefix td: <https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/ErrorProvocationTest/EPDataSet/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-td:RecordingProcess120 a mp:RecordingProcess .
-td:RecordingProcess120 a mp:Recording .
