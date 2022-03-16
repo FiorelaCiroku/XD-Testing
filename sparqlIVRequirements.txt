@@ -1,1 +1,0 @@
-SQCQ01: PREFIX mp: <https://raw.githubusercontent.com/YourUsername/YourRepository/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> SELECT DISTINCT ?recording WHERE {?session mp:isSessionOf ?recordingProcess . ?recordingProcess mp:producesRecording ?recording }
