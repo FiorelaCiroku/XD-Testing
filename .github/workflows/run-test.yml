@@ -74,5 +74,8 @@ jobs:
              java -jar OWLUnit-0.3.2.jar -c $testcaseURL
             done          
             done < UserInput.txt
-            
+      
+      # This step creates an automatic pull request for the directories that were created.      
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
 
