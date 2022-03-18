@@ -8,5 +8,5 @@ tc:CQTestCase.ttl a owlunit:CompetencyQuestionVerification ;
  owlunit:hasSPARQLUnitTest "PREFIX mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> SELECT DISTINCT ?recording WHERE {?session mp:isSessionOf ?recordingProcess . ?recordingProcess mp:producesRecording ?recording .}" ; 
  owlunit:hasInputData td:CQDataSet.ttl ; 
  owlunit:hasInputTestDataCategory owlunit:ToyDataset ; 
- owlunit:hasExpectedResult "{ "head": { "vars": [ "recording" ] } , "results": { "bindings": [ { "recording": { "type": "uri" , "value": "https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe" } } ] } }"; 
+ owlunit:hasExpectedResult "{ \"head\": { \"vars\": [ \"recording\" ] } , \"results\": { \"bindings\": [ { \"recording\": { \"type\": \"uri\" , \"value\": \"https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/ComeWithMe\" } } ] } }"; 
  owlunit:testsOntology mp: . 
