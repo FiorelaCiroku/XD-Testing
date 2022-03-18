@@ -217,7 +217,7 @@ jobs:
           echo $mpPrefix >> cqTemplate.txt 
           echo $tdPrefix >> cqTemplate.txt 
           echo $tcPrefix >> cqTemplate.txt 
-          echo 'tc:01 a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
+          echo 'tc:CQTestCase.ttl a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
           
           echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
