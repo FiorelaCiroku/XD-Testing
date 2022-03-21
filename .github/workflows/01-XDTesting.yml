@@ -126,10 +126,11 @@ jobs:
             echo $validator_result
           }
           echo "$erPath"
+          echo "Ma shpifi jeten"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER??][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
-          echo $erRequirements
+          echo "reqs are $erRequirements"
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
