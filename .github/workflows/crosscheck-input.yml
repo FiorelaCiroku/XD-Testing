@@ -41,9 +41,9 @@ jobs:
             line="$line"
             echo "Line read from file - $line" 
             cd $line
+            cat $line.owl
             if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQuery.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
               echo "CQ Test run ready to begin!"
-              cat $line.owl
             elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQuery.txt ] && [ -s $line.owl ]; then
               echo "IV Test run ready to begin!"
             else
