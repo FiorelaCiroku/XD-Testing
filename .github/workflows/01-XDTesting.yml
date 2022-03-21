@@ -39,10 +39,10 @@ jobs:
             while read -r line; do
             line="$line"
             cd $line
-            if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQuery.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
+            if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQueries.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
               echo "check=True" >> $GITHUB_ENV
               echo "True CQ"
-            elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQuery.txt ] && [ -s $line.owl ]; then
+            elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQueries.txt ] && [ -s $line.owl ]; then
               echo "check=True" >> $GITHUB_ENV
               echo "True IV"
             else
