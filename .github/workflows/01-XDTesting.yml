@@ -127,7 +127,7 @@ jobs:
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
+          erRequirements=$(grep -i '[ER??][0-9][0-9]*:\s' $erPath)
           echo "$erRequirements" > "erRequirements.txt"
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
@@ -174,7 +174,7 @@ jobs:
           
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
+          erRequirements=$(grep -i '[ERCQ][0-9][0-9]*:\s' $erPath)
           
           base="https://raw.githubusercontent.com/"
           base1=$(git config --get remote.origin.url | sed 's/.*\/\([^ ]*\/[^.]*\).*/\1/')
@@ -201,19 +201,20 @@ jobs:
           tdPrefix="@prefix td: <${cqtd}> ."
           tcPrefix="@prefix tc: <${cqtc}> ."
           
-          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . ' > cqTemplate.txt
-          echo $mpPrefix >> cqTemplate.txt 
-          echo $tdPrefix >> cqTemplate.txt 
-          echo $tcPrefix >> cqTemplate.txt 
-          echo 'tc:CQTestCase.ttl a owlunit:CompetencyQuestionVerification ; owlunit:hasCompetencyQuestion "' >> cqTemplate.txt 
+          echo '@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . \n' > cqTemplate.txt
+          echo ' $mpPrefix \n ' >> cqTemplate.txt 
+          echo ' $tdPrefix \n ' >> cqTemplate.txt 
+          echo ' $tcPrefix \n ' >> cqTemplate.txt 
+        
           
           echo "$cqRequirements" > "cqRequirements.txt"
           while read line; do
             CQid=${line//[!0-9]/}
+            TCid="$line$CQid"
+            echo 'tc:$TCid.ttl a owlunit:CompetencyQuestionVerification ; \n ' >> cqTemplate.txt 
             if [[ $line =~ :(.+) ]]; then
               CQstrresult=${BASH_REMATCH[1]}
-              echo $CQstrresult >> cqTemplate.txt 
-              echo ' "; owlunit:hasSPARQLUnitTest " ' >> cqTemplate.txt 
+              echo 'owlunit:hasCompetencyQuestion "$CQstrresult" ; \n' >> cqTemplate.txt 
             else
               echo "unable to parse string $line"
             fi
@@ -228,8 +229,8 @@ jobs:
             done <sparqlCQRequirements.txt
           
           if [[ $CQid = $SQid ]]; then
-            echo $SQstrresult >> cqTemplate.txt 
-            echo ' " ; owlunit:hasInputData td:CQDataSet.ttl ; owlunit:hasInputTestDataCategory owlunit:ToyDataset ; owlunit:hasExpectedResult " ' >> cqTemplate.txt  
+            echo 'owlunit:hasSPARQLUnitTest " $SQstrresult " ; \n ' >> cqTemplate.txt 
+            echo 'owlunit:hasInputData td:CQDataSet.ttl ; \n owlunit:hasInputTestDataCategory owlunit:ToyDataset ; \n ' >> cqTemplate.txt  
           else
             echo "No matching SPARQL query"
           fi
@@ -243,10 +244,10 @@ jobs:
             done <erRequirements.txt
             
           if [[ $CQid = $ERid ]]; then
-            echo $ERstrresult >> cqTemplate.txt 
-            echo ' "; owlunit:testsOntology mp: . ' >> cqTemplate.txt  
+            echo 'owlunit:hasExpectedResult " $ERstrresult " ; \n' >> cqTemplate.txt 
+            echo 'owlunit:testsOntology mp: . ' >> cqTemplate.txt  
           else
-            echo "No matching expected result"
+            echo "No matching expected result."
           fi
           
           cat cqTemplate.txt
