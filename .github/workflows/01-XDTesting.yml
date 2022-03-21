@@ -41,16 +41,13 @@ jobs:
             cd $line
             if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQueries.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
               echo "check=True" >> $GITHUB_ENV
-              echo "True CQ"
             elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQueries.txt ] && [ -s $line.owl ]; then
               echo "check=True" >> $GITHUB_ENV
-              echo "True IV"
             else
               echo "check=False" >> $GITHUB_ENV
               echo "False"
             fi
             done < UserInput.txt
-            echo $check 
             
       # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
       - name: Check Stop process
