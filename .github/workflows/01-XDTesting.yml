@@ -49,7 +49,7 @@ jobs:
               echo "check=False" >> $GITHUB_ENV
             fi
             done < UserInput.txt
-            echo ${{ env.check }} 
+            echo $check 
             
       # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
       - name: Check Stop process
