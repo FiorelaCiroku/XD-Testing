@@ -41,29 +41,6 @@ jobs:
             line="$line"
             echo "Line read from file - $line" 
             cd $line
-            
-            if [ -s CompetencyQuestions.txt ]; then
-             echo "CQ exists!"
-            fi
-            
-            if [ -s SPARQLQueries.txt ]; then
-             echo "SPARQL exists!"
-            fi
-            
-            if [ -s ExpectedResults.txt ]; then
-             echo "ER exists!"
-            fi
-            
-            if [ -s $line.owl ]; then
-             echo "Ontology exists!"
-            fi
-            
-            if [ -s GeneralConstraints.txt ]; then
-             echo "GC exists!"
-            fi
-            
-            
-            
             if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQueries.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
                 echo "CQ Test run ready to begin!"
             elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQueries.txt ] && [ -s $line.owl ]; then
