@@ -41,13 +41,32 @@ jobs:
             line="$line"
             echo "Line read from file - $line" 
             cd $line
-            if [ -s CompetencyQuestions.txt ] ; then
-             if [ -s SPARQLQuery.txt ]; then
-              if [ -s ExpectedResults.txt ]; then
-               if [ -s $line.owl ]; then
-                echo "CQ Test run ready to begin!"
+            
+            if [ -s CompetencyQuestions.txt ]; then
+             echo "CQ exists!"
             fi
-            if [ -s GeneralConstraints.txt ] && [ -s SPARQLQuery.txt ] && [ -s $line.owl ]; then
+            
+            if [ -s SPARQLQuery.txt ]; then
+             echo "SPARQL exists!"
+            fi
+            
+            if [ -s ExpectedResults.txt ]; then
+             echo "ER exists!"
+            fi
+            
+            if [ -s $line.owl ]; then
+             echo "Ontology exists!"
+            fi
+            
+            if [ -s GeneralConstraints.txt ]; then
+             echo "GC exists!"
+            fi
+            
+            
+            
+            if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQuery.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]; then
+                echo "CQ Test run ready to begin!"
+            elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQuery.txt ] && [ -s $line.owl ]; then
               echo "IV Test run ready to begin!"
             else
               echo "Missing files: Test run cannot start!"
