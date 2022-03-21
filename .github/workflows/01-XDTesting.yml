@@ -126,10 +126,9 @@ jobs:
             echo $validator_result
           }
           echo "$erPath"
-          echo "Ma shpifi jeten"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          echo "Path is $erPath"
           erRequirements=$(grep -i '[ER??][0-9][0-9]*:\s' $erPath)
+          echo "reqs are $erRequirements"
           echo "$erRequirements" > "erRequirements.txt"
           echo "reqs are $erRequirements"
           while read -r line; do
