@@ -201,10 +201,14 @@ jobs:
           tdPrefix="@prefix td: <${cqtd}> ."
           tcPrefix="@prefix tc: <${cqtc}> ."
           
-          echo " @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . \n " > cqTemplate.txt
-          echo " ${mpPrefix} \n " >> cqTemplate.txt 
-          echo " ${tdPrefix} \n " >> cqTemplate.txt 
-          echo " ${tcPrefix} \n " >> cqTemplate.txt 
+          echo " @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . " > cqTemplate.txt
+          echo "" >> cqTemplate.txt
+          echo " ${mpPrefix} " >> cqTemplate.txt 
+          echo "" >> cqTemplate.txt
+          echo " ${tdPrefix} " >> cqTemplate.txt 
+          echo "" >> cqTemplate.txt
+          echo " ${tcPrefix} " >> cqTemplate.txt 
+          echo "" >> cqTemplate.txt
           
           cat cqTemplate.txt
         
@@ -213,10 +217,12 @@ jobs:
           while read line; do
             CQid=${line//[!0-9]/}
             TCid="$line$CQid"
-            echo " tc:$TCid.ttl a owlunit:CompetencyQuestionVerification ; \n " >> cqTemplate.txt 
+            echo " tc:$TCid.ttl a owlunit:CompetencyQuestionVerification ; " >> cqTemplate.txt 
+            echo "" >> cqTemplate.txt
             if [[ $line =~ :(.+) ]]; then
               CQstrresult=${BASH_REMATCH[1]}
-              echo " owlunit:hasCompetencyQuestion $CQstrresult " ; \n' >> cqTemplate.txt 
+              echo ' owlunit:hasCompetencyQuestion " ${CQstrresult} " ; ' >> cqTemplate.txt 
+              echo "" >> cqTemplate.txt
             else
               echo "unable to parse string $line"
             fi
