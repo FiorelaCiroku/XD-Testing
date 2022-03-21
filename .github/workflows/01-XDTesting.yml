@@ -127,7 +127,7 @@ jobs:
           }
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
-          erRequirements=$(grep -i '[ER??][0-9][0-9]*:\s' $erPath)
+          erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
           echo "reqs are $erRequirements"
           echo "$erRequirements" > "erRequirements.txt"
           echo "reqs are $erRequirements"
