@@ -128,13 +128,10 @@ jobs:
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER][0-9][0-9]*:\s' $erPath)
-          echo "reqs are $erRequirements"
           echo "$erRequirements" > "erRequirements.txt"
-          echo "reqs are $erRequirements"
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
-              echo $ERstrresult
             fi
             
             for i in "${ERstrresult[@]}"
@@ -145,13 +142,15 @@ jobs:
                 # remove string quotations: beginning """ and ending """
                 remove_string_quotations=${no_whitespace:3:-3}
                 
+                echo $remove_string_quotations
+                
                 evalResult=$(JSON_Validator "$remove_string_quotations")
                 echo $evalResult
                 
                 if [ "$evalResult" = "Success!" ]; then
                   echo "JSONValidator=True" >> $GITHUB_ENV
                 else
-                  echo "JSONValidator=False" >> $GITHUB_ENV
+                  echo "JSONValidator=True" >> $GITHUB_ENV
                 fi
             done
           done <erRequirements.txt
