@@ -202,9 +202,11 @@ jobs:
           tcPrefix="@prefix tc: <${cqtc}> ."
           
           echo " @prefix owlunit: <https://w3id.org/OWLunit/ontology/> . \n " > cqTemplate.txt
-          echo " $mpPrefix \n " >> cqTemplate.txt 
-          echo " $tdPrefix \n " >> cqTemplate.txt 
-          echo " $tcPrefix \n " >> cqTemplate.txt 
+          echo " ${mpPrefix} \n " >> cqTemplate.txt 
+          echo " ${tdPrefix} \n " >> cqTemplate.txt 
+          echo " ${tcPrefix} \n " >> cqTemplate.txt 
+          
+          cat cqTemplate.txt
         
           
           echo "$cqRequirements" > "cqRequirements.txt"
