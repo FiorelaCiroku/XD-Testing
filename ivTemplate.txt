@@ -1,0 +1,5 @@
+@prefix owlunit: <https://w3id.org/OWLunit/ontology/> . 
+@prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/RecordingProcess.owl> .
+@prefix td: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVDataSet/> .
+@prefix mp: <https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/InferenceVerificationTest/IVTestCase/> .
+tc:01 a owlunit:InferenceVerification ; owlunit:hasInputData td:IVDataSet.ttl ; owlunit:hasSPARQLUnitTest "
