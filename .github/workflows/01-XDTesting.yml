@@ -128,8 +128,8 @@ jobs:
           echo "$erPath"
           erPath="ontology-network/musical-performance/RecordingProcess/ExpectedResults.txt"
           erRequirements=$(grep -i '[ER??][0-9][0-9]*:\s' $erPath)
-          echo $erRequirements
           echo "$erRequirements" > "erRequirements.txt"
+          cat erRequirements.txt
           while read -r line; do
             if [[ $line =~ :(.+) ]]; then
               ERstrresult=${BASH_REMATCH[1]}
@@ -150,7 +150,7 @@ jobs:
                 if [ "$evalResult" = "Success!" ]; then
                   echo "JSONValidator=True" >> $GITHUB_ENV
                 else
-                  echo "JSONValidator=True" >> $GITHUB_ENV
+                  echo "JSONValidator=False" >> $GITHUB_ENV
                 fi
             done
           done <erRequirements.txt
