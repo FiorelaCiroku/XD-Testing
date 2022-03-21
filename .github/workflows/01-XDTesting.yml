@@ -39,31 +39,20 @@ jobs:
             while read -r line; do
             line="$line"
             cd $line
-            counter=0
-            for file in *.txt
-            do 
-              if [ -s $file ] 
-              then
-                rm -f empty.txt
-                touch full.txt
-                counter=$((counter+1))
+            if [ -s CompetencyQuestions.txt ] && [ -s SPARQLQuery.txt ] && [ -s ExpectedResults.txt ] && [ -s $line.owl ]
+            then
+              echo "check=True" >> $GITHUB_ENV
+            elif [ -s GeneralConstraints.txt ] && [ -s SPARQLQuery.txt ] && [ -s $line.owl ]
+            then
+              echo "check=True" >> $GITHUB_ENV
             else
-                # The file is empty.
-                rm -f full.txt
-                touch empty.txt
-              fi
-            done
-            done < UserInput.txt
-            if ((counter<4))
-              then 
-                echo "check=False" >> $GITHUB_ENV
-              else
-                echo "check=True" >> $GITHUB_ENV
+              echo "check=False" >> $GITHUB_ENV
             fi
+            done < UserInput.txt
             
       # A stop step that calls the cancel-action action to stop the automation if a condition has not been met.
       - name: Check Stop process
-        if: ${{ env.check == 'False' }}
+        if: ${{ env.check == 'False' }} 
         uses: andymckay/cancel-action@0.2  
         
      # A step to install rdflib if a condition is met.
