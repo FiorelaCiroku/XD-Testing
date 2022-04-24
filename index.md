@@ -18,6 +18,10 @@ One of the most important steps of each ontology modelling methodology, includin
 - **Inference Verification** allows to verify that the inference mechanisms are in place, to ensure the correct fulfillment of the inference requirement.
 - **Error Provocation** allows to verify how the ontology acts when it is fed random or incorrect data. 
 
+## XDTesting Use case diagram
+
+![Use case diagram - Test automation-Use case Updated drawio](https://user-images.githubusercontent.com/12375920/164968634-c41d09fb-0949-47e2-82ca-ff187110e15d.png)
+
 ## Guidelines on using the XDTesting tool 
 
 1. For the purpose of this testing session, we have created a dummy repository that contains the basic environment for the XDTesting tool to work. Fork the [XDTestingSession](https://github.com/FiorelaCiroku/XDTestingSession) repository in your own repository. To do so, click on the link, then on the fork button and confirm. The repository that you just forked contains a .github/workflow folder where you will find three workflows. The **create-directory** workflow creates a directory structure that contains folders for all types of tests based on XD and for each type of test there are subfolders about the test cases and toy dataset. Within this workflow you can also see the structure of directories that have been created by the automation. The workflow creates a Pull Request containing the new directories that were created. The **XDTesting** workflow checks if all necessary input to construct a test case is provided by the user, validates the syntax of the input, constructs the test cases and creates a pull request for the ontology engineer to merge. The **run-test** workflow constructs the URLs of the testcases, runs the testcases and documents the result. While in the folder **ontology-network**, the ontology modules that are part of the network can be found. Inside each folder of a module, there is a UserInput.txt file where you can add the name of the ontology fragment of the module that you want to test. 
