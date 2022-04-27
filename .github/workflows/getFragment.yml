@@ -1,8 +1,8 @@
 on: push
 name: CI
 jobs:
-  dump:
-    name: Dump
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,5 +11,13 @@ jobs:
           PATTERNS: |
             +(src|__tests__)/**/*.ts
             !src/exclude.ts
-          FORMAT: json
-      - run: echo '${{ env.GIT_DIFF }}' | jq .
+          FILES: |
+            yarn.lock
+            .eslintrc
+      - name: Install Package dependencies
+        run: yarn install
+        if: env.GIT_DIFF
+      - name: Check code style
+        # Check only if there are differences in the source code
+        run: yarn lint
+        if: env.GIT_DIFF
