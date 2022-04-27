@@ -1,1 +1,2 @@
 CQ01: Which recording is produced by a session?
+CQ02: Who is the composer of a recording?
