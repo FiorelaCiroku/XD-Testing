@@ -1,5 +1,6 @@
-
+# Action to get which files where changed after a push or a pull request.
 name: Get push difference
+
 on: [push, pull_request]
 
 jobs:
