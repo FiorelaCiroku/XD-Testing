@@ -28,7 +28,17 @@ jobs:
           
       - run: echo "${{ steps.diff.outputs.diff }}"
       
-      - run: git diff ${{ github.event.before }} $GITHUB_SHA
+      - run: git diff ${{ github.event.before }} $GITHUB_SHA >> CommitChanges.txt
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
