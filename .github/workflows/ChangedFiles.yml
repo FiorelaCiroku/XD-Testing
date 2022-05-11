@@ -25,7 +25,10 @@ jobs:
           echo "$DIFF"
           # Escape newlines (replace \n with %0A)
           echo "::set-output name=diff::$( echo "$DIFF" | sed ':a;N;$!ba;s/\n/%0A/g' )"
+          
       - run: echo "${{ steps.diff.outputs.diff }}"
+      
+      - run: git diff ${{ github.event.before }} $GITHUB_SHA
       
       
       
