@@ -1,0 +1,20 @@
+on: push
+name: Get push difference
+jobs:
+  difference:
+    name: difference
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Run script
+        run: | 
+             tmpfile=$(mktemp)
+             start=$(jq --raw-output .commits[0].id "$GITHUB_EVENT_PATH")
+             end=$(jq --raw-output .commits[-1].id "$GITHUB_EVENT_PATH")
+             if ["$start" = "$end"]; then
+              git diff-tree --no-commit-id --name-only -r "$start" >"$tmpfile"
+             else
+              git diff-tree --no-commit-id --name-only -r "$start" "$end" >"$tmpfile"
+             fi
+        
