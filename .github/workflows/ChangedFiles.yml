@@ -28,7 +28,7 @@ jobs:
           
       - run: echo "${{ steps.diff.outputs.diff }}"
       
-      - run: git diff ${{ github.event.before }} $GITHUB_SHA >> CommitChanges.txt
+      - run: git diff ${{ github.event.before }} $GITHUB_SHA > CommitChanges.txt
       
       - name: Pull-to-master
         uses: peter-evans/create-pull-request@v3
