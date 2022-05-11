@@ -30,6 +30,8 @@ jobs:
       
       - run: git diff ${{ github.event.before }} $GITHUB_SHA >> CommitChanges.txt
       
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
       
       
       
