@@ -7,14 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Run script
-        run: | 
-             tmpfile=$(mktemp)
-             start=$(jq --raw-output .commits[0].id "$GITHUB_EVENT_PATH")
-             end=$(jq --raw-output .commits[-1].id "$GITHUB_EVENT_PATH")
-             if ["$start" = "$end"]; then
-              git diff-tree --no-commit-id --name-only -r "$start" >"$tmpfile"
-             else
-              git diff-tree --no-commit-id --name-only -r "$start" "$end" >"$tmpfile"
-             fi
+      - name: get changed files
+        id: getfile
+        run: |
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+
+      - name: echo output
+        run: |
+          echo ${{ steps.getfile.outputs.files }}
         
