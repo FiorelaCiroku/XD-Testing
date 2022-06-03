@@ -1,0 +1,46 @@
+# This is a workflow that is able to setup the environment for the running of the test cases in XD.
+# Trigger: Input cross check completed successfully. 
+# Input: None
+# Output: A list of files with .owl or .rdf extensions. 
+
+# The name of the workflow
+name: Discover ontology
+
+# The event that triggers the action.
+on: 
+  workflow_dispatch:
+  
+jobs:
+# This workflow contains a job called "setup"
+  discover: 
+
+# The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+# Steps that are executed for this job
+    steps: 
+
+# Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+
+# Gets a list of files with the required extensions
+      - name: Run bash script
+        run: find . -name '*.owl' -o -name '*.rdf' > Ontology-list.txt
+          
+
+# Install OWLUnit         
+      - name: Print ontology list
+        run: cat Ontology-list.txt
+
+
+      
+      
+      
+    
+    
+    
+      
+    
+    
+    
