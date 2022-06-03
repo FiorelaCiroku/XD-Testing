@@ -1,5 +1,5 @@
 # This is a workflow that is able to find ontology files in the GitHub repository. 
-# Trigger: Input cross check completed successfully. 
+# Trigger: 
 # Input: None
 # Output: A list of files with .owl or .rdf extensions. 
 
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   
 jobs:
-# This workflow contains a job called "setup"
+# This workflow contains a job called "discover"
   discover: 
 
 # The type of runner that the job will run on
@@ -29,7 +29,7 @@ jobs:
         run: find . -name '*.owl' -o -name '*.rdf' >> Ontology-list.txt
           
 
-# Install OWLUnit         
+# Print list   
       - name: Print ontology list
         run: cat Ontology-list.txt
 
