@@ -1,4 +1,4 @@
-# This is a workflow that is able to setup the environment for the running of the test cases in XD.
+# This is a workflow that is able to find ontology files in the GitHub repository. 
 # Trigger: Input cross check completed successfully. 
 # Input: None
 # Output: A list of files with .owl or .rdf extensions. 
@@ -26,7 +26,7 @@ jobs:
 
 # Gets a list of files with the required extensions
       - name: Run bash script
-        run: find . -name '*.owl' -o -name '*.rdf' > Ontology-list.txt
+        run: find . -name '*.owl' -o -name '*.rdf' >> Ontology-list.txt
           
 
 # Install OWLUnit         
