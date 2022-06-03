@@ -1,0 +1,45 @@
+# This is a workflow that is able to validate the syntax of rdf datasets. 
+# Trigger: 
+# Input: URL/ Path of a file
+# Output: A list of files with .owl or .rdf extensions. 
+
+# The name of the workflow
+name: Check dataset syntax
+
+# The event that triggers the action.
+on: 
+  workflow_dispatch:
+  
+jobs:
+# This workflow contains a job called "check-syntax"
+  check-syntax: 
+
+# The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+# Steps that are executed for this job
+    steps: 
+
+# Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+
+# Install the turtle validator
+      - name: Run bash script
+        run: npm install -g turtle-validator
+          
+
+# Check syntax of the sample dataset when provided an URL.
+      - name: Check syntax
+        run: ttl https://raw.githubusercontent.com/FiorelaCiroku/XD-Testing/main/ontology-network/musical-performance/RecordingProcess/SPARQLUnitTest/CQDataSet/CQDataSet.ttl
+
+      
+      
+      
+    
+    
+    
+      
+    
+    
+    
