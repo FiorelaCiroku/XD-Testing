@@ -26,12 +26,28 @@ jobs:
 
 # Gets a list of files with the required extensions
       - name: Run bash script
-        run: find . -name '*.owl' -o -name '*.rdf' >> Ontology-list.txt
+        run: find . -name '*.owl' -o -name '*.rdf' >> OntologyList.txt
           
 
-# Print list   
+# Print txt list   
       - name: Print ontology list
-        run: cat Ontology-list.txt
+        run: cat OntologyList.txt
+        
+# Install brew
+      - name: Install Brew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+# install jq package
+      - name: Install jq
+        run: brew install jq
+        
+# Create JSON file from txt file
+      - name: Create JSON
+        run: jq -Rs '[ split("\n")[] | select(length > 0) | split(",") | {OntologyPath:.[0]} ]' OntologyList.txt > OntologyList.json
+        
+# Print JSON
+      - name: Print ontology list in JSON
+        run: cat OntologyList.json
 
 
       
