@@ -54,14 +54,10 @@ jobs:
         run: |
           rm ontologies.json
           rm fragments.json      
-        
-  # Print JSON
-      - name: Print JSON files
-        run: |
-          for i in *.json; 
-          do 
-            echo $i
-          done
+ 
+ # pull to repo 
+      - name: Pull-to-master
+        uses: peter-evans/create-pull-request@v3
         
   
 
