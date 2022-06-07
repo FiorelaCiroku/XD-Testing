@@ -48,6 +48,9 @@ jobs:
 # Print JSON
       - name: Print ontology list in JSON
         run: cat OntologyList.json
+# Delete txt file
+      - name: Delete txt file
+        run: rm OntologyList.txt
 
 
       
