@@ -54,10 +54,9 @@ jobs:
         run: |
           rm ontologies.json
           rm fragments.json      
+          cat 0.json
  
- # pull to repo 
-      - name: Pull-to-master
-        uses: peter-evans/create-pull-request@v3
+
         
   
 
