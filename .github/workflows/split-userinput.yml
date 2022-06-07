@@ -59,8 +59,8 @@ jobs:
       - name: Print new files
         run: |
           for i in `find . -name "*.json" -type f`; do
-            echo $i
-            echo "$i"
+            path=$i
+            cat $path
           done
  
 
