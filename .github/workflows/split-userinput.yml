@@ -49,6 +49,7 @@ jobs:
       - name: Print JSON files
         run: |
           if ['*.json']; then cat *.json
+          fi
         
   # Delete txt file
       - name: Delete txt file
