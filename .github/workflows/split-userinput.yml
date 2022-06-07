@@ -44,18 +44,22 @@ jobs:
         run: |
           file=".xd-testing/Fragments.json"
           jq -cr 'keys[] as $k | "\($k)\t\(.[$k])"' "$file"  | awk -F\\t '{ file=$1".json"; print $2 > file; close(file); }'
-                
-  # Print JSON
-      - name: Print JSON files
-        run: |
-          if ['*.json']; then cat *.json
-          fi
         
   # Delete txt file
       - name: Delete txt file
         run: |
           rm ontologies.json
-          rm fragments.json
+          rm fragments.json      
+        
+  # Print JSON
+      - name: Print JSON files
+        run: |
+          for i in *.json; 
+          do 
+            cat *.json 
+          done
+        
+  
 
 
       
