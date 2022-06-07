@@ -4,7 +4,7 @@
 # Output: Several json files representing each test case. 
 
 # The name of the workflow
-name: Split UserInput
+name: Split UserInput.json
 
 # The event that triggers the action.
 on: 
@@ -24,14 +24,14 @@ jobs:
       - uses: actions/checkout@v2
 
 # Install Homebrew
-    - name: Install Homebrew
-      shell: bash
-      run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: Install Homebrew
+        shell: bash
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         
   # install jq package
-    - name: Install jq
-      shell: bash
-      run: brew install jq
+      - name: Install jq
+        shell: bash
+        run: brew install jq
 
   # First split of the UserInput file
       - name: Split Otologies from Fragments
