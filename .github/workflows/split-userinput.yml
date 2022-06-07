@@ -1,0 +1,69 @@
+# This is a workflow that is able to split the user input file into separate files for each test case.
+# Trigger: On call
+# Input: None
+# Output: Several json files representing each test case. 
+
+# The name of the workflow
+name: Split UserInput
+
+# The event that triggers the action.
+on: 
+  workflow_dispatch:
+  
+jobs:
+# This workflow contains a job called "discover"
+  split: 
+
+# The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+# Steps that are executed for this job
+    steps: 
+
+# Checks-out your repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+# Install Homebrew
+    - name: Install Homebrew
+      shell: bash
+      run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+  # install jq package
+    - name: Install jq
+      shell: bash
+      run: brew install jq
+
+  # First split of the UserInput file
+      - name: Split Otologies from Fragments
+        run: |
+          file=".xd-testing/UserInput.json"
+          jq -cr 'keys[] as $k | "\($k)\t\(.[$k])"' "$file"  | awk -F\\t '{ file=$1".json"; print $2 > file; close(file); }'
+          
+  # Second split of the UserInput 
+      - name: Split test cases from the Fragments file
+        run: |
+          file=".xd-testing/Fragments.json"
+          jq -cr 'keys[] as $k | "\($k)\t\(.[$k])"' "$file"  | awk -F\\t '{ file=$1".json"; print $2 > file; close(file); }'
+                
+  # Print JSON
+      - name: Print JSON files
+        run: |
+          if ['*.json']; then cat *.json
+        
+  # Delete txt file
+      - name: Delete txt file
+        run: |
+          rm Ontologies.json
+          rm Fragments.json
+
+
+      
+      
+      
+    
+    
+    
+      
+    
+    
+    
