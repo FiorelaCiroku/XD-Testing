@@ -60,6 +60,7 @@ jobs:
         run: |
           for i in `find . -name "*.json" -type f`; do
             echo $i
+            echo "$i"
           done
  
 
