@@ -60,7 +60,7 @@ jobs:
         run: |
           for i in *.json; 
           do 
-            cat *.json 
+            echo "$i"
           done
         
   
