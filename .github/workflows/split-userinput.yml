@@ -54,8 +54,8 @@ jobs:
   # Delete txt file
       - name: Delete txt file
         run: |
-          rm Ontologies.json
-          rm Fragments.json
+          rm ontologies.json
+          rm fragments.json
 
 
       
