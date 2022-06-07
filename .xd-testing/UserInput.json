@@ -24,6 +24,47 @@
           "id": "CQ001"
         }
       ]
+    },
+
+    {
+      "name": "Fragment 2",
+      "ontologyName": "New Ontology",
+      "fileName": ".xd-testing/Fragment 1/note.txt",
+      "tests": [
+        {
+          "type": "COMPETENCY_QUESTION",
+          "content": "Requirement",
+          "reasoner": "hermiT 1.4.3.456",
+          "status": "running",
+          "statusNotes": "Some notes",
+          "issue": "https://github.com/MatteoMUni/Test-Public-Repo/issues/1",
+          "queryFileName": "New Ontology/Fragment 1/queries/note.txt",
+          "data": "Some prefixes\n\nabc abc abc\ndef def def",
+          "expectedResults": "Some prefixes\n\ndef def def",
+          "id": "CQ002"
+        }
+      ]
+    },
+
+    {
+      "name": "Fragment 3",
+      "ontologyName": "New Ontology",
+      "fileName": ".xd-testing/Fragment 1/note.txt",
+      "tests": [
+        {
+          "type": "COMPETENCY_QUESTION",
+          "content": "Requirement",
+          "reasoner": "hermiT 1.4.3.456",
+          "status": "running",
+          "statusNotes": "Some notes",
+          "issue": "https://github.com/MatteoMUni/Test-Public-Repo/issues/1",
+          "queryFileName": "New Ontology/Fragment 1/queries/note.txt",
+          "data": "Some prefixes\n\nabc abc abc\ndef def def",
+          "expectedResults": "Some prefixes\n\ndef def def",
+          "id": "CQ003"
+        }
+      ]
     }
+
   ]
 }
