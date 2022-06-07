@@ -46,7 +46,7 @@ jobs:
   # Second split of the UserInput 
       - name: Split test cases from the Fragments file
         run: |
-          file=".xd-testing/fragments.json"
+          file="fragments.json"
           jq -cr 'keys[] as $k | "\($k)\t\(.[$k])"' "$file"  | awk -F\\t '{ file=$1".json"; print $2 > file; close(file); }'
         
   # Delete txt file
