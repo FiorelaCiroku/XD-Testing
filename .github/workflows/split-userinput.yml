@@ -54,7 +54,13 @@ jobs:
         run: |
           rm ontologies.json
           rm fragments.json      
-          cat 0.json
+  
+  # Print new files
+      - name: Print new files
+        run: |
+          for i in `find . -name "*.json" -type f`; do
+            echo $i
+          done
  
 
         
