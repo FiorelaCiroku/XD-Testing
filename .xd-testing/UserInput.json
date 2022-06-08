@@ -3,6 +3,10 @@
     {
       "url": "https://raw.githubusercontent.com/MatteoMUni/Test-Public-Repo/main/.xd-testing/New Ontology/note.txt",
       "name": "New Ontology"
+    },
+    {
+      "url": "mypath",
+      "name": "O1"
     }
   ],
   "fragments": [
@@ -25,7 +29,6 @@
         }
       ]
     },
-
     {
       "name": "Fragment 2",
       "ontologyName": "New Ontology",
@@ -45,7 +48,6 @@
         }
       ]
     },
-
     {
       "name": "Fragment 3",
       "ontologyName": "New Ontology",
@@ -65,6 +67,5 @@
         }
       ]
     }
-
   ]
 }
