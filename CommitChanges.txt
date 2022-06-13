@@ -1,37 +1,15 @@
-diff --git a/CommitChanges.txt b/CommitChanges.txt
-new file mode 100644
-index 0000000..f595ed9
---- /dev/null
-+++ b/CommitChanges.txt
-@@ -0,0 +1,31 @@
-+diff --git a/CommitChanges.txt b/CommitChanges.txt
-+deleted file mode 100644
-+index 0fb49ba..0000000
-+--- a/CommitChanges.txt
-++++ /dev/null
-+@@ -1,25 +0,0 @@
-+-diff --git a/CommitChanges.txt b/CommitChanges.txt
-+-index 2aa7f33..26609e6 100644
-+---- a/CommitChanges.txt
-+-+++ b/CommitChanges.txt
-+-@@ -15,3 +15,20 @@ index e4c8aca..8025984 100644
-+-  CQ02: Who is the composer of a recording?
-+- -CQ03: Hello!
-+- +CQ04: fiorela is awesome. 
-+-+diff --git a/CommitChanges.txt b/CommitChanges.txt
-+-+index f7ee917..2aa7f33 100644
-+-+--- a/CommitChanges.txt
-+-++++ b/CommitChanges.txt
-+-+@@ -6,3 +6,12 @@ index 4eed535..e4c8aca 100644
-+-+  CQ01: Which recording is produced by a session?
-+-+  CQ02: Who is the composer of a recording?
-+-+ +CQ03: Hello!
-+-++diff --git a/cqRequirements.txt b/cqRequirements.txt
-+-++index e4c8aca..8025984 100644
-+-++--- a/cqRequirements.txt
-+-+++++ b/cqRequirements.txt
-+-++@@ -1,3 +1,3 @@
-+-++ CQ01: Which recording is produced by a session?
-+-++ CQ02: Who is the composer of a recording?
-+-++-CQ03: Hello!
-+-+++CQ04: fiorela is awesome. 
+diff --git a/.github/workflows/split-userinput.yml b/.github/workflows/split-userinput.yml
+index 1ce4dc0..46c3db7 100644
+--- a/.github/workflows/split-userinput.yml
++++ b/.github/workflows/split-userinput.yml
+@@ -66,7 +66,9 @@ jobs:
+       - name: Create Pull Request
+         uses: peter-evans/create-pull-request@v4
+         with:
+-          path: .xd-testing/TestCaseInput
++          commit-message: Create test case input file
++          labels: test case input
++          path: .xd-testing/TestCaseInput/readme.md
+  
+ 
+         
