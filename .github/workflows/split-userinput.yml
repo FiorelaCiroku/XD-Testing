@@ -66,7 +66,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          path: .xd-testing/TestCaseInput
+          commit-message: Create test case input file
+          labels: test case input
+          path: .xd-testing/TestCaseInput/readme.md
  
 
         
