@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   
 jobs:
-# This workflow contains a job called "discover"
+# This workflow contains a job called "split"
   split: 
 
 # The type of runner that the job will run on
@@ -51,9 +51,8 @@ jobs:
         
   # Delete txt file
       - name: Delete txt file
-        run: |
-          rm ontologies.json
-          rm fragments.json      
+        run: rm fragments.json      
+        
   
   # Print new files
       - name: Print new files
@@ -62,6 +61,12 @@ jobs:
             path=$i
             cat $path
           done
+  
+  # Create pull request to specific path
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          path: .xd-testing/TestCaseInput
  
 
         
